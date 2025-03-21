@@ -1,286 +1,379 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-
-  <link rel="icon" href="static/logo1.png" type="image/png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ViewLab.tech - Revolucione sua Presença Digital</title>
-  <meta name="description" content="Crie experiências digitais que atraem, engajam e convertem com tecnologia de ponta.">
-  <meta name="keywords" content="landing page, soluções IA, web design, dark theme, neon, ViewLab.tech">
-
-  <!-- Schema Markup para SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebDesignService",
-    "name": "ViewLab",
-    "description": "Transformamos sua presença digital com landing pages, soluções com IA e design inovador."
-  }
-  </script>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+  <title>Projeto Lunar - Revolucione o Ensino</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    :root {
-      --primary-color: #FF7300; /* Neon Laranja */
-      --bg-dark: #121212;
-      --bg-darker: #1e1e1e;
-      --text-light: #e0e0e0;
-      --border-radius: 16px;
-      --transition-speed: 0.3s;
-    }
+    /* Reset e Variáveis */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg-dark);
-      color: var(--text-light);
-      overflow-x: hidden;
+      font-family: 'Poppins', sans-serif;
+      background: #f8f9fa;
+      color: #333;
       line-height: 1.6;
+      overflow-x: hidden;
     }
-    a { text-decoration: none; color: inherit; }
-
-    /* Loading Bar */
-    #loading-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 4px;
-      background: var(--primary-color);
-      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
-      z-index: 10000;
-      transition: width 1s ease;
+    :root {
+      --primary: #4e73df;
+      --primary-light: #6d8dfa;
+      --primary-dark: #3a56b0;
+      --secondary: #e6ecff;
+      --accent: #ff6b6b;
+      --text-dark: #2c3e50;
+      --text-light: #7b8a8b;
+      --white: #ffffff;
+      --gray-100: #f8f9fa;
+      --gray-200: #e9ecef;
+      --gray-300: #dee2e6;
+      --gray-400: #ced4da;
+      --gray-500: #adb5bd;
+      --success: #36b37e;
+      --warning: #ffab00;
+      --danger: #ff5630;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.07);
+      --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.1);
+      --border-radius: 10px;
+      --transition: all 0.3s ease;
     }
 
     /* Header */
     header {
-      position: sticky;
+      position: fixed;
       top: 0;
+      width: 100%;
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+      padding: 15px 40px;
       z-index: 1000;
-      background: var(--bg-darker);
-      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--primary-color);
-      border-radius: 0 0 var(--border-radius) var(--border-radius);
-      animation: fadeIn 0.5s ease;
+      border-bottom: 1px solid var(--gray-200);
     }
     .logo {
-      font-family: 'Poppins', sans-serif;
       font-size: 1.8rem;
       font-weight: 700;
-      color: var(--text-light);
-      text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color);
+      color: var(--primary);
+      text-shadow: 0 0 10px rgba(78, 115, 223, 0.2);
+      transition: var(--transition);
     }
-    .logo span.tech {
-      color: var(--primary-color);
-      font-weight: 480;
-      margin-left: 6px;
+    .logo:hover {
+      text-shadow: 0 0 15px rgba(78, 115, 223, 0.5);
     }
     nav ul {
       list-style: none;
       display: flex;
-      gap: 20px;
+      gap: 30px;
     }
     nav ul li a {
+      text-decoration: none;
+      color: var(--text-dark);
       font-weight: 500;
-      transition: color var(--transition-speed);
+      transition: var(--transition);
+      position: relative;
     }
     nav ul li a:hover {
-      color: var(--primary-color);
+      color: var(--primary);
     }
-    .btn-orcamento {
-      background: linear-gradient(45deg, var(--primary-color), #ff9a33);
-      color: var(--bg-dark);
-      padding: 12px 24px;
-      border: none;
-      border-radius: var(--border-radius);
-      cursor: pointer;
-      font-weight: bold;
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    }
-    .btn-orcamento:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
-    }
-
-    /* Menu Hamburguer para Mobile */
-    .menu-toggle {
-      display: none;
-      font-size: 2rem;
-      color: var(--primary-color);
-      cursor: pointer;
-    }
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
-      nav ul {
-        display: none;
-        flex-direction: column;
-        gap: 10px;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: var(--bg-darker);
-        padding: 10px;
-      }
-      nav ul.active {
-        display: flex;
-      }
-      .btn-orcamento {
-        margin-top: 10px;
-      }
-    }
-
-    /* Botão Voltar ao Topo */
-    #back-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--primary-color);
-      color: var(--bg-dark);
-      padding: 10px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      z-index: 10500;
-      transition: opacity var(--transition-speed);
-    }
-
-    /* Seção Hero */
-    .hero {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-    }
-    .hero video {
+    nav ul li a::after {
+      content: '';
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      min-width: 100%;
-      min-height: 100%;
-      object-fit: cover;
-      z-index: -2;
-      filter: brightness(0.3);
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: var(--primary);
+      transition: width 0.3s ease;
     }
-    .hero::after {
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Banner */
+    .hero {
+      margin-top: 90px;
+      width: 90%;
+      height: 60vh;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('https://source.unsplash.com/1600x900/?space,lunar') no-repeat center/cover;
+      position: relative;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+    }
+    .hero:hover {
+      box-shadow: var(--shadow-lg);
+    }
+    .hero::before {
       content: "";
       position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      z-index: -1;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(78, 115, 223, 0.2) 0%,
+        rgba(248, 249, 250, 0.8) 100%
+      );
+      z-index: 1;
     }
-    .hero .content {
-      max-width: 800px;
-      animation: neonFadeIn 1s ease-out;
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: var(--text-dark);
+      padding: 40px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     .hero h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 3.5rem;
+      font-size: 4rem;
       margin-bottom: 20px;
-      color: var(--text-light);
-      text-shadow: 0 0 8px var(--primary-color), 0 0 16px var(--primary-color);
+      color: var(--primary);
+      text-shadow: 0 0 15px rgba(78, 115, 223, 0.2);
+      animation: pulse 2s infinite;
     }
     .hero p {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       margin-bottom: 30px;
-      color: var(--text-light);
-      text-shadow: 0 0 4px rgba(0,0,0,0.7);
+      max-width: 800px;
+      line-height: 1.8;
+      color: var(--text-dark);
     }
-    .cta-buttons {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .cta-buttons button {
-      padding: 14px 28px;
-      border: none;
-      border-radius: var(--border-radius);
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: bold;
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    }
-    .btn-primary {
-      background: var(--primary-color);
-      color: var(--bg-dark);
-    }
-    .btn-secondary {
-      background: transparent;
-      border: 2px solid var(--text-light);
-      color: var(--text-light);
-    }
-    .cta-buttons button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
-    }
-
-    /* Banner com a imagem bannerlogo.png */
-    .banner-section {
+    .hero .cta-btn {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--white);
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: var(--transition);
+      border: 2px solid var(--primary);
       position: relative;
-      text-align: center;
-      margin: 40px 20px;
+      overflow: hidden;
+      z-index: 1;
     }
-    .banner-section img {
-      width: 80%;
-      max-height: 400px;
-      object-fit: cover;
-      border-radius: var(--border-radius);
-      display: block;
-      margin: 0 auto;
+    .hero .cta-btn:hover {
+      background: var(--primary-dark);
+      box-shadow: 0 0 20px rgba(78, 115, 223, 0.5);
+      transform: translateY(-3px);
     }
 
-    /* Timeline: Por que ter um site? */
-    .why-website-timeline {
-      padding: 80px 20px;
-      text-align: center;
-      background: var(--bg-darker);
-      border-radius: var(--border-radius);
-      margin: 40px 20px;
+    @keyframes pulse {
+      0% {
+        text-shadow: 0 0 15px rgba(78, 115, 223, 0.2);
+      }
+      50% {
+        text-shadow: 0 0 30px rgba(78, 115, 223, 0.5);
+      }
+      100% {
+        text-shadow: 0 0 15px rgba(78, 115, 223, 0.2);
+      }
     }
-    .why-website-timeline h2 {
-      font-family: 'Poppins', sans-serif;
+
+    /* Banner Secundário */
+    .banner {
+      width: 90%;
+      margin: 60px auto;
+      padding: 50px;
+      background: linear-gradient(135deg, #ffffff 0%, var(--secondary) 100%);
+      border-radius: var(--border-radius);
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--gray-200);
+    }
+    .banner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        transparent,
+        transparent,
+        transparent,
+        rgba(78, 115, 223, 0.1),
+        transparent,
+        transparent,
+        transparent
+      );
+      transform: rotate(30deg);
+      animation: shimmer 8s linear infinite;
+    }
+    @keyframes shimmer {
+      0% {
+        transform: translateX(-100%) rotate(30deg);
+      }
+      100% {
+        transform: translateX(100%) rotate(30deg);
+      }
+    }
+    .banner h2 {
       font-size: 2.8rem;
+      margin-bottom: 30px;
+      color: var(--primary);
+      position: relative;
+      z-index: 2;
+    }
+    .banner p {
+      font-size: 1.2rem;
       margin-bottom: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 2;
+      color: var(--text-dark);
+    }
+    .banner .author {
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .banner .location {
+      color: var(--primary-dark);
+      opacity: 0.8;
+    }
+
+    /* Section Title */
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin: 80px 20px 50px;
+      position: relative;
+    }
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: var(--primary);
+      margin: 15px auto;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(78, 115, 223, 0.3);
+    }
+
+    /* Tópicos / Funcionalidades */
+    .topics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin: 50px auto;
+      width: 90%;
+    }
+    .topic-card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid var(--gray-200);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .topic-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--primary-light);
+    }
+    .topic-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-bottom: 3px solid var(--primary);
+      transition: var(--transition);
+    }
+    .topic-card:hover img {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+    .topic-card .card-content {
+      padding: 25px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .topic-card h3 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      transition: var(--transition);
+    }
+    .topic-card:hover h3 {
+      color: var(--primary-dark);
+      text-shadow: 0 0 10px rgba(78, 115, 223, 0.2);
+    }
+    .topic-card p {
+      font-size: 1rem;
+      line-height: 1.6;
       color: var(--text-light);
-      text-shadow: 0 0 6px var(--primary-color);
+      flex-grow: 1;
+    }
+    .topic-card .card-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      transition: var(--transition);
+    }
+    .topic-card:hover .card-icon {
+      color: var(--primary-dark);
+      transform: scale(1.1);
+      text-shadow: 0 0 10px rgba(78, 115, 223, 0.3);
+    }
+
+    /* Timeline Vertical */
+    .timeline-container {
+      width: 90%;
+      margin: 80px auto;
+      position: relative;
+      padding: 40px 0;
     }
     .timeline {
       position: relative;
-      margin: 0 auto;
-      padding: 20px 0;
-      max-width: 600px;
+      margin: 40px auto;
+      max-width: 1000px;
     }
     .timeline::before {
       content: "";
       position: absolute;
       left: 50%;
       top: 0;
-      width: 2px;
-      height: 100%;
-      background: #FFA500;
       transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background: var(--primary);
+      box-shadow: 0 0 10px rgba(78, 115, 223, 0.3);
     }
     .timeline-item {
       position: relative;
       width: 50%;
-      padding: 20px 40px;
+      padding: 30px;
+      background: var(--white);
+      border-radius: var(--border-radius);
+      margin-bottom: 40px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid var(--gray-200);
+    }
+    .timeline-item:hover {
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--primary-light);
+      background: linear-gradient(135deg, #ffffff 0%, var(--secondary) 100%);
     }
     .timeline-item:nth-child(odd) {
       left: 0;
@@ -296,622 +389,868 @@
       top: 30px;
       width: 20px;
       height: 20px;
-      background: #fff;
-      border: 4px solid #FFA500;
+      background: var(--primary);
       border-radius: 50%;
+      box-shadow: 0 0 0 4px var(--white), 0 0 10px rgba(78, 115, 223, 0.5);
       z-index: 1;
     }
-    .timeline-item:nth-child(odd)::before {
-      right: -10px;
+    .timeline-item:nth-child(odd)::before { right: -10px; }
+    .timeline-item:nth-child(even)::before { left: -10px; }
+
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      top: 30px;
+      width: 40px;
+      height: 4px;
+      background: var(--primary);
+      box-shadow: 0 0 10px rgba(78, 115, 223, 0.3);
     }
-    .timeline-item:nth-child(even)::before {
-      left: -10px;
+    .timeline-item:nth-child(odd)::after {
+      right: -40px;
+    }
+    .timeline-item:nth-child(even)::after {
+      left: -40px;
     }
 
-    /* Main Content */
-    main { padding-top: 80px; }
+    .timeline-item h4 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+    .timeline-item:hover h4 {
+      color: var(--primary-dark);
+      text-shadow: 0 0 10px rgba(78, 115, 223, 0.2);
+    }
+    .timeline-item span {
+      font-size: 1rem;
+      color: var(--text-light);
+      opacity: 0.9;
+      display: block;
+      margin-bottom: 15px;
+    }
+    .timeline-item p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-dark);
+    }
 
-    /* Seção: Sobre Mim */
-    .about {
-      padding: 80px 20px;
-      text-align: center;
-      background: var(--bg-darker);
+    /* Destaques / Features */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      width: 90%;
+      margin: 50px auto;
+    }
+
+    .feature-box {
+      background: var(--white);
       border-radius: var(--border-radius);
-      margin: 40px 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid var(--gray-200);
     }
-    .about h2 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.8rem;
+
+    .feature-box:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--primary-light);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      color: var(--primary);
       margin-bottom: 20px;
-      color: var(--text-light);
-      text-shadow: 0 0 6px var(--primary-color);
+      transition: var(--transition);
     }
-    .about p {
+
+    .feature-box:hover .feature-icon {
+      color: var(--primary-dark);
+      transform: scale(1.1);
+      text-shadow: 0 0 15px rgba(78, 115, 223, 0.3);
+    }
+
+    .feature-box h3 {
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      margin-bottom: 15px;
+      transition: var(--transition);
+    }
+
+    .feature-box:hover h3 {
+      color: var(--primary);
+    }
+
+    .feature-box p {
+      color: var(--text-light);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Showcase com Imagens */
+    .showcase {
+      width: 90%;
+      margin: 80px auto;
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    .showcase-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .showcase-item:nth-child(even) {
+      flex-direction: column-reverse;
+    }
+
+    .showcase-image {
+      width: 100%;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+    }
+
+    .showcase-image:hover {
+      transform: scale(1.03);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .showcase-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: var(--transition);
+    }
+
+    .showcase-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .showcase-content {
+      padding: 20px;
+    }
+
+    .showcase-content h3 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .showcase-content p {
+      color: var(--text-light);
       font-size: 1.1rem;
-      max-width: 800px;
-      margin: 0 auto 20px;
-      color: var(--text-light);
+      line-height: 1.7;
+      margin-bottom: 20px;
     }
-    .about .cta-section {
+
+    .showcase-content ul {
+      list-style-type: none;
+      margin-left: 20px;
+    }
+
+    .showcase-content li {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 10px;
+      color: var(--text-dark);
+    }
+
+    .showcase-content li:before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: var(--success);
+      position: absolute;
+      left: 0;
+    }
+
+    /* Contato */
+    .contact {
+      width: 90%;
+      margin: 80px auto;
+      padding: 50px;
+      text-align: center;
+      background: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--gray-200);
+      position: relative;
+      overflow: hidden;
+    }
+    .contact::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        transparent,
+        transparent,
+        transparent,
+        rgba(78, 115, 223, 0.1),
+        transparent,
+        transparent,
+        transparent
+      );
+      transform: rotate(30deg);
+      animation: shimmer 10s linear infinite;
+    }
+    .contact form {
+      max-width: 600px;
+      margin: 30px auto 0;
+      text-align: left;
+      position: relative;
+      z-index: 1;
+    }
+    .contact p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+      color: var(--text-dark);
+    }
+    .contact label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 500;
+      color: var(--primary);
+    }
+    .contact input,
+    .contact textarea {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid var(--gray-300);
+      border-radius: 10px;
+      background: var(--white);
+      color: var(--text-dark);
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    .contact input:focus,
+    .contact textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 15px rgba(78, 115, 223, 0.2);
+    }
+    .contact button {
+      display: block;
+      width: 100%;
+      background: var(--primary);
+      color: var(--white);
+      padding: 15px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
       margin-top: 20px;
     }
-    .about .cta-section button {
-      background: var(--primary-color);
-      color: var(--bg-dark);
-      padding: 12px 24px;
-      border: none;
-      border-radius: var(--border-radius);
-      cursor: pointer;
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    }
-    .about .cta-section button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+    .contact button:hover {
+      background: var(--primary-dark);
+      box-shadow: 0 0 20px rgba(78, 115, 223, 0.3);
+      transform: translateY(-3px);
     }
 
-    /* Seção: Experiência */
-    .experience {
-      padding: 80px 20px;
-      background: var(--bg-darker);
-      text-align: center;
-      margin: 40px 20px;
-      border-radius: var(--border-radius);
-    }
-    .experience h2 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.8rem;
-      margin-bottom: 40px;
-      color: var(--text-light);
-      text-shadow: 0 0 6px var(--primary-color);
-    }
-    .experience-cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-    .experience-card {
-      background: var(--bg-dark);
-      border: 1px solid var(--primary-color);
-      padding: 20px;
-      border-radius: var(--border-radius);
-      width: 260px;
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    }
-    .experience-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--primary-color);
-    }
-    .experience-card i {
-      font-size: 2rem;
-      color: var(--primary-color);
-      margin-bottom: 10px;
-    }
-    .experience-card h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-      color: var(--text-light);
-    }
-    .experience-card p {
-      font-size: 0.95rem;
-      color: var(--text-light);
+    /* FAQ Section */
+    .faq-section {
+      width: 90%;
+      margin: 80px auto;
     }
 
-    /* Seção: Serviços */
-    .services {
-      padding: 80px 20px;
-      background: var(--bg-dark);
-      text-align: center;
-      margin: 40px 20px;
-      border-radius: var(--border-radius);
-    }
-    .services h2 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.8rem;
-      margin-bottom: 40px;
-      color: var(--text-light);
-      text-shadow: 0 0 6px var(--primary-color);
-    }
-    .service-cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-    .service-card {
-      background: var(--bg-darker);
-      border: 1px solid var(--primary-color);
-      padding: 20px;
-      border-radius: var(--border-radius);
-      width: 260px;
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    }
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--primary-color);
-    }
-    .service-card i {
-      font-size: 2rem;
-      color: var(--primary-color);
-      margin-bottom: 10px;
-    }
-    .service-card h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-      color: var(--text-light);
-    }
-    .service-card p,
-    .service-card small {
-      font-size: 0.95rem;
-      color: var(--text-light);
-    }
-    .services .cta-section {
-      margin-top: 30px;
-    }
-    .services .cta-section button {
-      background: var(--primary-color);
-      color: var(--bg-dark);
-      padding: 12px 24px;
-      border: none;
-      border-radius: var(--border-radius);
-      cursor: pointer;
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    }
-    .services .cta-section button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    /* Seção: Projetos */
-    .projects {
-      padding: 80px 20px;
-      background: var(--bg-darker);
-      text-align: center;
-      margin: 40px 20px;
-      border-radius: var(--border-radius);
-    }
-    .projects h2 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.8rem;
+    .faq-item {
       margin-bottom: 20px;
-      color: var(--text-light);
-      text-shadow: 0 0 6px var(--primary-color);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
     }
-    .project-filters {
-      margin-bottom: 40px;
+
+    .faq-item:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-light);
+    }
+
+    .faq-question {
+      padding: 20px;
+      cursor: pointer;
       display: flex;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      color: var(--text-dark);
+      transition: var(--transition);
+    }
+
+    .faq-question::after {
+      content: "\f078";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+
+    .faq-item.active .faq-question {
+      background-color: var(--secondary);
+      color: var(--primary);
+    }
+
+    .faq-item.active .faq-question::after {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 20px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding: 20px;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    /* Testemunhos */
+    .testimonials {
+      width: 90%;
+      margin: 80px auto;
+      position: relative;
+    }
+
+    .testimonial-container {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .testimonial-wrapper {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .testimonial-card {
+      min-width: 100%;
+      padding: 40px 60px;
+      background: var(--white);
+      border-radius: var(--border-radius);
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--gray-200);
+    }
+
+    .testimonial-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 20px;
+      border: 4px solid var(--primary);
+      box-shadow: 0 0 10px rgba(78, 115, 223, 0.3);
+    }
+
+    .testimonial-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-light);
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .testimonial-text::before,
+    .testimonial-text::after {
+      content: '"';
+      font-size: 3rem;
+      color: var(--primary);
+      opacity: 0.3;
+      position: absolute;
+      line-height: 0;
+    }
+
+    .testimonial-text::before {
+      top: 10px;
+      left: -20px;
+    }
+
+    .testimonial-text::after {
+      bottom: -10px;
+      right: -20px;
+      transform: rotate(180deg);
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+
+    .testimonial-role {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    .testimonial-nav {
+      display: flex;
       justify-content: center;
+      margin-top: 20px;
       gap: 15px;
     }
-    .project-filters input, .project-filters select {
-      padding: 10px;
-      border: 1px solid var(--primary-color);
-      background: var(--bg-dark);
-      color: var(--text-light);
-      border-radius: var(--border-radius);
-      outline: none;
-    }
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-    .project {
-      background: var(--bg-dark);
-      border: 1px solid var(--primary-color);
-      border-radius: var(--border-radius);
-      padding: 15px;
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+
+    .testimonial-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--gray-300);
       cursor: pointer;
-      position: relative;
-    }
-    .project:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--primary-color);
-    }
-    .project img {
-      width: 100%;
-      border-radius: var(--border-radius);
-      margin-bottom: 10px;
-    }
-    .project h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.2rem;
-      color: var(--text-light);
-      margin-bottom: 5px;
-    }
-    .project p {
-      font-size: 0.9rem;
-      color: var(--text-light);
-    }
-    .btn-vermais {
-      margin-top: 10px;
-      padding: 8px 16px;
-      border: none;
-      background: var(--primary-color);
-      color: var(--bg-dark);
-      border-radius: var(--border-radius);
-      cursor: pointer;
-      transition: transform var(--transition-speed);
-    }
-    .btn-vermais:hover {
-      transform: scale(1.05);
-    }
-    .project-details {
-      display: none;
-    }
-    .projects .cta-section {
-      margin-top: 30px;
-    }
-    .projects .cta-section button {
-      background: var(--primary-color);
-      color: var(--bg-dark);
-      padding: 12px 24px;
-      border: none;
-      border-radius: var(--border-radius);
-      cursor: pointer;
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    }
-    .projects .cta-section button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+      transition: var(--transition);
     }
 
-    /* Modal para detalhes do projeto */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 11000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background: rgba(0,0,0,0.8);
-      align-items: center;
-      justify-content: center;
+    .testimonial-dot.active {
+      background: var(--primary);
+      transform: scale(1.2);
     }
-    .modal-content {
-      background: var(--bg-darker);
-      padding: 20px;
-      border-radius: var(--border-radius);
-      max-width: 800px;
-      width: 90%;
-      color: var(--text-light);
-      position: relative;
-    }
-    .modal-close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--primary-color);
-      z-index: 9999;
-    }
-    .carousel {
-      position: relative;
-      width: 100%;
-      height: 400px;
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-    .carousel img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: var(--border-radius);
-      transition: opacity 0.5s ease;
-      opacity: 0;
-    }
-    .carousel img.active {
-      opacity: 1;
-    }
-    .carousel-arrow {
+
+    .testimonial-arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 2rem;
-      color: var(--primary-color);
-      cursor: pointer;
-      z-index: 1;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 10px;
+      width: 40px;
+      height: 40px;
+      background: var(--white);
       border-radius: 50%;
-      transition: background var(--transition-speed);
-    }
-    .carousel-arrow:hover {
-      background: rgba(0, 0, 0, 0.8);
-    }
-    .carousel-arrow.left {
-      left: 10px;
-    }
-    .carousel-arrow.right {
-      right: 10px;
-    }
-    .modal-body h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-    }
-    .modal-body p {
-      font-size: 1.1rem;
-      margin-bottom: 15px;
-    }
-    .modal-body .btn-like {
-      margin-top: 10px;
-      padding: 8px 16px;
-      border: none;
-      background: transparent;
-      color: var(--primary-color);
-      font-size: 1rem;
-      cursor: pointer;
-      transition: transform var(--transition-speed);
-    }
-    .modal-body .btn-like:hover {
-      transform: scale(1.05);
-    }
-
-    /* Seção: Depoimentos */
-    .testimonials {
-      padding: 80px 20px;
-      background: var(--bg-dark);
-      text-align: center;
-      margin: 40px 20px;
-      border-radius: var(--border-radius);
-    }
-    .testimonials h2 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.8rem;
-      margin-bottom: 40px;
-      color: var(--text-light);
-      text-shadow: 0 0 6px var(--primary-color);
-    }
-    .testimonial-cards {
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
       justify-content: center;
-      gap: 20px;
-    }
-    .testimonial-card {
-      background: var(--bg-darker);
-      border: 1px solid var(--primary-color);
-      padding: 20px;
-      border-radius: var(--border-radius);
-      width: 320px;
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-      font-style: italic;
-    }
-    .testimonial-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--primary-color);
-    }
-    .testimonial-card p {
-      font-size: 1rem;
-      color: var(--text-light);
-    }
-    .testimonial-card span {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
-      color: var(--text-light);
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+      transition: var(--transition);
+      z-index: 2;
+      color: var(--primary);
     }
 
-    /* Seção: Blog */
-    .blog {
-      padding: 80px 20px;
-      background: var(--bg-darker);
-      text-align: center;
-      margin: 40px 20px;
-      border-radius: var(--border-radius);
-    }
-    .blog h2 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.8rem;
-      margin-bottom: 40px;
-      color: var(--text-light);
-      text-shadow: 0 0 6px var(--primary-color);
-    }
-    .blog-cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-    .blog-card {
-      background: var(--bg-dark);
-      border: 1px solid var(--primary-color);
-      padding: 20px;
-      border-radius: var(--border-radius);
-      width: 300px;
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    }
-    .blog-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--primary-color);
-    }
-    .blog-card h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.4rem;
-      color: var(--text-light);
-      margin-bottom: 10px;
-    }
-    .blog-card .meta {
-      font-size: 0.8rem;
-      margin-bottom: 10px;
-      color: var(--primary-color);
-    }
-    .blog-card p {
-      font-size: 0.95rem;
-      color: var(--text-light);
-    }
-    .blog .cta-section {
-      margin-top: 30px;
-    }
-    .blog .cta-section button {
-      background: var(--primary-color);
-      color: var(--bg-dark);
-      padding: 12px 24px;
-      border: none;
-      border-radius: var(--border-radius);
-      cursor: pointer;
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    }
-    .blog .cta-section button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+    .testimonial-arrow:hover {
+      background: var(--primary);
+      color: var(--white);
     }
 
-    /* Seção: FAQ */
-    .faq {
-      padding: 80px 20px;
-      background: var(--bg-dark);
-      text-align: center;
-      margin: 40px 20px;
-      border-radius: var(--border-radius);
-    }
-    .faq h2 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.8rem;
-      margin-bottom: 40px;
-      color: var(--text-light);
-      text-shadow: 0 0 6px var(--primary-color);
-    }
-    .faq-item {
-      max-width: 800px;
-      margin: 0 auto 20px;
-      text-align: left;
-      border-bottom: 1px solid var(--primary-color);
-      padding: 10px 0;
-      cursor: pointer;
-      transition: background var(--transition-speed), max-height 0.3s ease;
-      border-radius: var(--border-radius);
-      overflow: hidden;
-    }
-    .faq-item:hover { background: var(--bg-darker); }
-    .faq-item h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.2rem;
-      color: var(--text-light);
-      margin-bottom: 5px;
-    }
-    .faq-item p {
-      font-size: 0.95rem;
-      color: var(--text-light);
-      max-height: 0;
-      opacity: 0;
-      transition: max-height 0.3s ease, opacity 0.3s ease;
-    }
-    .faq-item.active p {
-      max-height: 200px;
-      opacity: 1;
-    }
-    .faq .cta-section {
-      margin-top: 30px;
-    }
-    .faq .cta-section button {
-      background: var(--primary-color);
-      color: var(--bg-dark);
-      padding: 12px 24px;
-      border: none;
-      border-radius: var(--border-radius);
-      cursor: pointer;
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    }
-    .faq .cta-section button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+    .testimonial-prev {
+      left: -20px;
     }
 
-    /* Seção: Contato */
-    .contact {
-      padding: 80px 20px;
-      background: var(--bg-darker);
-      text-align: center;
-      margin: 40px 20px;
-      border-radius: var(--border-radius);
-    }
-    .contact h2 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.8rem;
-      margin-bottom: 40px;
-      color: var(--text-light);
-      text-shadow: 0 0 6px var(--primary-color);
-    }
-    .contact form {
-      max-width: 500px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    .contact form input,
-    .contact form textarea {
-      padding: 12px;
-      border: 1px solid var(--primary-color);
-      border-radius: var(--border-radius);
-      background: var(--bg-dark);
-      color: var(--text-light);
-      font-size: 1rem;
-      outline: none;
-      transition: border var(--transition-speed), box-shadow var(--transition-speed);
-    }
-    .contact form input:focus,
-    .contact form textarea:focus {
-      border: 1px solid var(--primary-color);
-      box-shadow: 0 0 8px var(--primary-color);
-    }
-    .contact form button {
-      padding: 14px;
-      background: var(--primary-color);
-      color: var(--bg-dark);
-      border: none;
-      border-radius: var(--border-radius);
-      cursor: pointer;
-      font-weight: bold;
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-    }
-    .contact form button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+    .testimonial-next {
+      right: -20px;
     }
 
     /* Footer */
     footer {
-      background: var(--bg-darker);
-      color: var(--text-light);
-      padding: 40px 20px;
+      background: var(--white);
+      color: var(--text-dark);
       text-align: center;
+      padding: 40px 20px;
+      margin-top: 40px;
+      position: relative;
+      border-top: 1px solid var(--gray-200);
+    }
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto 30px;
+    }
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-shadow: 0 0 10px rgba(78, 115, 223, 0.2);
+    }
+    .footer-links ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .footer-links ul li a {
+      text-decoration: none;
+      color: var(--text-dark);
+      transition: var(--transition);
+    }
+    .footer-links ul li a:hover {
+      color: var(--primary);
+    }
+    .footer-bottom {
+      border-top: 1px solid var(--gray-200);
+      padding-top: 20px;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    /* Efeitos de animação */
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    .float-animation {
+      animation: float 5s ease-in-out infinite;
+    }
+
+    /* Destaque para CTA adicional */
+    .highlight-cta {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 40px;
+      background: var(--white);
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .highlight-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background: var(--primary);
+      transition: var(--transition);
+      z-index: -1;
+    }
+    .highlight-cta:hover {
+      color: var(--white);
+      box-shadow: 0 0 20px rgba(78, 115, 223, 0.3);
+      transform: translateY(-3px);
+    }
+    .highlight-cta:hover::before {
+      width: 100%;
+    }
+
+    /* Seção de Módulos do Projeto */
+    .modules-section {
+      width: 90%;
+      margin: 80px auto;
+    }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .module-card {
+      background: var(--white);
       border-radius: var(--border-radius);
-      margin: 40px 20px;
-    }
-    footer p { margin-bottom: 10px; }
-    footer a { color: var(--primary-color); }
-
-    /* Animações */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes neonFadeIn {
-      from { opacity: 0; filter: drop-shadow(0 0 2px var(--primary-color)); }
-      to { opacity: 1; filter: drop-shadow(0 0 12px var(--primary-color)); }
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid var(--gray-200);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Media Queries para Responsividade */
+    .module-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-light);
+    }
+
+    .module-header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .module-header h3 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .module-body {
+      padding: 30px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .module-icon {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .module-card:hover .module-icon {
+      transform: scale(1.1);
+      color: var(--primary-dark);
+    }
+
+    .module-features {
+      list-style: none;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .module-features li {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 15px;
+      color: var(--text-dark);
+    }
+
+    .module-features li:before {
+      content: "\f138";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: var(--primary);
+      position: absolute;
+      left: 0;
+    }
+
+    .module-cta {
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .module-btn {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 50px;
+      background: var(--white);
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .module-btn:hover {
+      background: var(--primary);
+      color: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(78, 115, 223, 0.3);
+    }
+
+    /* Segurança / Security */
+    .security-section {
+      width: 90%;
+      margin: 80px auto;
+      background: var(--white);
+      border-radius: var(--border-radius);
+      padding: 50px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--gray-200);
+    }
+
+    .security-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 50px;
+      align-items: center;
+    }
+
+    .security-image {
+      position: relative;
+    }
+
+    .security-image img {
+      width: 100%;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+    }
+
+    .security-image:hover img {
+      transform: scale(1.03);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .security-image::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 100px;
+      height: 100px;
+      background: var(--primary);
+      opacity: 0.1;
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    .security-image::after {
+      content: "";
+      position: absolute;
+      bottom: -30px;
+      right: -30px;
+      width: 150px;
+      height: 150px;
+      background: var(--primary);
+      opacity: 0.1;
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    .security-content h2 {
+      color: var(--primary);
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+    }
+
+    .security-content p {
+      color: var(--text-light);
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .security-features {
+      margin-top: 30px;
+    }
+
+    .security-feature {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .security-feature-icon {
+      background: var(--secondary);
+      color: var(--primary);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      box-shadow: 0 0 10px rgba(78, 115, 223, 0.2);
+    }
+
+    .security-feature-content h4 {
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+
+    .security-feature-content p {
+      color: var(--text-light);
+      margin-bottom: 0;
+    }
+
+    /* Responsividade */
+    @media (max-width: 1200px) {
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+      .section-title {
+        font-size: 2.2rem;
+      }
+      .banner h2 {
+        font-size: 2.4rem;
+      }
+      .security-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .security-image {
+        order: 2;
+      }
+      .security-content {
+        order: 1;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .hero {
+        height: 50vh;
+      }
+      .hero h1 {
+        font-size: 3rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+      .banner {
+        padding: 40px 30px;
+      }
+      .banner h2 {
+        font-size: 2.2rem;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .topic-card h3 {
+        font-size: 1.4rem;
+      }
+      .showcase-grid {
+        grid-template-columns: 1fr;
+      }
+      .showcase-item {
+        flex-direction: column !important;
+      }
+      .testimonial-arrow {
+        display: none;
+      }
+    }
+
     @media (max-width: 768px) {
       header {
-        flex-direction: column;
-        align-items: flex-start;
+        padding: 15px 20px;
       }
-      .btn-orcamento {
-        margin-top: 10px;
+      .logo {
+        font-size: 1.6rem;
+      }
+      nav ul {
+        gap: 15px;
+      }
+      .hero {
+        height: 60vh;
+        margin-top: 80px;
       }
       .hero h1 {
         font-size: 2.5rem;
@@ -919,605 +1258,733 @@
       .hero p {
         font-size: 1rem;
       }
-      .cta-buttons {
+      .hero .cta-btn {
+        padding: 12px 30px;
+        font-size: 1rem;
+      }
+      .banner h2 {
+        font-size: 2rem;
+      }
+      .banner p {
+        font-size: 1.1rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+        margin: 60px 20px 40px;
+      }
+      .topics {
+        grid-template-columns: 1fr;
+      }
+      .timeline::before {
+        left: 30px;
+      }
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        text-align: left !important;
+      }
+      .timeline-item::before {
+        left: 20px !important;
+      }
+      .timeline-item::after {
+        left: 20px !important;
+        width: 30px;
+      }
+      .timeline-item:nth-child(even) {
+        left: 0;
+      }
+      .contact {
+        padding: 40px 20px;
+      }
+      .testimonial-card {
+        padding: 30px 20px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .logo {
+        font-size: 1.4rem;
+      }
+      nav ul {
+        gap: 10px;
+      }
+      nav ul li a {
+        font-size: 0.9rem;
+      }
+      .hero {
+        height: 70vh;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 0.9rem;
+      }
+      .banner {
+        padding: 30px 20px;
+      }
+      .banner h2 {
+        font-size: 1.7rem;
+      }
+      .banner p {
+        font-size: 1rem;
+      }
+      .section-title {
+        font-size: 1.6rem;
+      }
+      .timeline-item h4 {
+        font-size: 1.3rem;
+      }
+      .footer-links ul {
         flex-direction: column;
         gap: 10px;
       }
-      .service-cards,
-      .experience-cards,
-      .testimonial-cards,
-      .blog-cards {
-        flex-direction: column;
-        align-items: center;
-      }
-      .service-card,
-      .experience-card,
-      .testimonial-card,
-      .blog-card {
-        width: 90%;
-      }
-      .project-grid {
-        grid-template-columns: 1fr;
-      }
-      .contact form {
-        width: 90%;
-      }
-      .modal-content {
-        width: 95%;
-        padding: 10px;
-      }
-      .carousel {
-        height: 300px;
+      .security-section {
+        padding: 30px 20px;
       }
     }
   </style>
-
-  <!-- ======== INÍCIO - Estilos do Carrossel de Projetos ======== -->
-  <style>
-    .projetos-carrossel {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-    }
-    .projetos-carrossel .slides-container {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-    }
-    .projetos-carrossel .slide-projeto {
-      min-width: 100%;
-      display: flex;
-      justify-content: space-around;
-      align-items: stretch;
-    }
-    /* Botões de navegação do carrossel */
-    .carousel-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.5);
-      color: var(--primary-color);
-      border: none;
-      padding: 10px 15px;
-      cursor: pointer;
-      font-size: 1.5rem;
-      border-radius: 50%;
-      transition: background 0.3s;
-      z-index: 2;
-    }
-    .carousel-nav:hover {
-      background: rgba(0, 0, 0, 0.8);
-    }
-    .carousel-nav.prev {
-      left: 10px;
-    }
-    .carousel-nav.next {
-      right: 10px;
-    }
-  </style>
-  <!-- ======== FIM - Estilos do Carrossel de Projetos ======== -->
-
 </head>
 <body>
-  <!-- Loading Bar -->
-  <div id="loading-bar"></div>
-
-  <!-- Back to Top Button -->
-  <div id="back-to-top" aria-label="Voltar ao Topo" onclick="scrollToSection('hero')">
-    <i class="fas fa-arrow-up"></i>
-  </div>
-
   <!-- Header -->
-  <header role="banner">
-    <div class="logo animate-on-scroll">ViewLab<span class="tech">.tech</span></div>
-    <div class="menu-toggle" id="menu-toggle"></div>
-    <nav role="navigation" aria-label="Menu Principal" class="animate-on-scroll" id="nav-menu">
+  <header>
+    <div class="logo">Projeto Lunar</div>
+    <nav>
       <ul>
-        <li><a href="#hero">Home</a></li>
+        <li><a href="#hero">Início</a></li>
         <li><a href="#about">Sobre</a></li>
-        <li><a href="#experience">Experiência</a></li>
-        <li><a href="#services">Serviços</a></li>
-        <li><a href="#projects">Projetos</a></li>
-        <li><a href="#testimonials">Depoimentos</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#features">Funcionalidades</a></li>
+        <li><a href="#modules">Módulos</a></li>
+        <li><a href="#security">Segurança</a></li>
+        <li><a href="#timeline">Linha do Tempo</a></li>
         <li><a href="#contact">Contato</a></li>
-        <li><a href="#contact" class="btn-orcamento">Solicitar Orçamento</a></li>
       </ul>
     </nav>
   </header>
 
-    <!-- Seção Hero -->
-    <section class="hero animate-on-scroll" id="hero" aria-label="Seção Principal">
-      <div class="content">
-        <h1>Crie Experiências Digitais que Convertem</h1>
-        <p>Desenvolva sites, landing pages e soluções com IA que atraem, engajam e convertem com tecnologia de ponta.</p>
-        <div class="cta-buttons">
-          <button class="btn-primary" onclick="scrollToSection('contact')">Comece Agora</button>
-          <button class="btn-secondary" onclick="scrollToSection('projects')">Ver Projetos</button>
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="hero-content">
+      <h1>Projeto Lunar</h1>
+      <p>Revolucionando a educação através de inteligência artificial adaptativa e personalizada</p>
+      <a href="#contact" class="cta-btn">Solicite uma Demonstração</a>
+    </div>
+  </section>
+
+  <!-- Funcionalidades / Tópicos -->
+  <section id="features">
+    <h2 class="section-title">Descubra a Revolução no Ensino</h2>
+    <div class="features-grid">
+      <!-- Cartão 1 -->
+      <div class="feature-box">
+        <i class="fas fa-user-graduate feature-icon"></i>
+        <h3>Ensino Personalizado</h3>
+        <p>A IA adapta materiais e prompts específicos para cada aluno, levando em consideração a idade e facilitando o aprendizado mais eficaz e acessível para todos os níveis escolares.</p>
+      </div>
+
+      <!-- Cartão 2 -->
+      <div class="feature-box">
+        <i class="fas fa-microphone-alt feature-icon"></i>
+        <h3>Modo de Voz para Crianças</h3>
+        <p>Projetado especialmente para crianças que ainda não sabem ler, funciona como um assistente interativo por chamadas de voz, permitindo que qualquer criança explore a plataforma.</p>
+      </div>
+
+      <!-- Cartão 3 -->
+      <div class="feature-box">
+        <i class="fas fa-question-circle feature-icon"></i>
+        <h3>Gestão de Dúvidas</h3>
+        <p>Todas as perguntas dos alunos são registradas e categorizadas por disciplina e série. Um resumo é gerado automaticamente com sugestões de aulas para que os professores possam abordar essas dificuldades.</p>
+      </div>
+
+      <!-- Cartão 4 -->
+      <div class="feature-box">
+        <i class="fas fa-redo feature-icon"></i>
+        <h3>Revisões Customizadas</h3>
+        <p>Os professores podem gerar revisões personalizadas para levarem para sala de aula, totalmente adaptadas às necessidades específicas de cada turma e conteúdo.</p>
+      </div>
+
+      <!-- Cartão 5 -->
+      <div class="feature-box">
+        <i class="fas fa-chart-bar feature-icon"></i>
+        <h3>Gráficos Analíticos</h3>
+        <p>A IA cria gráficos reais englobando todas as dúvidas que os alunos já tiveram em determinada matéria, permitindo visualizar tendências e identificar pontos críticos.</p>
+      </div>
+
+      <!-- Cartão 6 -->
+      <div class="feature-box">
+        <i class="fas fa-star feature-icon"></i>
+        <h3>Avaliação dos Professores</h3>
+        <p>Os professores podem gerar avaliações para medir seu desempenho em sala de aula, recebendo uma classificação de 0 a 10 e um resumo com sugestões para melhorar suas métricas.</p>
+      </div>
+
+      <!-- Cartão 7 -->
+      <div class="feature-box">
+        <i class="fas fa-tasks feature-icon"></i>
+        <h3>Sistema de Quiz Sob Demanda</h3>
+        <p>Os quizzes são estruturados conforme os pedidos dos alunos, permitindo uma prática direcionada. Ao final, a IA compila as perguntas incorretas e cria um resumo personalizado para reforçar os pontos que precisam de mais atenção.</p>
+      </div>
+
+      <!-- Cartão 8 -->
+      <div class="feature-box">
+        <i class="fas fa-podcast feature-icon"></i>
+        <h3>Sistema de Podcast Interativo</h3>
+        <p>A IA pode gerar podcasts sob demanda com duas vozes distintas, simulando uma conversa dinâmica e envolvente sobre o tema solicitado, facilitando a compreensão dos conteúdos.</p>
+      </div>
+
+      <!-- Cartão 9 -->
+      <div class="feature-box">
+        <i class="fas fa-project-diagram feature-icon"></i>
+        <h3>Mapa Mental Interativo</h3>
+        <p>Geração de mapas mentais com conteúdo customizado e interface visual única, facilitando a organização e conexão de ideias para melhor absorção dos temas estudados.</p>
+      </div>
+
+      <!-- Cartão 10 -->
+      <div class="feature-box">
+        <i class="fas fa-comments feature-icon"></i>
+        <h3>Chat Multiplayer</h3>
+        <p>Salas customizadas onde os alunos podem interagir entre si e, se necessário, chamar a IA para ajudar na resolução de problemas ou explicação de conteúdos.</p>
+      </div>
+
+      <!-- Cartão 11 -->
+      <div class="feature-box">
+        <i class="fas fa-pen-fancy feature-icon"></i>
+        <h3>Redação para ENEM</h3>
+        <p>Ferramenta específica para treino de redação voltada ao ENEM, permitindo que estudantes do ensino médio aprimorem suas habilidades de escrita para o exame nacional.</p>
+      </div>
+
+      <!-- Cartão 12 - Novo: Planos de Aula Completos -->
+      <div class="feature-box">
+        <i class="fas fa-book-open feature-icon"></i>
+        <h3>Planos de Aula Completos</h3>
+        <p>Geração de planos de aula detalhados e alinhados com a BNCC, incluindo objetivos, metodologias ativas, atividades práticas e avaliações para qualquer disciplina e série escolar.</p>
+      </div>
+
+      <!-- Cartão 13 - Novo: Geração de Slides -->
+      <div class="feature-box">
+        <i class="fas fa-desktop feature-icon"></i>
+        <h3>Geração de Slides</h3>
+        <p>Criação automática de apresentações visuais de alta qualidade com conteúdos didáticos, salvando horas de preparação para os professores e facilitando a apresentação de conteúdos em sala de aula.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banner Secundário -->
+  <section class="banner">
+    <h2>Transforme a Experiência Educacional</h2>
+    <p>O Projeto Lunar foi criado pensando nas necessidades específicas dos alunos e professores da rede municipal. Nossa missão é democratizar o acesso a ferramentas educacionais de alta qualidade, promovendo um ambiente de aprendizado mais engajador e eficiente.</p>
+    <a href="#contact" class="highlight-cta">Entre em Contato</a>
+  </section>
+
+  <!-- Showcase Section -->
+  <section class="showcase">
+    <h2 class="section-title">Plataforma Integrada para Educadores</h2>
+
+    <div class="showcase-grid">
+      <div class="showcase-item">
+        <div class="showcase-image">
+          <img src="static/lunar3.png" alt="Lunar Flow">
+        </div>
+        <div class="showcase-content">
+          <h3>Lunar Flow: Rede Social Educacional</h3>
+          <p>Uma rede social exclusiva para compartilhamento de conteúdo educacional entre os alunos, promovendo a colaboração e o aprendizado coletivo.</p>
+          <ul>
+            <li>Compartilhamento de exercícios resolvidos</li>
+            <li>Perfis personalizáveis com foto e biografia</li>
+            <li>Sistema de curtidas e comentários</li>
+            <li>Vídeos curtos educacionais</li>
+            <li>Feed personalizado por matérias e interesses</li>
+          </ul>
         </div>
       </div>
-    </section>
 
-    <!-- Sobre Mim -->
-    <section class="about animate-on-scroll" id="about" aria-label="Sobre Mim">
-      <h2>Sobre Mim</h2>
-      <p>Olá! Meu nome é Miguel e sou um desenvolvedor apaixonado por transformar ideias em experiências digitais únicas e impactantes. Ajudo marcas a se destacarem com soluções inovadoras.</p>
-      <div class="cta-section">
-        <button onclick="scrollToSection('contact')">Conheça Mais</button>
-      </div>
-    </section>
-
-    <!-- Experiência -->
-    <section class="experience animate-on-scroll" id="experience" aria-label="Experiência">
-      <h2>Experiência</h2>
-      <div class="experience-cards">
-        <article class="experience-card">
-          <i class="fas fa-code"></i>
-          <h3>C#</h3>
-          <p>Desenvolvimento de aplicações desktop e web utilizando C# e .NET.</p>
-        </article>
-        <article class="experience-card">
-          <i class="fab fa-css3-alt"></i>
-          <h3>CSS</h3>
-          <p>Criação de estilos responsivos e modernos para interfaces web.</p>
-        </article>
-        <article class="experience-card">
-          <i class="fab fa-html5"></i>
-          <h3>HTML</h3>
-          <p>Estruturação semântica e acessível de páginas web.</p>
-        </article>
-        <article class="experience-card">
-          <i class="fab fa-python"></i>
-          <h3>Python</h3>
-          <p>Automação, análise de dados e desenvolvimento de scripts.</p>
-        </article>
-        <article class="experience-card">
-          <i class="fab fa-js"></i>
-          <h3>JavaScript</h3>
-          <p>Desenvolvimento de interações dinâmicas e funcionalidades front-end.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Serviços -->
-    <section class="services animate-on-scroll" id="services" aria-label="Serviços">
-      <h2>O Que Oferecemos</h2>
-      <div class="service-cards">
-        <article class="service-card animate-on-scroll">
-          <i class="fas fa-mobile-alt"></i>
-          <h3>Design Responsivo</h3>
-          <p>Interfaces que se adaptam a qualquer dispositivo, proporcionando a melhor experiência para seus usuários.</p>
-        </article>
-        <article class="service-card animate-on-scroll">
-          <i class="fas fa-search"></i>
-          <h3>SEO & Performance</h3>
-          <p>Otimização técnica e de conteúdo para posicionar sua marca no topo dos buscadores.</p>
-        </article>
-        <article class="service-card animate-on-scroll">
-          <i class="fas fa-robot"></i>
-          <h3>Soluções com IA</h3>
-          <p>Integração de inteligência artificial para automação, análise de dados e personalização.</p>
-        </article>
-        <article class="service-card animate-on-scroll">
-          <i class="fas fa-chart-line"></i>
-          <h3>Conversão Otimizada</h3>
-          <p>Landing pages criadas para transformar visitantes em clientes reais, impulsionando seu faturamento.</p>
-        </article>
-      </div>
-      <div class="cta-section">
-        <button onclick="scrollToSection('contact')">Solicite um Orçamento</button>
-      </div>
-    </section>
-
-    <!-- Banner com a imagem bannerlogo.png -->
-    <section class="banner-section animate-on-scroll" id="banner">
-      <img src="static/bannerlogo.png" alt="Banner Logo">
-    </section>
-
-    <!-- Projetos -->
-    <section class="projects animate-on-scroll" id="projects" aria-label="Projetos e Soluções">
-      <h2>Projetos & Soluções</h2>
-      <div class="project-filters">
-        <input type="text" id="project-search" placeholder="Pesquisar projetos..." aria-label="Pesquisar Projetos">
-        <select id="category-filter" aria-label="Filtrar por Categoria">
-          <option value="all">Todos</option>
-          <option value="landing">Landing Pages</option>
-          <option value="IA">IA</option>
-        </select>
-      </div>
-      <div class="project-grid" id="project-grid">
-        <!-- Projeto 1 -->
-        <article class="project animate-on-scroll" data-title="Cosmetic Elegance" data-category="landing">
-          <img src="static/cosmeticos1.png" alt="Cosmetic Elegance">
-          <h3>Cosmetic Elegance</h3>
-          <p>Landing page sofisticada para promover a beleza e cuidados com a pele.</p>
-          <button class="btn-vermais" onclick="openProjectModal(this, ['static/cosmeticos2.png', 'static/cosmeticos3.png', 'static/cosmeticos4.png', 'static/cosmeticos5.png'])">Ver Mais</button>
-          <div class="project-details">
-            <p>Esta landing page foi desenvolvida para uma marca de cosméticos premium, com um design elegante e funcional, focado na conversão e experiência do usuário.</p>
-          </div>
-        </article>
-
-        <!-- Projeto 2 -->
-        <article class="project animate-on-scroll" data-title="Consultoria Estratégica" data-category="landing">
-          <img src="static/consultoria.png" alt="Consultoria Estratégica">
-          <h3>Consultoria Estratégica</h3>
-          <p>Landing page sofisticada para promover serviços de consultoria empresarial.</p>
-          <button class="btn-vermais" onclick="openProjectModal(this, ['static/consultoria1.png', 'static/consultoria2.png', 'static/consultoria3.png', 'static/consultoria4.png', 'static/consultoria5.png'])">Ver Mais</button>
-          <div class="project-details">
-            <p>Esta landing page foi desenvolvida para uma empresa de consultoria, destacando os benefícios de uma assessoria estratégica.</p>
-          </div>
-        </article>
-
-        <!-- Projeto 3 -->
-        <article class="project animate-on-scroll" data-title="Site Completo E-commerce" data-category="ecommerce">
-          <img src="static/ecommerce.png" alt="Site Completo E-commerce">
-          <h3>Site Completo E-commerce</h3>
-          <p>Plataforma robusta e intuitiva para uma experiência de compra única.</p>
-          <button class="btn-vermais" onclick="openProjectModal(this, ['static/ecommerce1.png', 'static/ecommerce2.png', 'static/ecommerce3.png', 'static/ecommerce4.png', 'static/ecommerce5.png', 'static/ecommerce6.png', 'static/ecommerce7.png', 'static/ecommerce8.png', 'static/ecommerce9.png', 'static/ecommerce10.png'])">Ver Mais</button>
-          <div class="project-details">
-            <p>Desenvolvemos um site de e-commerce completo com design responsivo, integração com métodos de pagamento e suporte em tempo real.</p>
-          </div>
-        </article>
-
-        <!-- Projeto 4 -->
-        <article class="project animate-on-scroll" data-title="Cooktura - App de Receitas Personalizadas" data-category="IA">
-          <img src="static/cooktura1.png" alt="Cooktura - App de Receitas Personalizadas">
-          <h3>Cooktura - App de Receitas Personalizadas</h3>
-          <p>Aplicativo inteligente que cria receitas personalizadas conforme suas preferências.</p>
-          <button class="btn-vermais" onclick="openProjectModal(this, ['static/cooktura1.png', 'static/cooktura2.png'])">Ver Mais</button>
-          <div class="project-details">
-            <p>O app utiliza IA para sugerir receitas baseadas no que você tem em casa e suas preferências alimentares.</p>
-          </div>
-        </article>
-
-        <!-- Projeto 5 -->
-        <article class="project animate-on-scroll" data-title="Sistema de IA para Empreendedores" data-category="IA">
-          <img src="static/ia1.png" alt="Sistema de IA para Empreendedores">
-          <h3>Sistema de IA para Empreendedores</h3>
-          <p>Solução inovadora que auxilia empreendedores no desenvolvimento de estratégias de sucesso.</p>
-          <button class="btn-vermais" onclick="openProjectModal(this, ['static/ia1.png', 'static/ia2.png'])">Ver Mais</button>
-          <div class="project-details">
-            <p>Este sistema de IA ajuda empreendedores a identificar oportunidades e aprimorar suas estratégias de negócio.</p>
-          </div>
-        </article>
-      </div>
-      <div class="cta-section">
-        <button onclick="scrollToSection('contact')">Entre em Contato</button>
-      </div>
-    </section>
-
-    <!-- Modal de Projeto -->
-    <div class="modal" id="project-modal" aria-modal="true" role="dialog">
-      <div class="modal-content">
-        <span class="modal-close" onclick="closeModal()">×</span>
-        <div class="modal-body">
-          <div class="carousel">
-            <div class="carousel-arrow left" onclick="prevImage()"><i class="fas fa-chevron-left"></i></div>
-            <div class="carousel-images" id="carousel-images"></div>
-            <div class="carousel-arrow right" onclick="nextImage()"><i class="fas fa-chevron-right"></i></div>
-          </div>
-          <h3 id="modal-title"></h3>
-          <p id="modal-description"></p>
-          <button class="btn-like" onclick="toggleLike(this)"><i class="far fa-heart"></i> Curtir</button>
+      <div class="showcase-item">
+        <div class="showcase-content">
+          <h3>Ferramenta de Criação de Conteúdo</h3>
+          <p>Um poderoso sistema que permite aos professores criarem materiais didáticos personalizados em diferentes formatos.</p>
+          <ul>
+            <li>Geração de avaliações customizadas com diferentes níveis de dificuldade</li>
+            <li>Planos de aula completos alinhados com a BNCC</li>
+            <li>Apresentações de slides prontas para uso em sala</li>
+            <li>Materiais de apoio para diferentes metodologias de ensino</li>
+            <li>Banco de questões inteligente para provas e exercícios</li>
+          </ul>
+        </div>
+        <div class="showcase-image">
+          <img src="static/lunar4.png" alt="Ferramenta de Criação">
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Depoimentos -->
-    <section class="testimonials animate-on-scroll" id="testimonials" aria-label="Depoimentos">
-      <h2>O Que Dizem Nossos Clientes</h2>
-      <div class="testimonial-cards">
-        <article class="testimonial-card animate-on-scroll">
-          <p>"A parceria com a ViewLab.tech transformou nossa presença digital. As landing pages aumentaram nossa conversão em 50%!"</p>
-          <span>- Cliente Satisfeito</span>
-        </article>
-        <article class="testimonial-card animate-on-scroll">
-          <p>"Soluções inovadoras com IA que realmente fazem a diferença. Recomendo fortemente!"</p>
-          <span>- Empresa Inovadora</span>
-        </article>
-        <article class="testimonial-card animate-on-scroll">
-          <p>"Design moderno e atendimento excepcional. O suporte 24/7 é um diferencial incrível."</p>
-          <span>- Startup de Sucesso</span>
-        </article>
-      </div>
-    </section>
+  <!-- Banner Informativo -->
+  <section id="about" class="banner">
+    <h2>Educação Acessível para Todos</h2>
+    <p>O Projeto Lunar é uma plataforma educacional inteligente disponibilizada <span class="location">gratuitamente para a rede municipal de escolas em Nepomuceno, Minas Gerais</span>. O projeto visa transformar a maneira como o ensino é conduzido, oferecendo ferramentas de inteligência artificial avançadas para orientar os alunos a encontrarem soluções por conta própria, promovendo um aprendizado ativo e contínuo.</p>
+    <a href="#features" class="highlight-cta">Descubra as Funcionalidades</a>
+  </section>
 
-    <!-- Blog -->
-    <section class="blog animate-on-scroll" id="blog" aria-label="Blog">
-      <h2>Insights & Artigos</h2>
-      <div class="blog-cards">
-        <article class="blog-card animate-on-scroll">
-          <h3>Tendências em Web Design 2024</h3>
-          <div class="meta">10/02/2024 • por Ana Silva</div>
-          <p>Descubra as principais inovações e estratégias que estão moldando o futuro do design digital.</p>
-        </article>
-        <article class="blog-card animate-on-scroll">
-          <h3>Como a IA Pode Impulsionar Seu Negócio</h3>
-          <div class="meta">05/02/2024 • por Carlos Souza</div>
-          <p>Entenda como integrar soluções de inteligência artificial para otimizar processos.</p>
-        </article>
-        <article class="blog-card animate-on-scroll">
-          <h3>Dicas de SEO para Landing Pages</h3>
-          <div class="meta">28/01/2024 • por Fernanda Lima</div>
-          <p>Saiba como criar páginas otimizadas para atrair tráfego qualificado.</p>
-        </article>
-      </div>
-      <div class="cta-section">
-        <button onclick="scrollToSection('blog')">Leia Mais Artigos</button>
-      </div>
-    </section>
+  <!-- Seção de Módulos -->
+  <section id="modules" class="modules-section">
+    <h2 class="section-title">Módulos Inteligentes</h2>
 
-    <!-- FAQ -->
-    <section class="faq animate-on-scroll" id="faq" aria-label="Perguntas Frequentes">
-      <h2>Perguntas Frequentes</h2>
-      <div class="faq-item animate-on-scroll" onclick="toggleFaq(this)">
-        <h3>Quanto tempo demora para desenvolver um site?</h3>
-        <p>O prazo varia de acordo com a complexidade do projeto, mas em média nossos sites ficam prontos em 1 a 4 semanas.</p>
+    <div class="modules-grid">
+      <div class="module-card">
+        <div class="module-header">
+          <h3>Módulo Aluno</h3>
+        </div>
+        <div class="module-body">
+          <div class="module-icon">
+            <i class="fas fa-user-graduate"></i>
+          </div>
+          <ul class="module-features">
+            <li>Acesso a conteúdos personalizados por idade e nível</li>
+            <li>Modo de voz interativo para crianças</li>
+            <li>Sistema de quizzes sob demanda</li>
+            <li>Geração de mapas mentais personalizados</li>
+            <li>Ferramenta de treino para redação ENEM</li>
+            <li>Participação no Lunar Flow</li>
+            <li>Geração de imagens com IA para trabalhos</li>
+            <li>Sistema de dúvidas categorizado por disciplina</li>
+          </ul>
+          <div class="module-cta">
+            <a href="#contact" class="module-btn">Saiba Mais</a>
+          </div>
+        </div>
       </div>
-      <div class="faq-item animate-on-scroll" onclick="toggleFaq(this)">
-        <h3>Como funciona o suporte pós-lançamento?</h3>
-        <p>Oferecemos suporte 24/7 e revisões gratuitas durante os primeiros 7 dias após o lançamento.</p>
-      </div>
-      <div class="faq-item animate-on-scroll" onclick="toggleFaq(this)">
-        <h3>Posso solicitar funcionalidades personalizadas?</h3>
-        <p>Com certeza! Trabalhamos de forma personalizada para atender às suas necessidades.</p>
-      </div>
-      <div class="cta-section">
-        <button onclick="scrollToSection('contact')">Ainda Tem Dúvidas? Fale Conosco</button>
-      </div>
-    </section>
 
-    <!-- Contato -->
-    <section class="contact animate-on-scroll" id="contact" aria-label="Contato">
-      <h2>Fale Conosco</h2>
-      <form id="contact-form" onsubmit="handleFormSubmit(event)" aria-label="Formulário de Contato">
-        <input type="text" id="nome" name="Nome" placeholder="Seu Nome" required aria-label="Seu Nome">
-        <input type="email" id="email" name="Email" placeholder="Seu E-mail" required aria-label="Seu E-mail">
-        <input type="tel" id="telefone" name="Telefone" placeholder="Seu Telefone" required aria-label="Seu Telefone">
-        <textarea id="mensagem" name="Mensagem" rows="4" placeholder="Sua Mensagem" required aria-label="Sua Mensagem"></textarea>
-        <button type="submit">Enviar Mensagem</button>
-      </form>
-    </section>
+      <div class="module-card">
+        <div class="module-header">
+          <h3>Módulo Professor</h3>
+        </div>
+        <div class="module-body">
+          <div class="module-icon">
+            <i class="fas fa-chalkboard-teacher"></i>
+          </div>
+          <ul class="module-features">
+            <li>Gestão inteligente de dúvidas dos alunos</li>
+            <li>Geração de revisões customizadas</li>
+            <li>Gráficos analíticos de desempenho por turma</li>
+            <li>Sistema de auto-avaliação docente</li>
+            <li>Geração de avaliações personalizadas</li>
+            <li>Planos de aula completos alinhados à BNCC</li>
+            <li>Criação automática de slides didáticos</li>
+            <li>Monitoramento da participação no Lunar Flow</li>
+            <li>Banco de questões para provas e exercícios</li>
+          </ul>
+          <div class="module-cta">
+            <a href="#contact" class="module-btn">Saiba Mais</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de Segurança -->
+  <section id="security" class="security-section">
+    <div class="security-grid">
+      <div class="security-image">
+        <img src="static/lunar1.png" alt="Segurança do Sistema">
+      </div>
+      <div class="security-content">
+        <h2>Sistema de Segurança Robusto</h2>
+        <p>O Projeto Lunar foi desenvolvido com os mais altos padrões de segurança para proteger dados sensíveis de alunos, professores e instituições de ensino.</p>
+
+        <div class="security-features">
+          <div class="security-feature">
+            <div class="security-feature-icon">
+              <i class="fas fa-lock"></i>
+            </div>
+            <div class="security-feature-content">
+              <h4>Controle de Acesso</h4>
+              <p>Verificações rigorosas para impedir alunos de acessarem a página do professor e vice-versa, garantindo a integridade das informações.</p>
+            </div>
+          </div>
+
+          <div class="security-feature">
+            <div class="security-feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="security-feature-content">
+              <h4>Proteção Cloudflare</h4>
+              <p>Utilizamos o Cloudflare para evitar ataques cibernéticos e garantir a disponibilidade constante da plataforma.</p>
+            </div>
+          </div>
+
+
+          <div class="security-feature">
+            <div class="security-feature-icon">
+              <i class="fas fa-filter"></i>
+            </div>
+            <div class="security-feature-content">
+              <h4>Filtro de Conteúdo</h4>
+              <p>Verificação automática de conteúdos ilícitos nas postagens do Lunar Flow, garantindo um ambiente seguro e apropriado para o contexto educacional.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <h2 class="section-title">Perguntas Frequentes</h2>
+
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question">Como a IA personaliza o conteúdo para diferentes idades?</div>
+        <div class="faq-answer">
+          <p>O Projeto Lunar analisa o perfil do aluno, incluindo sua idade e nível escolar, para adaptar a linguagem, exemplos e abordagem. Por exemplo, alunos do 5º ano recebem explicações com linguagem mais acessível e exemplos concretos relacionados ao seu universo, enquanto alunos mais velhos recebem conteúdo com maior profundidade conceitual.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Como funciona o sistema de segurança para professores e alunos?</div>
+        <div class="faq-answer">
+          <p>O sistema utiliza diferentes níveis de autenticação e perfis de acesso. Cada usuário tem permissões específicas baseadas em seu papel (aluno ou professor). Utilizamos verificação em duas etapas para funções críticas e mantemos logs detalhados de todas as atividades, além de usar o Cloudflare para proteção contra ataques externos.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Como funciona a geração de planos de aula completos?</div>
+        <div class="faq-answer">
+          <p>Os professores podem solicitar planos de aula específicos informando a disciplina, série, tema e duração desejada. O sistema gera automaticamente um plano completo alinhado com a BNCC, incluindo objetivos de aprendizagem, metodologias ativas, atividades práticas, materiais necessários e formas de avaliação. Todos os planos são personalizáveis e podem ser adaptados às necessidades específicas do professor.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Como o Lunar Flow difere de outras redes sociais?</div>
+        <div class="faq-answer">
+          <p>O Lunar Flow é uma rede social exclusivamente educacional, focada no compartilhamento de exercícios, dúvidas e soluções. Possui moderação ativa de conteúdo, verificação automática de material inadequado e está integrada ao sistema de aprendizado. Diferente de redes sociais tradicionais, o Lunar Flow promove colaboração acadêmica e tem ferramentas específicas para compartilhamento de conteúdo educacional.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Como funciona a ferramenta de geração de slides?</div>
+        <div class="faq-answer">
+          <p>A ferramenta permite que os professores criem apresentações completas em poucos minutos. O professor fornece o tema, público-alvo e nível de detalhamento, e a IA gera automaticamente slides com conteúdo estruturado, imagens relevantes e formatação visual atrativa. As apresentações podem ser personalizadas e exportadas em formatos compatíveis com os principais softwares de apresentação.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Linha do Tempo -->
+  <section id="timeline" class="timeline-container">
+    <h2 class="section-title">Nossa Trajetória</h2>
+    <div class="timeline">
+      <div class="timeline-item float-animation">
+        <h4>4 de Outubro de 2024</h4>
+        <span>O Início da Jornada</span>
+        <p>A ideia do Projeto Lunar nasceu da observação das necessidades educacionais do mundo atual, com o objetivo de criar uma solução tecnológica acessível e personalizada.</p>
+      </div>
+
+      <div class="timeline-item float-animation">
+        <h4>Dezembro de 2024</h4>
+        <span>Protótipo Finalizado</span>
+        <p>Após meses de desenvolvimento e testes, o protótipo da plataforma ja estava 100% </p>
+      </div>
+
+      <div class="timeline-item float-animation">
+        <h4>Fevereiro de 2025</h4>
+        <span>Lançamento Oficial</span>
+        <p>O sistema foi finalizado e apresentado oficialmente à Secretaria de Educação, marcando o início da implementação nas escolas municipais de Nepomuceno, Minas Gerais.</p>
+      </div>
+
+
+  </section>
+
+  <!-- Contato -->
+  <section id="contact" class="contact">
+    <h2 class="section-title">Solicite uma Demonstração</h2>
+    <p>Quer conhecer mais sobre o Projeto Lunar e como ele pode transformar a experiência educacional em sua escola? Entre em contato para agendar uma demonstração ou obter mais informações.</p>
+    <form id="whatsapp-form">
+      <label for="name">Nome</label>
+      <input type="text" id="name" placeholder="Seu nome" required>
+
+      <label for="email">E-mail</label>
+      <input type="email" id="email" placeholder="Seu e-mail" required>
+
+      <label for="institution">Instituição</label>
+      <input type="text" id="institution" placeholder="Nome da escola ou instituição">
+
+      <label for="message">Mensagem</label>
+      <textarea id="message" placeholder="Sua mensagem ou dúvidas sobre o projeto" rows="5" required></textarea>
+
+      <button type="submit">Enviar Mensagem via WhatsApp</button>
+    </form>
+  </section>
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 ViewLab.tech – Revolucione sua presença digital com inovação e paixão.</p>
-    <p>(35) 99893-0953 | Miguel Penha Reis</p>
+    <div class="footer-content">
+      <div class="footer-logo">Projeto Lunar</div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="#hero">Início</a></li>
+          <li><a href="#about">Sobre</a></li>
+          <li><a href="#features">Funcionalidades</a></li>
+          <li><a href="#modules">Módulos</a></li>
+          <li><a href="#security">Segurança</a></li>
+          <li><a href="#timeline">Linha do Tempo</a></li>
+          <li><a href="#contact">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Projeto Lunar. Todos os direitos reservados.
+        Criado por Miguel Penha Reis. </p>
+
+        <p>Marketing por: Gabriel oliveira coimbra</p>
+    </div>
   </footer>
 
-  <!-- Scripts -->
   <script>
-    let currentImageIndex = 0;
-    let images = [];
-
-    // Loading Bar Animation
-    window.addEventListener('load', function() {
-      const loadingBar = document.getElementById('loading-bar');
-      loadingBar.style.width = '100%';
-      setTimeout(() => { loadingBar.style.display = 'none'; }, 1000);
-    });
-
-    // Back-to-Top Visibility
-    window.addEventListener('scroll', function() {
-      const topBtn = document.getElementById('back-to-top');
-      topBtn.style.display = (window.pageYOffset > 300) ? 'block' : 'none';
-    });
-
-    // Smooth Scroll para as seções
-    function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Menu Hamburguer Toggle
-    const menuToggle = document.getElementById('menu-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    menuToggle.addEventListener('click', function() {
-      navMenu.classList.toggle('active');
-    });
-
-    // Sistema de Busca e Filtragem de Projetos
-    const searchInput = document.getElementById('project-search');
-    const categorySelect = document.getElementById('category-filter');
-    const projectGrid = document.getElementById('project-grid');
-
-    function filterProjects() {
-      const searchQuery = searchInput.value.toLowerCase();
-      const selectedCategory = categorySelect.value;
-      const projects = projectGrid.getElementsByClassName('project');
-
-      Array.from(projects).forEach(project => {
-        const title = project.getAttribute('data-title').toLowerCase();
-        const category = project.getAttribute('data-category');
-        if ((title.includes(searchQuery) || searchQuery === '') &&
-            (selectedCategory === 'all' || category === selectedCategory)) {
-          project.style.display = 'block';
-        } else {
-          project.style.display = 'none';
-        }
+    // Scroll suave para navegação
+    document.querySelectorAll('nav a, .footer-links a, .cta-btn, .highlight-cta, .module-btn').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        window.scrollTo({
+          top: target.offsetTop - 80,
+          behavior: 'smooth'
+        });
       });
-    }
+    });
 
-    searchInput.addEventListener('keyup', filterProjects);
-    categorySelect.addEventListener('change', filterProjects);
-
-    // Abrir Modal com Carrossel
-    function openProjectModal(button, projectImages) {
-      const project = button.closest('.project');
-      const title = project.querySelector('h3').textContent;
-      const description = project.querySelector('.project-details p').textContent;
-      const modalTitle = document.getElementById('modal-title');
-      const modalDescription = document.getElementById('modal-description');
-      const carouselImages = document.getElementById('carousel-images');
-
-      modalTitle.textContent = title;
-      modalDescription.textContent = description;
-      images = projectImages;
-      currentImageIndex = 0;
-
-      carouselImages.innerHTML = '';
-      images.forEach((imgSrc, index) => {
-        const img = document.createElement('img');
-        img.src = imgSrc;
-        img.alt = `Detalhe ${index + 1}`;
-        img.classList.add('carousel-image');
-        if (index === 0) img.classList.add('active');
-        carouselImages.appendChild(img);
+    // Efeito nos cards ao passar o mouse
+    document.querySelectorAll('.topic-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-15px)';
+        this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.1)';
+        this.querySelector('h3').style.color = '#3a56b0';
+        this.querySelector('.card-icon').style.transform = 'scale(1.1)';
+        this.querySelector('.card-icon').style.color = '#3a56b0';
       });
 
-      document.getElementById('project-modal').style.display = 'flex';
-    }
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(-10px)';
+        this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.07)';
+        this.querySelector('h3').style.color = '#4e73df';
+        this.querySelector('.card-icon').style.transform = 'scale(1)';
+        this.querySelector('.card-icon').style.color = '#4e73df';
+      });
+    });
 
-    // Fechar Modal
-    function closeModal() {
-      document.getElementById('project-modal').style.display = 'none';
-    }
+    // Efeito nos itens da timeline ao passar o mouse
+    document.querySelectorAll('.timeline-item').forEach(item => {
+      item.addEventListener('mouseenter', function() {
+        this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
+        this.querySelector('h4').style.color = '#3a56b0';
+      });
 
-    // Navegar para a Imagem Anterior
-    function prevImage() {
-      const carouselImages = document.querySelectorAll('.carousel-image');
-      carouselImages[currentImageIndex].classList.remove('active');
-      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-      carouselImages[currentImageIndex].classList.add('active');
-    }
+      item.addEventListener('mouseleave', function() {
+        this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.07)';
+        this.querySelector('h4').style.color = '#4e73df';
+      });
+    });
 
-    // Navegar para a Próxima Imagem
-    function nextImage() {
-      const carouselImages = document.querySelectorAll('.carousel-image');
-      carouselImages[currentImageIndex].classList.remove('active');
-      currentImageIndex = (currentImageIndex + 1) % images.length;
-      carouselImages[currentImageIndex].classList.add('active');
-    }
-
-    // Alternar Curtida
-    function toggleLike(button) {
-      const icon = button.querySelector("i");
-      if (icon.classList.contains("far")) {
-        icon.classList.remove("far");
-        icon.classList.add("fas");
-      } else {
-        icon.classList.remove("fas");
-        icon.classList.add("far");
-      }
-    }
-
-    // FAQ Toggle
-    function toggleFaq(element) {
-      element.classList.toggle('active');
-    }
-
-    // Formulário de Contato com WhatsApp
-    function handleFormSubmit(event) {
-      event.preventDefault();
-      const nome = document.getElementById('nome').value;
-      const email = document.getElementById('email').value;
-      const telefone = document.getElementById('telefone').value;
-      const mensagem = document.getElementById('mensagem').value;
-      const message = `Nome: ${nome}\nE-mail: ${email}\nTelefone: ${telefone}\nMensagem: ${mensagem}`;
-      const encodedMessage = encodeURIComponent(message);
-      const whatsappUrl = `https://wa.me/5535998930953?text=${encodedMessage}`;
-      window.open(whatsappUrl, '_blank');
-    }
-
-    // Animação on-scroll
-    const observerOptions = { threshold: 0.2 };
+    // Efeito de revelação ao rolar a página
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if(entry.isIntersecting) {
-          entry.target.classList.add('in-view');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
         }
       });
-    }, observerOptions);
-
-    document.querySelectorAll('.animate-on-scroll').forEach(elem => {
-      observer.observe(elem);
+    }, {
+      threshold: 0.1
     });
-  </script>
 
-  <!-- ======== INÍCIO - Código do Carrossel de Projetos ======== -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      // Armazena o conteúdo original da grid para reconfigurar o carrossel quando necessário
-      const projectGrid = document.getElementById("project-grid");
-      const originalProjectsHTML = projectGrid.innerHTML;
-      let currentProjectsPerSlide = null;
+    document.querySelectorAll('.topic-card, .timeline-item, .banner, .feature-box, .module-card, .showcase-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(50px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
 
-      function setupProjectsCarousel() {
-        // Define quantos projetos por slide: 1 para telas <=768px; 3 para telas maiores.
-        let projectsPerSlide = window.innerWidth <= 768 ? 1 : 3;
-        if (projectsPerSlide === currentProjectsPerSlide) return;
-        currentProjectsPerSlide = projectsPerSlide;
-
-        // Restaura os projetos originais
-        projectGrid.innerHTML = originalProjectsHTML;
-        const projects = Array.from(projectGrid.getElementsByClassName("project"));
-        if (projects.length === 0) return;
-
-        const totalSlides = Math.ceil(projects.length / projectsPerSlide);
-
-        // Cria a estrutura do carrossel
-        const carouselContainer = document.createElement("div");
-        carouselContainer.classList.add("projetos-carrossel");
-        const slidesContainer = document.createElement("div");
-        slidesContainer.classList.add("slides-container");
-
-        // Agrupa os projetos em slides
-        for (let i = 0; i < totalSlides; i++) {
-          const slide = document.createElement("div");
-          slide.classList.add("slide-projeto");
-          for (let j = i * projectsPerSlide; j < (i * projectsPerSlide) + projectsPerSlide && j < projects.length; j++) {
-            slide.appendChild(projects[j]);
-          }
-          slidesContainer.appendChild(slide);
+    // Classe para mostrar elementos quando visíveis
+    document.addEventListener('DOMContentLoaded', () => {
+      const style = document.createElement('style');
+      style.textContent = `
+        .show {
+          opacity: 1 !important;
+          transform: translateY(0) !important;
         }
+      `;
+      document.head.appendChild(style);
 
-        // Se houver mais de um slide e o último estiver incompleto,
-        // clona o último projeto do slide anterior e insere-o no início do último slide
-        if (totalSlides > 1) {
-          const lastSlide = slidesContainer.lastChild;
-          if (lastSlide.childElementCount < projectsPerSlide) {
-            const previousSlide = slidesContainer.children[totalSlides - 2];
-            if (previousSlide && previousSlide.lastElementChild) {
-              const cloneProject = previousSlide.lastElementChild.cloneNode(true);
-              lastSlide.insertBefore(cloneProject, lastSlide.firstChild);
-            }
-          }
-        }
+      // Inicializar o sistema de FAQ
+      initFAQ();
+    });
 
-        projectGrid.innerHTML = "";
-        carouselContainer.appendChild(slidesContainer);
+    // Envio do formulário via WhatsApp
+    document.getElementById('whatsapp-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const institution = document.getElementById('institution').value;
 
-        // Cria botões de navegação
-        const prevButton = document.createElement("button");
-        prevButton.classList.add("carousel-nav", "prev");
-        prevButton.innerHTML = "&lt;";
-        const nextButton = document.createElement("button");
-        nextButton.classList.add("carousel-nav", "next");
-        nextButton.innerHTML = "&gt;";
-        carouselContainer.appendChild(prevButton);
-        carouselContainer.appendChild(nextButton);
+      const message = document.getElementById('message').value;
 
-        projectGrid.appendChild(carouselContainer);
+      const whatsappMessage = `Olá! Sou ${name}, e-mail: ${email}, da instituição: ${institution}. ${message}`;
+      window.open(`https://wa.me/5535998930953?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+    });
 
-        let currentSlide = 0;
-        function updateCarousel() {
-          slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-        }
+    // Animação para a logo
+    const logo = document.querySelector('.logo');
+    logo.addEventListener('mouseenter', function() {
+      this.style.textShadow = '0 0 15px rgba(78, 115, 223, 0.5)';
+      this.style.transform = 'scale(1.05)';
+    });
 
-        prevButton.addEventListener("click", function() {
-          currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-          updateCarousel();
-        });
+    logo.addEventListener('mouseleave', function() {
+      this.style.textShadow = '0 0 10px rgba(78, 115, 223, 0.2)';
+      this.style.transform = 'scale(1)';
+    });
 
-        nextButton.addEventListener("click", function() {
-          currentSlide = (currentSlide + 1) % totalSlides;
-          updateCarousel();
-        });
+    // Adicionar efeito parallax à hero section
+    window.addEventListener('scroll', function() {
+      const heroSection = document.querySelector('.hero');
+      const scrollPosition = window.scrollY;
+
+      if (scrollPosition <= heroSection.offsetHeight) {
+        heroSection.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
       }
-
-      setupProjectsCarousel();
-      window.addEventListener("resize", setupProjectsCarousel);
     });
+
+    // Sistema de FAQ
+    function initFAQ() {
+      const faqItems = document.querySelectorAll('.faq-item');
+
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+
+        question.addEventListener('click', () => {
+          // Fecha todos os outros itens
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item && otherItem.classList.contains('active')) {
+              otherItem.classList.remove('active');
+            }
+          });
+
+          // Alterna o estado do item atual
+          item.classList.toggle('active');
+        });
+      });
+    }
+
+    // Prevenindo o menu móvel de ocupar toda a tela em dispositivos menores
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
+
+    function handleMobileMenu(e) {
+      if (e.matches) {
+        // Implementação do menu móvel
+        const header = document.querySelector('header');
+        const nav = document.querySelector('nav');
+
+        // Criar botão do menu
+        if (!document.querySelector('.mobile-menu-btn')) {
+          const menuBtn = document.createElement('div');
+          menuBtn.className = 'mobile-menu-btn';
+          menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+          menuBtn.style.fontSize = '1.5rem';
+          menuBtn.style.cursor = 'pointer';
+          menuBtn.style.color = '#4e73df';
+          menuBtn.style.display = 'none'; // Inicialmente oculto
+
+          header.appendChild(menuBtn);
+
+          // Toggle para o menu
+          menuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            menuBtn.innerHTML = nav.classList.contains('active')
+              ? '<i class="fas fa-times"></i>'
+              : '<i class="fas fa-bars"></i>';
+          });
+
+          // Adicionar estilos necessários
+          const style = document.createElement('style');
+          style.textContent = `
+            @media (max-width: 768px) {
+              header {
+                flex-wrap: wrap;
+              }
+
+              .mobile-menu-btn {
+                display: block !important;
+              }
+
+              nav {
+                width: 100%;
+                height: 0;
+                overflow: hidden;
+                transition: height 0.3s ease;
+              }
+
+              nav.active {
+                height: auto;
+                margin-top: 20px;
+              }
+
+              nav ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 0;
+              }
+
+              nav ul li {
+                margin: 10px 0;
+              }
+            }
+          `;
+          document.head.appendChild(style);
+        }
+      } else {
+        // Reverter para menu normal em telas maiores
+        const nav = document.querySelector('nav');
+        if (nav) {
+          nav.classList.remove('active');
+        }
+      }
+    }
+
+    // Verificar o tamanho de tela no carregamento
+    handleMobileMenu(mediaQuery);
+
+    // Ouvir por mudanças
+    mediaQuery.addEventListener('change', handleMobileMenu);
+
+    // Animação para os feature boxes
+    document.querySelectorAll('.feature-box').forEach(box => {
+      box.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px)';
+        this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.1)';
+        this.querySelector('.feature-icon').style.transform = 'scale(1.1)';
+        this.querySelector('.feature-icon').style.color = '#3a56b0';
+        this.querySelector('h3').style.color = '#3a56b0';
+      });
+
+      box.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+        this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.07)';
+        this.querySelector('.feature-icon').style.transform = 'scale(1)';
+        this.querySelector('.feature-icon').style.color = '#4e73df';
+        this.querySelector('h3').style.color = '#2c3e50';
+      });
+    });
+
+    // Preload das imagens para evitar carregamento abrupto
+    function preloadImages() {
+      const images = document.querySelectorAll('img');
+      images.forEach(img => {
+        const src = img.getAttribute('src');
+        if (src) {
+          const preloadImg = new Image();
+          preloadImg.src = src;
+        }
+      });
+    }
+
+    window.addEventListener('load', preloadImages);
   </script>
-  <!-- ======== FIM - Código do Carrossel de Projetos ======== -->
 </body>
 </html>
