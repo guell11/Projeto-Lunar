@@ -1,741 +1,1523 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head> <link rel="icon" href="/image-removebg-preview (2).png" type="image/x-icon"> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Projeto Lunar | IA Educacional Inovadora</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"> <script src="https://cdn.tailwindcss.com"></script> <script> tailwind.config = { theme: { extend: { colors: { lunar: { primary: '#8E2DE2', secondary: '#4A00E0', accent: '#00c2ff', light: '#f8f9fa', dark: '#1e1e2f' } }, fontFamily: { poppins: ['Poppins', 'sans-serif'] } } } } </script> <style> body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-text
-    .bg-lunar-gradient {
-        background: linear-gradient(135deg, rgba(142, 45, 226, 0.8), rgba(74, 0, 224, 0.8));
+<head>
+
+  <link rel="icon" href="static/logo1.png" type="image/png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ViewLab.tech - Revolucione sua Presença Digital</title>
+  <meta name="description" content="Crie experiências digitais que atraem, engajam e convertem com tecnologia de ponta.">
+  <meta name="keywords" content="landing page, soluções IA, web design, dark theme, neon, ViewLab.tech">
+
+  <!-- Schema Markup para SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebDesignService",
+    "name": "ViewLab",
+    "description": "Transformamos sua presença digital com landing pages, soluções com IA e design inovador."
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #FF7300; /* Neon Laranja */
+      --bg-dark: #121212;
+      --bg-darker: #1e1e1e;
+      --text-light: #e0e0e0;
+      --border-radius: 16px;
+      --transition-speed: 0.3s;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* Loading Bar */
+    #loading-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 4px;
+      background: var(--primary-color);
+      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+      z-index: 10000;
+      transition: width 1s ease;
     }
 
-    .lunar-card {
-        background: rgba(30, 30, 47, 0.7);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: all 0.3s ease;
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--bg-darker);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--primary-color);
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
+      animation: fadeIn 0.5s ease;
+    }
+    .logo {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-light);
+      text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color);
+    }
+    .logo span.tech {
+      color: var(--primary-color);
+      font-weight: 480;
+      margin-left: 6px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li a {
+      font-weight: 500;
+      transition: color var(--transition-speed);
+    }
+    nav ul li a:hover {
+      color: var(--primary-color);
+    }
+    .btn-orcamento {
+      background: linear-gradient(45deg, var(--primary-color), #ff9a33);
+      color: var(--bg-dark);
+      padding: 12px 24px;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+    .btn-orcamento:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
     }
 
-    .lunar-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        border: 1px solid rgba(142, 45, 226, 0.3);
+    /* Menu Hamburguer para Mobile */
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      color: var(--primary-color);
+      cursor: pointer;
     }
-
-    .feature-icon {
-        background: linear-gradient(135deg, #8E2DE2, #4A00E0);
-        height: 50px;
-        width: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 12px;
-        margin-right: 15px;
-        box-shadow: 0 5px 15px rgba(74, 0, 224, 0.3);
-    }
-
-    .hero-section {
-        animation: fadeIn 1s ease-in-out;
-        position: relative;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    .bg-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url("//multiplayer.png");
-        background-size: cover;
-        background-position: center;
-        filter: brightness(0.3);
-        z-index: -1;
-    }
-
-    .glow {
-        text-shadow: 0 0 10px rgba(142, 45, 226, 0.7);
-    }
-
-    .navbar {
-        backdrop-filter: blur(10px);
-        background-color: rgba(30, 30, 47, 0.8);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    /* Particles animation */
-    .particles {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        pointer-events: none;
-    }
-
-    .particle {
-        position: absolute;
-        width: 4px;
-        height: 4px;
-        background-color: rgba(255, 255, 255, 0.5);
-        border-radius: 50%;
-        animation: float 15s infinite linear;
-    }
-
-    @keyframes float {
-        0% {
-            transform: translateY(0) translateX(0);
-            opacity: 0;
-        }
-        10% {
-            opacity: 1;
-        }
-        90% {
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(-100vh) translateX(100px);
-            opacity: 0;
-        }
-    }
-
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: rgba(30, 30, 47, 0.5);
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #8E2DE2, #4A00E0);
-        border-radius: 5px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(135deg, #4A00E0, #8E2DE2);
-    }
-
-    /* Animations for features */
-    .feature-animate {
-        transition: all 0.3s ease;
-    }
-
-    .feature-animate:hover {
-        transform: translateX(5px);
-    }
-
-    /* Button styles */
-    .lunar-button {
-        background: linear-gradient(135deg, #8E2DE2, #4A00E0);
-        color: white;
-        padding: 12px 24px;
-        border-radius: 50px;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        display: inline-block;
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-    }
-
-    .lunar-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 7px 15px rgba(74, 0, 224, 0.4);
-    }
-
-    .lunar-button::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #4A00E0, #8E2DE2);
-        z-index: -1;
-        transition: opacity 0.3s ease;
-        opacity: 0;
-    }
-
-    .lunar-button:hover::before {
-        opacity: 1;
-    }
-
-    /* Mobile Menu */
-    .mobile-menu {
-        display: none;
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 80%;
-        max-width: 300px;
-        height: 100vh;
-        background-color: rgba(30, 30, 47, 0.95);
-        backdrop-filter: blur(15px);
-        z-index: 50;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-        padding: 80px 30px 30px;
-        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
-    }
-
-    .mobile-menu.active {
-        transform: translateX(0);
-    }
-
     @media (max-width: 768px) {
-        .feature-card {
-            flex-direction: column;
-        }
-
-        .feature-icon {
-            margin-bottom: 15px;
-            margin-right: 0;
-        }
+      .menu-toggle {
+        display: block;
+      }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: var(--bg-darker);
+        padding: 10px;
+      }
+      nav ul.active {
+        display: flex;
+      }
+      .btn-orcamento {
+        margin-top: 10px;
+      }
     }
-</style>
-</head> <body class="bg-lunar-dark text-white font-poppins"> <!-- Background Overlay --> <div class="bg-overlay"></div>
-text
-<!-- Particles animation -->
-<div class="particles" id="particles"></div>
 
-<!-- Navigation -->
-<nav class="navbar fixed top-0 left-0 w-full z-40 py-4">
-    <div class="container mx-auto px-4 md:px-8 flex justify-between items-center">
-        <a href="#" class="flex items-center">
-            <img src="/image-removebg-preview (2).png" alt="Lunar Logo" class="w-10 h-10 mr-3">
-            <span class="text-2xl font-bold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">Projeto Lunar</span>
-        </a>
+    /* Botão Voltar ao Topo */
+    #back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary-color);
+      color: var(--bg-dark);
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      z-index: 10500;
+      transition: opacity var(--transition-speed);
+    }
 
-        <div class="hidden md:flex space-x-8 items-center">
-            <a href="#about" class="hover:text-purple-400 transition-colors">Sobre</a>
-            <a href="#features" class="hover:text-purple-400 transition-colors">Funcionalidades</a>
-            <a href="#updates" class="hover:text-purple-400 transition-colors">Atualizações</a>
-            <a href="#contact" class="lunar-button">Contato</a>
+    /* Seção Hero */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      filter: brightness(0.3);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: -1;
+    }
+    .hero .content {
+      max-width: 800px;
+      animation: neonFadeIn 1s ease-out;
+    }
+    .hero h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      color: var(--text-light);
+      text-shadow: 0 0 8px var(--primary-color), 0 0 16px var(--primary-color);
+    }
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      color: var(--text-light);
+      text-shadow: 0 0 4px rgba(0,0,0,0.7);
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cta-buttons button {
+      padding: 14px 28px;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+    .btn-primary {
+      background: var(--primary-color);
+      color: var(--bg-dark);
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid var(--text-light);
+      color: var(--text-light);
+    }
+    .cta-buttons button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+    }
+
+    /* Banner com a imagem bannerlogo.png */
+    .banner-section {
+      position: relative;
+      text-align: center;
+      margin: 40px 20px;
+    }
+    .banner-section img {
+      width: 80%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: var(--border-radius);
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Timeline: Por que ter um site? */
+    .why-website-timeline {
+      padding: 80px 20px;
+      text-align: center;
+      background: var(--bg-darker);
+      border-radius: var(--border-radius);
+      margin: 40px 20px;
+    }
+    .why-website-timeline h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+      color: var(--text-light);
+      text-shadow: 0 0 6px var(--primary-color);
+    }
+    .timeline {
+      position: relative;
+      margin: 0 auto;
+      padding: 20px 0;
+      max-width: 600px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: #FFA500;
+      transform: translateX(-50%);
+    }
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 20px 40px;
+    }
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      text-align: right;
+    }
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      text-align: left;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      top: 30px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border: 4px solid #FFA500;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .timeline-item:nth-child(odd)::before {
+      right: -10px;
+    }
+    .timeline-item:nth-child(even)::before {
+      left: -10px;
+    }
+
+    /* Main Content */
+    main { padding-top: 80px; }
+
+    /* Seção: Sobre Mim */
+    .about {
+      padding: 80px 20px;
+      text-align: center;
+      background: var(--bg-darker);
+      border-radius: var(--border-radius);
+      margin: 40px 20px;
+    }
+    .about h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      color: var(--text-light);
+      text-shadow: 0 0 6px var(--primary-color);
+    }
+    .about p {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto 20px;
+      color: var(--text-light);
+    }
+    .about .cta-section {
+      margin-top: 20px;
+    }
+    .about .cta-section button {
+      background: var(--primary-color);
+      color: var(--bg-dark);
+      padding: 12px 24px;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+    .about .cta-section button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+    }
+
+    /* Seção: Experiência */
+    .experience {
+      padding: 80px 20px;
+      background: var(--bg-darker);
+      text-align: center;
+      margin: 40px 20px;
+      border-radius: var(--border-radius);
+    }
+    .experience h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+      color: var(--text-light);
+      text-shadow: 0 0 6px var(--primary-color);
+    }
+    .experience-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .experience-card {
+      background: var(--bg-dark);
+      border: 1px solid var(--primary-color);
+      padding: 20px;
+      border-radius: var(--border-radius);
+      width: 260px;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+    .experience-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--primary-color);
+    }
+    .experience-card i {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+    .experience-card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: var(--text-light);
+    }
+    .experience-card p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+    }
+
+    /* Seção: Serviços */
+    .services {
+      padding: 80px 20px;
+      background: var(--bg-dark);
+      text-align: center;
+      margin: 40px 20px;
+      border-radius: var(--border-radius);
+    }
+    .services h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+      color: var(--text-light);
+      text-shadow: 0 0 6px var(--primary-color);
+    }
+    .service-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--bg-darker);
+      border: 1px solid var(--primary-color);
+      padding: 20px;
+      border-radius: var(--border-radius);
+      width: 260px;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--primary-color);
+    }
+    .service-card i {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+    .service-card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: var(--text-light);
+    }
+    .service-card p,
+    .service-card small {
+      font-size: 0.95rem;
+      color: var(--text-light);
+    }
+    .services .cta-section {
+      margin-top: 30px;
+    }
+    .services .cta-section button {
+      background: var(--primary-color);
+      color: var(--bg-dark);
+      padding: 12px 24px;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+    .services .cta-section button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+    }
+
+    /* Seção: Projetos */
+    .projects {
+      padding: 80px 20px;
+      background: var(--bg-darker);
+      text-align: center;
+      margin: 40px 20px;
+      border-radius: var(--border-radius);
+    }
+    .projects h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      color: var(--text-light);
+      text-shadow: 0 0 6px var(--primary-color);
+    }
+    .project-filters {
+      margin-bottom: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+    .project-filters input, .project-filters select {
+      padding: 10px;
+      border: 1px solid var(--primary-color);
+      background: var(--bg-dark);
+      color: var(--text-light);
+      border-radius: var(--border-radius);
+      outline: none;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .project {
+      background: var(--bg-dark);
+      border: 1px solid var(--primary-color);
+      border-radius: var(--border-radius);
+      padding: 15px;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+      cursor: pointer;
+      position: relative;
+    }
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--primary-color);
+    }
+    .project img {
+      width: 100%;
+      border-radius: var(--border-radius);
+      margin-bottom: 10px;
+    }
+    .project h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      color: var(--text-light);
+      margin-bottom: 5px;
+    }
+    .project p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+    .btn-vermais {
+      margin-top: 10px;
+      padding: 8px 16px;
+      border: none;
+      background: var(--primary-color);
+      color: var(--bg-dark);
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: transform var(--transition-speed);
+    }
+    .btn-vermais:hover {
+      transform: scale(1.05);
+    }
+    .project-details {
+      display: none;
+    }
+    .projects .cta-section {
+      margin-top: 30px;
+    }
+    .projects .cta-section button {
+      background: var(--primary-color);
+      color: var(--bg-dark);
+      padding: 12px 24px;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+    .projects .cta-section button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+    }
+
+    /* Modal para detalhes do projeto */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 11000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,0.8);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background: var(--bg-darker);
+      padding: 20px;
+      border-radius: var(--border-radius);
+      max-width: 800px;
+      width: 90%;
+      color: var(--text-light);
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--primary-color);
+      z-index: 9999;
+    }
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .carousel img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--border-radius);
+      transition: opacity 0.5s ease;
+      opacity: 0;
+    }
+    .carousel img.active {
+      opacity: 1;
+    }
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: var(--primary-color);
+      cursor: pointer;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 50%;
+      transition: background var(--transition-speed);
+    }
+    .carousel-arrow:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+    .carousel-arrow.left {
+      left: 10px;
+    }
+    .carousel-arrow.right {
+      right: 10px;
+    }
+    .modal-body h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    .modal-body p {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+    .modal-body .btn-like {
+      margin-top: 10px;
+      padding: 8px 16px;
+      border: none;
+      background: transparent;
+      color: var(--primary-color);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform var(--transition-speed);
+    }
+    .modal-body .btn-like:hover {
+      transform: scale(1.05);
+    }
+
+    /* Seção: Depoimentos */
+    .testimonials {
+      padding: 80px 20px;
+      background: var(--bg-dark);
+      text-align: center;
+      margin: 40px 20px;
+      border-radius: var(--border-radius);
+    }
+    .testimonials h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+      color: var(--text-light);
+      text-shadow: 0 0 6px var(--primary-color);
+    }
+    .testimonial-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .testimonial-card {
+      background: var(--bg-darker);
+      border: 1px solid var(--primary-color);
+      padding: 20px;
+      border-radius: var(--border-radius);
+      width: 320px;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+      font-style: italic;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--primary-color);
+    }
+    .testimonial-card p {
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+    .testimonial-card span {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      color: var(--text-light);
+    }
+
+    /* Seção: Blog */
+    .blog {
+      padding: 80px 20px;
+      background: var(--bg-darker);
+      text-align: center;
+      margin: 40px 20px;
+      border-radius: var(--border-radius);
+    }
+    .blog h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+      color: var(--text-light);
+      text-shadow: 0 0 6px var(--primary-color);
+    }
+    .blog-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .blog-card {
+      background: var(--bg-dark);
+      border: 1px solid var(--primary-color);
+      padding: 20px;
+      border-radius: var(--border-radius);
+      width: 300px;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--primary-color);
+    }
+    .blog-card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.4rem;
+      color: var(--text-light);
+      margin-bottom: 10px;
+    }
+    .blog-card .meta {
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+      color: var(--primary-color);
+    }
+    .blog-card p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+    }
+    .blog .cta-section {
+      margin-top: 30px;
+    }
+    .blog .cta-section button {
+      background: var(--primary-color);
+      color: var(--bg-dark);
+      padding: 12px 24px;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+    .blog .cta-section button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+    }
+
+    /* Seção: FAQ */
+    .faq {
+      padding: 80px 20px;
+      background: var(--bg-dark);
+      text-align: center;
+      margin: 40px 20px;
+      border-radius: var(--border-radius);
+    }
+    .faq h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+      color: var(--text-light);
+      text-shadow: 0 0 6px var(--primary-color);
+    }
+    .faq-item {
+      max-width: 800px;
+      margin: 0 auto 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--primary-color);
+      padding: 10px 0;
+      cursor: pointer;
+      transition: background var(--transition-speed), max-height 0.3s ease;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+    }
+    .faq-item:hover { background: var(--bg-darker); }
+    .faq-item h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      color: var(--text-light);
+      margin-bottom: 5px;
+    }
+    .faq-item p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
+    .faq-item.active p {
+      max-height: 200px;
+      opacity: 1;
+    }
+    .faq .cta-section {
+      margin-top: 30px;
+    }
+    .faq .cta-section button {
+      background: var(--primary-color);
+      color: var(--bg-dark);
+      padding: 12px 24px;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+    .faq .cta-section button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+    }
+
+    /* Seção: Contato */
+    .contact {
+      padding: 80px 20px;
+      background: var(--bg-darker);
+      text-align: center;
+      margin: 40px 20px;
+      border-radius: var(--border-radius);
+    }
+    .contact h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+      color: var(--text-light);
+      text-shadow: 0 0 6px var(--primary-color);
+    }
+    .contact form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .contact form input,
+    .contact form textarea {
+      padding: 12px;
+      border: 1px solid var(--primary-color);
+      border-radius: var(--border-radius);
+      background: var(--bg-dark);
+      color: var(--text-light);
+      font-size: 1rem;
+      outline: none;
+      transition: border var(--transition-speed), box-shadow var(--transition-speed);
+    }
+    .contact form input:focus,
+    .contact form textarea:focus {
+      border: 1px solid var(--primary-color);
+      box-shadow: 0 0 8px var(--primary-color);
+    }
+    .contact form button {
+      padding: 14px;
+      background: var(--primary-color);
+      color: var(--bg-dark);
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+    .contact form button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-darker);
+      color: var(--text-light);
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: var(--border-radius);
+      margin: 40px 20px;
+    }
+    footer p { margin-bottom: 10px; }
+    footer a { color: var(--primary-color); }
+
+    /* Animações */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes neonFadeIn {
+      from { opacity: 0; filter: drop-shadow(0 0 2px var(--primary-color)); }
+      to { opacity: 1; filter: drop-shadow(0 0 12px var(--primary-color)); }
+    }
+
+    /* Media Queries para Responsividade */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .btn-orcamento {
+        margin-top: 10px;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .cta-buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .service-cards,
+      .experience-cards,
+      .testimonial-cards,
+      .blog-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+      .service-card,
+      .experience-card,
+      .testimonial-card,
+      .blog-card {
+        width: 90%;
+      }
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact form {
+        width: 90%;
+      }
+      .modal-content {
+        width: 95%;
+        padding: 10px;
+      }
+      .carousel {
+        height: 300px;
+      }
+    }
+  </style>
+
+  <!-- ======== INÍCIO - Estilos do Carrossel de Projetos ======== -->
+  <style>
+    .projetos-carrossel {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+    .projetos-carrossel .slides-container {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .projetos-carrossel .slide-projeto {
+      min-width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: stretch;
+    }
+    /* Botões de navegação do carrossel */
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: var(--primary-color);
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      border-radius: 50%;
+      transition: background 0.3s;
+      z-index: 2;
+    }
+    .carousel-nav:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+    .carousel-nav.prev {
+      left: 10px;
+    }
+    .carousel-nav.next {
+      right: 10px;
+    }
+  </style>
+  <!-- ======== FIM - Estilos do Carrossel de Projetos ======== -->
+
+</head>
+<body>
+  <!-- Loading Bar -->
+  <div id="loading-bar"></div>
+
+  <!-- Back to Top Button -->
+  <div id="back-to-top" aria-label="Voltar ao Topo" onclick="scrollToSection('hero')">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- Header -->
+  <header role="banner">
+    <div class="logo animate-on-scroll">ViewLab<span class="tech">.tech</span></div>
+    <div class="menu-toggle" id="menu-toggle"></div>
+    <nav role="navigation" aria-label="Menu Principal" class="animate-on-scroll" id="nav-menu">
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#experience">Experiência</a></li>
+        <li><a href="#services">Serviços</a></li>
+        <li><a href="#projects">Projetos</a></li>
+        <li><a href="#testimonials">Depoimentos</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contato</a></li>
+        <li><a href="#contact" class="btn-orcamento">Solicitar Orçamento</a></li>
+      </ul>
+    </nav>
+  </header>
+
+    <!-- Seção Hero -->
+    <section class="hero animate-on-scroll" id="hero" aria-label="Seção Principal">
+      <div class="content">
+        <h1>Crie Experiências Digitais que Convertem</h1>
+        <p>Desenvolva sites, landing pages e soluções com IA que atraem, engajam e convertem com tecnologia de ponta.</p>
+        <div class="cta-buttons">
+          <button class="btn-primary" onclick="scrollToSection('contact')">Comece Agora</button>
+          <button class="btn-secondary" onclick="scrollToSection('projects')">Ver Projetos</button>
         </div>
+      </div>
+    </section>
 
-        <button id="mobile-menu-button" class="md:hidden text-white">
-            <i class="fas fa-bars text-2xl"></i>
-        </button>
+    <!-- Sobre Mim -->
+    <section class="about animate-on-scroll" id="about" aria-label="Sobre Mim">
+      <h2>Sobre Mim</h2>
+      <p>Olá! Meu nome é Miguel e sou um desenvolvedor apaixonado por transformar ideias em experiências digitais únicas e impactantes. Ajudo marcas a se destacarem com soluções inovadoras.</p>
+      <div class="cta-section">
+        <button onclick="scrollToSection('contact')">Conheça Mais</button>
+      </div>
+    </section>
+
+    <!-- Experiência -->
+    <section class="experience animate-on-scroll" id="experience" aria-label="Experiência">
+      <h2>Experiência</h2>
+      <div class="experience-cards">
+        <article class="experience-card">
+          <i class="fas fa-code"></i>
+          <h3>C#</h3>
+          <p>Desenvolvimento de aplicações desktop e web utilizando C# e .NET.</p>
+        </article>
+        <article class="experience-card">
+          <i class="fab fa-css3-alt"></i>
+          <h3>CSS</h3>
+          <p>Criação de estilos responsivos e modernos para interfaces web.</p>
+        </article>
+        <article class="experience-card">
+          <i class="fab fa-html5"></i>
+          <h3>HTML</h3>
+          <p>Estruturação semântica e acessível de páginas web.</p>
+        </article>
+        <article class="experience-card">
+          <i class="fab fa-python"></i>
+          <h3>Python</h3>
+          <p>Automação, análise de dados e desenvolvimento de scripts.</p>
+        </article>
+        <article class="experience-card">
+          <i class="fab fa-js"></i>
+          <h3>JavaScript</h3>
+          <p>Desenvolvimento de interações dinâmicas e funcionalidades front-end.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="services animate-on-scroll" id="services" aria-label="Serviços">
+      <h2>O Que Oferecemos</h2>
+      <div class="service-cards">
+        <article class="service-card animate-on-scroll">
+          <i class="fas fa-mobile-alt"></i>
+          <h3>Design Responsivo</h3>
+          <p>Interfaces que se adaptam a qualquer dispositivo, proporcionando a melhor experiência para seus usuários.</p>
+        </article>
+        <article class="service-card animate-on-scroll">
+          <i class="fas fa-search"></i>
+          <h3>SEO & Performance</h3>
+          <p>Otimização técnica e de conteúdo para posicionar sua marca no topo dos buscadores.</p>
+        </article>
+        <article class="service-card animate-on-scroll">
+          <i class="fas fa-robot"></i>
+          <h3>Soluções com IA</h3>
+          <p>Integração de inteligência artificial para automação, análise de dados e personalização.</p>
+        </article>
+        <article class="service-card animate-on-scroll">
+          <i class="fas fa-chart-line"></i>
+          <h3>Conversão Otimizada</h3>
+          <p>Landing pages criadas para transformar visitantes em clientes reais, impulsionando seu faturamento.</p>
+        </article>
+      </div>
+      <div class="cta-section">
+        <button onclick="scrollToSection('contact')">Solicite um Orçamento</button>
+      </div>
+    </section>
+
+    <!-- Banner com a imagem bannerlogo.png -->
+    <section class="banner-section animate-on-scroll" id="banner">
+      <img src="static/bannerlogo.png" alt="Banner Logo">
+    </section>
+
+    <!-- Projetos -->
+    <section class="projects animate-on-scroll" id="projects" aria-label="Projetos e Soluções">
+      <h2>Projetos & Soluções</h2>
+      <div class="project-filters">
+        <input type="text" id="project-search" placeholder="Pesquisar projetos..." aria-label="Pesquisar Projetos">
+        <select id="category-filter" aria-label="Filtrar por Categoria">
+          <option value="all">Todos</option>
+          <option value="landing">Landing Pages</option>
+          <option value="IA">IA</option>
+        </select>
+      </div>
+      <div class="project-grid" id="project-grid">
+        <!-- Projeto 1 -->
+        <article class="project animate-on-scroll" data-title="Cosmetic Elegance" data-category="landing">
+          <img src="static/cosmeticos1.png" alt="Cosmetic Elegance">
+          <h3>Cosmetic Elegance</h3>
+          <p>Landing page sofisticada para promover a beleza e cuidados com a pele.</p>
+          <button class="btn-vermais" onclick="openProjectModal(this, ['static/cosmeticos2.png', 'static/cosmeticos3.png', 'static/cosmeticos4.png', 'static/cosmeticos5.png'])">Ver Mais</button>
+          <div class="project-details">
+            <p>Esta landing page foi desenvolvida para uma marca de cosméticos premium, com um design elegante e funcional, focado na conversão e experiência do usuário.</p>
+          </div>
+        </article>
+
+        <!-- Projeto 2 -->
+        <article class="project animate-on-scroll" data-title="Consultoria Estratégica" data-category="landing">
+          <img src="static/consultoria.png" alt="Consultoria Estratégica">
+          <h3>Consultoria Estratégica</h3>
+          <p>Landing page sofisticada para promover serviços de consultoria empresarial.</p>
+          <button class="btn-vermais" onclick="openProjectModal(this, ['static/consultoria1.png', 'static/consultoria2.png', 'static/consultoria3.png', 'static/consultoria4.png', 'static/consultoria5.png'])">Ver Mais</button>
+          <div class="project-details">
+            <p>Esta landing page foi desenvolvida para uma empresa de consultoria, destacando os benefícios de uma assessoria estratégica.</p>
+          </div>
+        </article>
+
+        <!-- Projeto 3 -->
+        <article class="project animate-on-scroll" data-title="Site Completo E-commerce" data-category="ecommerce">
+          <img src="static/ecommerce.png" alt="Site Completo E-commerce">
+          <h3>Site Completo E-commerce</h3>
+          <p>Plataforma robusta e intuitiva para uma experiência de compra única.</p>
+          <button class="btn-vermais" onclick="openProjectModal(this, ['static/ecommerce1.png', 'static/ecommerce2.png', 'static/ecommerce3.png', 'static/ecommerce4.png', 'static/ecommerce5.png', 'static/ecommerce6.png', 'static/ecommerce7.png', 'static/ecommerce8.png', 'static/ecommerce9.png', 'static/ecommerce10.png'])">Ver Mais</button>
+          <div class="project-details">
+            <p>Desenvolvemos um site de e-commerce completo com design responsivo, integração com métodos de pagamento e suporte em tempo real.</p>
+          </div>
+        </article>
+
+        <!-- Projeto 4 -->
+        <article class="project animate-on-scroll" data-title="Cooktura - App de Receitas Personalizadas" data-category="IA">
+          <img src="static/cooktura1.png" alt="Cooktura - App de Receitas Personalizadas">
+          <h3>Cooktura - App de Receitas Personalizadas</h3>
+          <p>Aplicativo inteligente que cria receitas personalizadas conforme suas preferências.</p>
+          <button class="btn-vermais" onclick="openProjectModal(this, ['static/cooktura1.png', 'static/cooktura2.png'])">Ver Mais</button>
+          <div class="project-details">
+            <p>O app utiliza IA para sugerir receitas baseadas no que você tem em casa e suas preferências alimentares.</p>
+          </div>
+        </article>
+
+        <!-- Projeto 5 -->
+        <article class="project animate-on-scroll" data-title="Sistema de IA para Empreendedores" data-category="IA">
+          <img src="static/ia1.png" alt="Sistema de IA para Empreendedores">
+          <h3>Sistema de IA para Empreendedores</h3>
+          <p>Solução inovadora que auxilia empreendedores no desenvolvimento de estratégias de sucesso.</p>
+          <button class="btn-vermais" onclick="openProjectModal(this, ['static/ia1.png', 'static/ia2.png'])">Ver Mais</button>
+          <div class="project-details">
+            <p>Este sistema de IA ajuda empreendedores a identificar oportunidades e aprimorar suas estratégias de negócio.</p>
+          </div>
+        </article>
+      </div>
+      <div class="cta-section">
+        <button onclick="scrollToSection('contact')">Entre em Contato</button>
+      </div>
+    </section>
+
+    <!-- Modal de Projeto -->
+    <div class="modal" id="project-modal" aria-modal="true" role="dialog">
+      <div class="modal-content">
+        <span class="modal-close" onclick="closeModal()">×</span>
+        <div class="modal-body">
+          <div class="carousel">
+            <div class="carousel-arrow left" onclick="prevImage()"><i class="fas fa-chevron-left"></i></div>
+            <div class="carousel-images" id="carousel-images"></div>
+            <div class="carousel-arrow right" onclick="nextImage()"><i class="fas fa-chevron-right"></i></div>
+          </div>
+          <h3 id="modal-title"></h3>
+          <p id="modal-description"></p>
+          <button class="btn-like" onclick="toggleLike(this)"><i class="far fa-heart"></i> Curtir</button>
+        </div>
+      </div>
     </div>
-</nav>
 
-<!-- Mobile Menu -->
-<div id="mobile-menu" class="mobile-menu">
-    <button id="close-menu" class="absolute top-6 right-6 text-white">
-        <i class="fas fa-times text-2xl"></i>
-    </button>
-    <div class="flex flex-col space-y-6">
-        <a href="#about" class="text-xl hover:text-purple-400 transition-colors">Sobre</a>
-        <a href="#features" class="text-xl hover:text-purple-400 transition-colors">Funcionalidades</a>
-        <a href="#updates" class="text-xl hover:text-purple-400 transition-colors">Atualizações</a>
-        <a href="#contact" class="lunar-button text-center mt-4">Contato</a>
-    </div>
-</div>
+    <!-- Depoimentos -->
+    <section class="testimonials animate-on-scroll" id="testimonials" aria-label="Depoimentos">
+      <h2>O Que Dizem Nossos Clientes</h2>
+      <div class="testimonial-cards">
+        <article class="testimonial-card animate-on-scroll">
+          <p>"A parceria com a ViewLab.tech transformou nossa presença digital. As landing pages aumentaram nossa conversão em 50%!"</p>
+          <span>- Cliente Satisfeito</span>
+        </article>
+        <article class="testimonial-card animate-on-scroll">
+          <p>"Soluções inovadoras com IA que realmente fazem a diferença. Recomendo fortemente!"</p>
+          <span>- Empresa Inovadora</span>
+        </article>
+        <article class="testimonial-card animate-on-scroll">
+          <p>"Design moderno e atendimento excepcional. O suporte 24/7 é um diferencial incrível."</p>
+          <span>- Startup de Sucesso</span>
+        </article>
+      </div>
+    </section>
 
-<!-- Hero Section -->
-<section class="hero-section min-h-screen flex items-center pt-20 pb-10">
-    <div class="container mx-auto px-4 md:px-8">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-5xl md:text-6xl font-bold mb-6 glow">Projeto <span class="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">Lunar</span></h1>
-            <p class="text-xl md:text-2xl mb-8 text-gray-300 leading-relaxed">
-                Uma inteligência artificial revolucionária para a educação, promovendo aprendizado ativo e personalizado.
-            </p>
-            <div class="flex flex-col md:flex-row gap-4 justify-center">
-                <a href="#features" class="lunar-button">
-                    <i class="fas fa-rocket mr-2"></i> Explorar Funcionalidades
-                </a>
-                <a href="#about" class="border border-purple-500 text-white hover:bg-purple-500/20 transition-all px-6 py-3 rounded-full">
-                    <i class="fas fa-info-circle mr-2"></i> Saiba Mais
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+    <!-- Blog -->
+    <section class="blog animate-on-scroll" id="blog" aria-label="Blog">
+      <h2>Insights & Artigos</h2>
+      <div class="blog-cards">
+        <article class="blog-card animate-on-scroll">
+          <h3>Tendências em Web Design 2024</h3>
+          <div class="meta">10/02/2024 • por Ana Silva</div>
+          <p>Descubra as principais inovações e estratégias que estão moldando o futuro do design digital.</p>
+        </article>
+        <article class="blog-card animate-on-scroll">
+          <h3>Como a IA Pode Impulsionar Seu Negócio</h3>
+          <div class="meta">05/02/2024 • por Carlos Souza</div>
+          <p>Entenda como integrar soluções de inteligência artificial para otimizar processos.</p>
+        </article>
+        <article class="blog-card animate-on-scroll">
+          <h3>Dicas de SEO para Landing Pages</h3>
+          <div class="meta">28/01/2024 • por Fernanda Lima</div>
+          <p>Saiba como criar páginas otimizadas para atrair tráfego qualificado.</p>
+        </article>
+      </div>
+      <div class="cta-section">
+        <button onclick="scrollToSection('blog')">Leia Mais Artigos</button>
+      </div>
+    </section>
 
-<!-- About Section -->
-<section id="about" class="py-20">
-    <div class="container mx-auto px-4 md:px-8">
-        <div class="text-center mb-16">
-            <h6 class="text-purple-400 text-sm uppercase tracking-wider font-medium mb-2">Conheça o Projeto</h6>
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">A Ideia por Trás do <span class="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">Lunar</span></h2>
-            <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-blue-500 mx-auto"></div>
-        </div>
+    <!-- FAQ -->
+    <section class="faq animate-on-scroll" id="faq" aria-label="Perguntas Frequentes">
+      <h2>Perguntas Frequentes</h2>
+      <div class="faq-item animate-on-scroll" onclick="toggleFaq(this)">
+        <h3>Quanto tempo demora para desenvolver um site?</h3>
+        <p>O prazo varia de acordo com a complexidade do projeto, mas em média nossos sites ficam prontos em 1 a 4 semanas.</p>
+      </div>
+      <div class="faq-item animate-on-scroll" onclick="toggleFaq(this)">
+        <h3>Como funciona o suporte pós-lançamento?</h3>
+        <p>Oferecemos suporte 24/7 e revisões gratuitas durante os primeiros 7 dias após o lançamento.</p>
+      </div>
+      <div class="faq-item animate-on-scroll" onclick="toggleFaq(this)">
+        <h3>Posso solicitar funcionalidades personalizadas?</h3>
+        <p>Com certeza! Trabalhamos de forma personalizada para atender às suas necessidades.</p>
+      </div>
+      <div class="cta-section">
+        <button onclick="scrollToSection('contact')">Ainda Tem Dúvidas? Fale Conosco</button>
+      </div>
+    </section>
 
-        <div class="lunar-card rounded-3xl p-8 max-w-3xl mx-auto">
-            <p class="text-lg leading-relaxed">
-                O Projeto Lunar é uma inteligência artificial desenvolvida por Miguel Penha Reis para revolucionar a experiência de aprendizado dos estudantes. Diferente das IAs tradicionais, ela não fornece respostas prontas, mas orienta os alunos a encontrarem as soluções por conta própria, promovendo um aprendizado ativo e contínuo.
-            </p>
-            <p class="text-lg leading-relaxed mt-4">
-                Com uma abordagem centrada no estudante, nossa IA adapta-se ao perfil de cada usuário, considerando sua idade, nível de conhecimento e estilo de aprendizagem para fornecer uma experiência verdadeiramente personalizada.
-            </p>
-            <div class="mt-8 flex justify-center">
-                <span class="px-4 py-2 bg-purple-500/20 rounded-full text-purple-300 font-medium">
-                    <i class="fas fa-brain mr-2"></i> Inteligência Artificial Educacional
-                </span>
-            </div>
-        </div>
-    </div>
-</section>
+    <!-- Contato -->
+    <section class="contact animate-on-scroll" id="contact" aria-label="Contato">
+      <h2>Fale Conosco</h2>
+      <form id="contact-form" onsubmit="handleFormSubmit(event)" aria-label="Formulário de Contato">
+        <input type="text" id="nome" name="Nome" placeholder="Seu Nome" required aria-label="Seu Nome">
+        <input type="email" id="email" name="Email" placeholder="Seu E-mail" required aria-label="Seu E-mail">
+        <input type="tel" id="telefone" name="Telefone" placeholder="Seu Telefone" required aria-label="Seu Telefone">
+        <textarea id="mensagem" name="Mensagem" rows="4" placeholder="Sua Mensagem" required aria-label="Sua Mensagem"></textarea>
+        <button type="submit">Enviar Mensagem</button>
+      </form>
+    </section>
 
-<!-- Features Section -->
-<section id="features" class="py-20">
-    <div class="container mx-auto px-4 md:px-8">
-        <div class="text-center mb-16">
-            <h6 class="text-purple-400 text-sm uppercase tracking-wider font-medium mb-2">Recursos Inovadores</h6>
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Funcionalidades <span class="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">Principais</span></h2>
-            <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-blue-500 mx-auto"></div>
-        </div>
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 ViewLab.tech – Revolucione sua presença digital com inovação e paixão.</p>
+    <p>(35) 99893-0953 | Miguel Penha Reis</p>
+  </footer>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Feature Card 1 -->
-            <div class="lunar-card rounded-2xl p-6 feature-animate">
-                <div class="flex feature-card items-start mb-4">
-                    <div class="feature-icon">
-                        <i class="fas fa-user-graduate text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Ensino Personalizado</h3>
-                        <p class="text-gray-300">A IA adapta materiais e prompts específicos para cada aluno, considerando sua idade e nível educacional.</p>
-                    </div>
-                </div>
-            </div>
+  <!-- Scripts -->
+  <script>
+    let currentImageIndex = 0;
+    let images = [];
 
-            <!-- Feature Card 2 -->
-            <div class="lunar-card rounded-2xl p-6 feature-animate">
-                <div class="flex feature-card items-start mb-4">
-                    <div class="feature-icon">
-                        <i class="fas fa-microphone-alt text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Modo de Voz para Crianças</h3>
-                        <p class="text-gray-300">Assistente interativo por chamadas de voz, ideal para crianças que ainda não sabem ler.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Feature Card 3 -->
-            <div class="lunar-card rounded-2xl p-6 feature-animate">
-                <div class="flex feature-card items-start mb-4">
-                    <div class="feature-icon">
-                        <i class="fas fa-question-circle text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Gestão de Dúvidas</h3>
-                        <p class="text-gray-300">Registro e categorização de dúvidas por disciplina e série, com resumos automáticos para auxiliar os professores.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Feature Card 4 -->
-            <div class="lunar-card rounded-2xl p-6 feature-animate">
-                <div class="flex feature-card items-start mb-4">
-                    <div class="feature-icon">
-                        <i class="fas fa-edit text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Revisões Customizadas</h3>
-                        <p class="text-gray-300">Professores podem criar revisões personalizadas e totalmente adaptadas para a sala de aula.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Feature Card 5 -->
-            <div class="lunar-card rounded-2xl p-6 feature-animate">
-                <div class="flex feature-card items-start mb-4">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Gráficos de Desempenho</h3>
-                        <p class="text-gray-300">Geração de gráficos que consolidam as dúvidas dos alunos e identificam dificuldades específicas.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Feature Card 6 -->
-            <div class="lunar-card rounded-2xl p-6 feature-animate">
-                <div class="flex feature-card items-start mb-4">
-                    <div class="feature-icon">
-                        <i class="fas fa-star text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Avaliação dos Professores</h3>
-                        <p class="text-gray-300">Sistema que permite avaliações detalhadas com notas de 0 a 10 e resumos para melhorias.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Feature Card 7 -->
-            <div class="lunar-card rounded-2xl p-6 feature-animate">
-                <div class="flex feature-card items-start mb-4">
-                    <div class="feature-icon">
-                        <i class="fas fa-tasks text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Sistema de Quiz Sob Demanda</h3>
-                        <p class="text-gray-300">Quizzes estruturados conforme os pedidos dos alunos, com compilação de erros e resumos personalizados.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Feature Card 8 -->
-            <div class="lunar-card rounded-2xl p-6 feature-animate">
-                <div class="flex feature-card items-start mb-4">
-                    <div class="feature-icon">
-                        <i class="fas fa-podcast text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-2">Sistema de Podcast Interativo</h3>
-                        <p class="text-gray-300">Geração de podcasts sob demanda com duas vozes, simulando uma conversa dinâmica sobre o tema solicitado.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Ver Mais Button -->
-            <div class="col-span-1 md:col-span-2 text-center mt-6">
-                <button id="ver-mais" class="lunar-button">
-                    <i class="fas fa-plus-circle mr-2"></i> Ver Mais Funcionalidades
-                </button>
-            </div>
-
-            <!-- Features Extra (Hidden initially) -->
-            <div id="features-extra" class="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8" style="display: none;">
-                <!-- Feature Card 9 -->
-                <div class="lunar-card rounded-2xl p-6 feature-animate">
-                    <div class="flex feature-card items-start mb-4">
-                        <div class="feature-icon">
-                            <i class="fas fa-sitemap text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Sistema de Mapa Mental Interativo</h3>
-                            <p class="text-gray-300">Criação de mapas mentais personalizados com conteúdo customizado e interface visual única.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature Card 10 -->
-                <div class="lunar-card rounded-2xl p-6 feature-animate">
-                    <div class="flex feature-card items-start mb-4">
-                        <div class="feature-icon">
-                            <i class="fas fa-comments text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Chat Geral (Multiplayer)</h3>
-                            <p class="text-gray-300">Salas customizadas onde alunos podem interagir entre si e chamar a IA para auxiliar em tempo real.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature Card 11 -->
-                <div class="lunar-card rounded-2xl p-6 feature-animate">
-                    <div class="flex feature-card items-start mb-4">
-                        <div class="feature-icon">
-                            <i class="fas fa-pen-fancy text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Matéria de Redação para ENEM</h3>
-                            <p class="text-gray-300">Focada em treinar os usuários na elaboração de textos, visando melhorar a escrita para o ENEM.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature Card 12 (Modificado) -->
-                <div class="lunar-card rounded-2xl p-6 feature-animate">
-                    <div class="flex feature-card items-start mb-4">
-                        <div class="feature-icon">
-                            <i class="fas fa-file-alt text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Geração de Avaliações</h3>
-                            <p class="text-gray-300">Permite aos professores criar provas e avaliações personalizadas com diferentes níveis de dificuldade e formatos adaptados ao conteúdo ministrado.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature Card 13 -->
-                <div class="lunar-card rounded-2xl p-6 feature-animate">
-                    <div class="flex feature-card items-start mb-4">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Sistema de Segurança</h3>
-                            <p class="text-gray-300">Verificações rigorosas, uso de Cloudflare, backups automáticos e controle de conteúdo ilícito para garantir a integridade dos dados.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature Card 14 -->
-                <div class="lunar-card rounded-2xl p-6 feature-animate">
-                    <div class="flex feature-card items-start mb-4">
-                        <div class="feature-icon">
-                            <i class="fas fa-share-alt text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Lunar Flow</h3>
-                            <p class="text-gray-300">Rede social integrada para compartilhamento de fotos, vídeos curtos, resoluções de exercícios e interações entre alunos e professores.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature Card 15 (Modificado) -->
-                <div class="lunar-card rounded-2xl p-6 feature-animate">
-                    <div class="flex feature-card items-start mb-4">
-                        <div class="feature-icon">
-                            <i class="fas fa-desktop text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Geração de Slides</h3>
-                            <p class="text-gray-300">Ferramenta inteligente que cria apresentações visuais e interativas para professores, personalizadas de acordo com o conteúdo e o nível da turma.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature Card 16 -->
-                <div class="lunar-card rounded-2xl p-6 feature-animate">
-                    <div class="flex feature-card items-start mb-4">
-                        <div class="feature-icon">
-                            <i class="fas fa-image text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Geração de Imagens com IA</h3>
-                            <p class="text-gray-300">Ferramenta que permite aos alunos criar imagens personalizadas para posts no Lunar Flow ou para utilização em trabalhos escolares.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Updates Section -->
-<section id="updates" class="py-20">
-    <div class="container mx-auto px-4 md:px-8">
-        <div class="text-center mb-16">
-            <h6 class="text-purple-400 text-sm uppercase tracking-wider font-medium mb-2">O Que Há de Novo</h6>
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Atualizações <span class="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">Recentes</span></h2>
-            <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-blue-500 mx-auto"></div>
-        </div>
-
-        <div class="max-w-4xl mx-auto">
-            <!-- Update 1 -->
-            <div class="lunar-card rounded-2xl p-8 mb-8">
-                <div class="flex items-center mb-4">
-                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl flex items-center justify-center mr-5">
-                        <i class="fas fa-desktop text-2xl"></i>
-                    </div>
-                    <div>
-                        <span class="bg-purple-500/20 text-purple-300 text-xs font-medium px-3 py-1 rounded-full">NOVO</span>
-                        <h3 class="text-2xl font-bold mt-1">Geração de Slides para Professores</h3>
-                    </div>
-                </div>
-                <p class="text-gray-300 leading-relaxed">
-                    Nossa mais recente adição à plataforma permite que os professores criem apresentações de slides profissionais e visualmente atraentes com apenas alguns cliques. A IA gera conteúdo personalizado, layouts modernos e incorpora recursos interativos adaptados ao nível da turma e à matéria lecionada.
-                </p>
-                <a href="#" class="inline-block mt-4 text-purple-400 hover:text-purple-300 transition-colors">
-                    <i class="fas fa-arrow-right mr-1"></i> Saiba mais
-                </a>
-            </div>
-
-            <!-- Update 2 -->
-            <div class="lunar-card rounded-2xl p-8">
-                <div class="flex items-center mb-4">
-                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl flex items-center justify-center mr-5">
-                        <i class="fas fa-file-alt text-2xl"></i>
-                    </div>
-                    <div>
-                        <span class="bg-purple-500/20 text-purple-300 text-xs font-medium px-3 py-1 rounded-full">NOVO</span>
-                        <h3 class="text-2xl font-bold mt-1">Geração de Avaliações</h3>
-                    </div>
-                </div>
-                <p class="text-gray-300 leading-relaxed">
-                    Nova funcionalidade que permite aos professores criar avaliações personalizadas em diferentes formatos (múltipla escolha, dissertativas, verdadeiro/falso). O sistema permite ajustar o nível de dificuldade, selecionar tópicos específicos e até mesmo sugerir questões baseadas nas dúvidas mais frequentes da turma.
-                </p>
-                <a href="#" class="inline-block mt-4 text-purple-400 hover:text-purple-300 transition-colors">
-                    <i class="fas fa-arrow-right mr-1"></i> Saiba mais
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Contact Section -->
-<section id="contact" class="py-20">
-    <div class="container mx-auto px-4 md:px-8">
-        <div class="text-center mb-16">
-            <h6 class="text-purple-400 text-sm uppercase tracking-wider font-medium mb-2">Entre em Contato</h6>
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Fale com a <span class="text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">Equipe</span></h2>
-            <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-blue-500 mx-auto"></div>
-        </div>
-
-        <div class="max-w-4xl mx-auto lunar-card rounded-3xl p-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-2xl font-semibold mb-4">Entre em contato</h3>
-                    <p class="text-gray-300 mb-6">
-                        Tem perguntas sobre o Projeto Lunar? Envie-nos uma mensagem e entraremos em contato o mais breve possível.
-                    </p>
-                    <div class="space-y-4">
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center mr-3">
-                                <i class="fas fa-envelope text-purple-400"></i>
-                            </div>
-                            <span class="text-gray-300">WhatsApp (35) 998930953</span>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center mr-3">
-                                <i class="fas fa-map-marker-alt text-purple-400"></i>
-                            </div>
-                            <span class="text-gray-300">Brasil</span>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <form>
-                        <div class="mb-4">
-                            <label class="block text-sm font-medium text-gray-300 mb-2">Nome</label>
-                            <input type="text" class="w-full px-4 py-3 bg-lunar-dark text-white border border-gray-700 rounded-lg focus:outline-none focus:border-purple-500">
-                        </div>
-                        <div class="mb-4">
-                            <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
-                            <input type="email" class="w-full px-4 py-3 bg-lunar-dark text-white border border-gray-700 rounded-lg focus:outline-none focus:border-purple-500">
-                        </div>
-                        <div class="mb-4">
-                            <label class="block text-sm font-medium text-gray-300 mb-2">Mensagem</label>
-                            <textarea rows="4" class="w-full px-4 py-3 bg-lunar-dark text-white border border-gray-700 rounded-lg focus:outline-none focus:border-purple-500"></textarea>
-                        </div>
-                        <button type="submit" class="lunar-button w-full">
-                            <i class="fas fa-paper-plane mr-2"></i> Enviar Mensagem
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer class="py-10 bg-lunar-dark border-t border-gray-800">
-    <div class="container mx-auto px-4 md:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <div>
-                <div class="flex items-center mb-4">
-                    <img src="/image-removebg-preview (2).png" alt="Lunar Logo" class="w-10 h-10 mr-3">
-                    <span class="text-xl font-bold text-gradient bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">Projeto Lunar</span>
-                </div>
-                <p class="text-gray-400 mb-4">
-                    Transformando a educação através da inteligência artificial, com foco no aprendizado ativo e personalizado.
-                </p>
-
-            </div>
-
-            <div>
-                <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
-                <ul class="space-y-2">
-                    <li><a href="#about" class="text-gray-400 hover:text-purple-400 transition-colors">Sobre</a></li>
-                    <li><a href="#features" class="text-gray-400 hover:text-purple-400 transition-colors">Funcionalidades</a></li>
-                    <li><a href="#updates" class="text-gray-400 hover:text-purple-400 transition-colors">Atualizações</a></li>
-                    <li><a href="#contact" class="text-gray-400 hover:text-purple-400 transition-colors">Contato</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="text-lg font-semibold mb-4">Equipe</h4>
-                <div class="space-y-4">
-                    <div>
-                        <p class="text-white font-medium">Miguel Penha Reis</p>
-                        <p class="text-gray-400">Desenvolvedor & Fundador</p>
-                    </div>
-                    <div>
-                        <p class="text-white font-medium">Gabriel Oliveira Coimbra</p>
-                        <p class="text-gray-400">Marketing & Comunicação</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="pt-8 border-t border-gray-800 text-center">
-            <p class="text-gray-400">
-                &copy; 2025 Projeto Lunar. Todos os direitos reservados.
-            </p>
-        </div>
-    </div>
-</footer>
-
-<script>
-    // Mobile menu toggle
-    document.getElementById('mobile-menu-button').addEventListener('click', function() {
-        document.getElementById('mobile-menu').classList.add('active');
+    // Loading Bar Animation
+    window.addEventListener('load', function() {
+      const loadingBar = document.getElementById('loading-bar');
+      loadingBar.style.width = '100%';
+      setTimeout(() => { loadingBar.style.display = 'none'; }, 1000);
     });
 
-    document.getElementById('close-menu').addEventListener('click', function() {
-        document.getElementById('mobile-menu').classList.remove('active');
+    // Back-to-Top Visibility
+    window.addEventListener('scroll', function() {
+      const topBtn = document.getElementById('back-to-top');
+      topBtn.style.display = (window.pageYOffset > 300) ? 'block' : 'none';
     });
 
-    // Ver mais funcionalidades
-    document.getElementById('ver-mais').addEventListener('click', function() {
-        const featuresExtra = document.getElementById('features-extra');
-        const button = document.getElementById('ver-mais');
+    // Smooth Scroll para as seções
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
 
-        if (featuresExtra.style.display === 'none') {
-            featuresExtra.style.display = 'grid';
-            button.innerHTML = '<i class="fas fa-minus-circle mr-2"></i> Ver Menos';
+    // Menu Hamburguer Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    menuToggle.addEventListener('click', function() {
+      navMenu.classList.toggle('active');
+    });
+
+    // Sistema de Busca e Filtragem de Projetos
+    const searchInput = document.getElementById('project-search');
+    const categorySelect = document.getElementById('category-filter');
+    const projectGrid = document.getElementById('project-grid');
+
+    function filterProjects() {
+      const searchQuery = searchInput.value.toLowerCase();
+      const selectedCategory = categorySelect.value;
+      const projects = projectGrid.getElementsByClassName('project');
+
+      Array.from(projects).forEach(project => {
+        const title = project.getAttribute('data-title').toLowerCase();
+        const category = project.getAttribute('data-category');
+        if ((title.includes(searchQuery) || searchQuery === '') &&
+            (selectedCategory === 'all' || category === selectedCategory)) {
+          project.style.display = 'block';
         } else {
-            featuresExtra.style.display = 'none';
-            button.innerHTML = '<i class="fas fa-plus-circle mr-2"></i> Ver Mais Funcionalidades';
+          project.style.display = 'none';
         }
-    });
-
-    // Criar partículas
-    function createParticles() {
-        const particlesContainer = document.getElementById('particles');
-        const particleCount = 50;
-
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-
-            // Posição aleatória
-            const posX = Math.random() * window.innerWidth;
-            const posY = Math.random() * window.innerHeight;
-
-            // Tamanho aleatório
-            const size = Math.random() * 4 + 1;
-
-            // Configuração do elemento
-            particle.style.left = `${posX}px`;
-            particle.style.top = `${posY}px`;
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-
-            // Opacidade aleatória
-            particle.style.opacity = Math.random() * 0.5 + 0.3;
-
-            // Duração da animação aleatória
-            const duration = Math.random() * 15 + 10;
-            particle.style.animationDuration = `${duration}s`;
-
-            // Delay da animação aleatório
-            const delay = Math.random() * 5;
-            particle.style.animationDelay = `${delay}s`;
-
-            particlesContainer.appendChild(particle);
-        }
+      });
     }
 
-    // Inicializar partículas
-    createParticles();
+    searchInput.addEventListener('keyup', filterProjects);
+    categorySelect.addEventListener('change', filterProjects);
 
-    // Fechar menu ao clicar em um link
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
-        link.addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.remove('active');
-        });
+    // Abrir Modal com Carrossel
+    function openProjectModal(button, projectImages) {
+      const project = button.closest('.project');
+      const title = project.querySelector('h3').textContent;
+      const description = project.querySelector('.project-details p').textContent;
+      const modalTitle = document.getElementById('modal-title');
+      const modalDescription = document.getElementById('modal-description');
+      const carouselImages = document.getElementById('carousel-images');
+
+      modalTitle.textContent = title;
+      modalDescription.textContent = description;
+      images = projectImages;
+      currentImageIndex = 0;
+
+      carouselImages.innerHTML = '';
+      images.forEach((imgSrc, index) => {
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.alt = `Detalhe ${index + 1}`;
+        img.classList.add('carousel-image');
+        if (index === 0) img.classList.add('active');
+        carouselImages.appendChild(img);
+      });
+
+      document.getElementById('project-modal').style.display = 'flex';
+    }
+
+    // Fechar Modal
+    function closeModal() {
+      document.getElementById('project-modal').style.display = 'none';
+    }
+
+    // Navegar para a Imagem Anterior
+    function prevImage() {
+      const carouselImages = document.querySelectorAll('.carousel-image');
+      carouselImages[currentImageIndex].classList.remove('active');
+      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+      carouselImages[currentImageIndex].classList.add('active');
+    }
+
+    // Navegar para a Próxima Imagem
+    function nextImage() {
+      const carouselImages = document.querySelectorAll('.carousel-image');
+      carouselImages[currentImageIndex].classList.remove('active');
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      carouselImages[currentImageIndex].classList.add('active');
+    }
+
+    // Alternar Curtida
+    function toggleLike(button) {
+      const icon = button.querySelector("i");
+      if (icon.classList.contains("far")) {
+        icon.classList.remove("far");
+        icon.classList.add("fas");
+      } else {
+        icon.classList.remove("fas");
+        icon.classList.add("far");
+      }
+    }
+
+    // FAQ Toggle
+    function toggleFaq(element) {
+      element.classList.toggle('active');
+    }
+
+    // Formulário de Contato com WhatsApp
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const nome = document.getElementById('nome').value;
+      const email = document.getElementById('email').value;
+      const telefone = document.getElementById('telefone').value;
+      const mensagem = document.getElementById('mensagem').value;
+      const message = `Nome: ${nome}\nE-mail: ${email}\nTelefone: ${telefone}\nMensagem: ${mensagem}`;
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/5535998930953?text=${encodedMessage}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    // Animação on-scroll
+    const observerOptions = { threshold: 0.2 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach(elem => {
+      observer.observe(elem);
     });
-</script>
-</body> </html>
+  </script>
+
+  <!-- ======== INÍCIO - Código do Carrossel de Projetos ======== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Armazena o conteúdo original da grid para reconfigurar o carrossel quando necessário
+      const projectGrid = document.getElementById("project-grid");
+      const originalProjectsHTML = projectGrid.innerHTML;
+      let currentProjectsPerSlide = null;
+
+      function setupProjectsCarousel() {
+        // Define quantos projetos por slide: 1 para telas <=768px; 3 para telas maiores.
+        let projectsPerSlide = window.innerWidth <= 768 ? 1 : 3;
+        if (projectsPerSlide === currentProjectsPerSlide) return;
+        currentProjectsPerSlide = projectsPerSlide;
+
+        // Restaura os projetos originais
+        projectGrid.innerHTML = originalProjectsHTML;
+        const projects = Array.from(projectGrid.getElementsByClassName("project"));
+        if (projects.length === 0) return;
+
+        const totalSlides = Math.ceil(projects.length / projectsPerSlide);
+
+        // Cria a estrutura do carrossel
+        const carouselContainer = document.createElement("div");
+        carouselContainer.classList.add("projetos-carrossel");
+        const slidesContainer = document.createElement("div");
+        slidesContainer.classList.add("slides-container");
+
+        // Agrupa os projetos em slides
+        for (let i = 0; i < totalSlides; i++) {
+          const slide = document.createElement("div");
+          slide.classList.add("slide-projeto");
+          for (let j = i * projectsPerSlide; j < (i * projectsPerSlide) + projectsPerSlide && j < projects.length; j++) {
+            slide.appendChild(projects[j]);
+          }
+          slidesContainer.appendChild(slide);
+        }
+
+        // Se houver mais de um slide e o último estiver incompleto,
+        // clona o último projeto do slide anterior e insere-o no início do último slide
+        if (totalSlides > 1) {
+          const lastSlide = slidesContainer.lastChild;
+          if (lastSlide.childElementCount < projectsPerSlide) {
+            const previousSlide = slidesContainer.children[totalSlides - 2];
+            if (previousSlide && previousSlide.lastElementChild) {
+              const cloneProject = previousSlide.lastElementChild.cloneNode(true);
+              lastSlide.insertBefore(cloneProject, lastSlide.firstChild);
+            }
+          }
+        }
+
+        projectGrid.innerHTML = "";
+        carouselContainer.appendChild(slidesContainer);
+
+        // Cria botões de navegação
+        const prevButton = document.createElement("button");
+        prevButton.classList.add("carousel-nav", "prev");
+        prevButton.innerHTML = "&lt;";
+        const nextButton = document.createElement("button");
+        nextButton.classList.add("carousel-nav", "next");
+        nextButton.innerHTML = "&gt;";
+        carouselContainer.appendChild(prevButton);
+        carouselContainer.appendChild(nextButton);
+
+        projectGrid.appendChild(carouselContainer);
+
+        let currentSlide = 0;
+        function updateCarousel() {
+          slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        prevButton.addEventListener("click", function() {
+          currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+          updateCarousel();
+        });
+
+        nextButton.addEventListener("click", function() {
+          currentSlide = (currentSlide + 1) % totalSlides;
+          updateCarousel();
+        });
+      }
+
+      setupProjectsCarousel();
+      window.addEventListener("resize", setupProjectsCarousel);
+    });
+  </script>
+  <!-- ======== FIM - Código do Carrossel de Projetos ======== -->
+</body>
+</html>
