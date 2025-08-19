@@ -1,1990 +1,1690 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projeto Lunar - Revolucione o Ensino</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome para ícones -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    /* Reset e Variáveis */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #f8f9fa;
-      color: #333;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    :root {
-      --primary: #4e73df;
-      --primary-light: #6d8dfa;
-      --primary-dark: #3a56b0;
-      --secondary: #e6ecff;
-      --accent: #ff6b6b;
-      --text-dark: #2c3e50;
-      --text-light: #7b8a8b;
-      --white: #ffffff;
-      --gray-100: #f8f9fa;
-      --gray-200: #e9ecef;
-      --gray-300: #dee2e6;
-      --gray-400: #ced4da;
-      --gray-500: #adb5bd;
-      --success: #36b37e;
-      --warning: #ffab00;
-      --danger: #ff5630;
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-      --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.07);
-      --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.1);
-      --border-radius: 10px;
-      --transition: all 0.3s ease;
-    }
-
-    /* Header */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: var(--white);
-      box-shadow: var(--shadow-sm);
-      padding: 15px 40px;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--gray-200);
-    }
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--primary);
-      text-shadow: 0 0 10px rgba(78, 115, 223, 0.2);
-      transition: var(--transition);
-    }
-    .logo:hover {
-      text-shadow: 0 0 15px rgba(78, 115, 223, 0.5);
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: var(--text-dark);
-      font-weight: 500;
-      transition: var(--transition);
-      position: relative;
-    }
-    nav ul li a:hover {
-      color: var(--primary);
-    }
-    nav ul li a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -5px;
-      left: 0;
-      background: var(--primary);
-      transition: width 0.3s ease;
-    }
-    nav ul li a:hover::after {
-      width: 100%;
-    }
-
-    /* Hero Banner */
-    .hero {
-      margin-top: 90px;
-      width: 90%;
-      height: 60vh;
-      margin-left: auto;
-      margin-right: auto;
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('https://source.unsplash.com/1600x900/?space,lunar') no-repeat center/cover;
-      position: relative;
-      box-shadow: var(--shadow-md);
-      transition: var(--transition);
-    }
-    .hero:hover {
-      box-shadow: var(--shadow-lg);
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        135deg,
-        rgba(78, 115, 223, 0.2) 0%,
-        rgba(248, 249, 250, 0.8) 100%
-      );
-      z-index: 1;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      color: var(--text-dark);
-      padding: 40px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .hero h1 {
-      font-size: 4rem;
-      margin-bottom: 20px;
-      color: var(--primary);
-      text-shadow: 0 0 15px rgba(78, 115, 223, 0.2);
-      animation: pulse 2s infinite;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-      max-width: 800px;
-      line-height: 1.8;
-      color: var(--text-dark);
-    }
-    .hero .cta-btn {
-      display: inline-block;
-      background: var(--primary);
-      color: var(--white);
-      padding: 15px 40px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      text-decoration: none;
-      transition: var(--transition);
-      border: 2px solid var(--primary);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-    .hero .cta-btn:hover {
-      background: var(--primary-dark);
-      box-shadow: 0 0 20px rgba(78, 115, 223, 0.5);
-      transform: translateY(-3px);
-    }
-
-    @keyframes pulse {
-      0% {
-        text-shadow: 0 0 15px rgba(78, 115, 223, 0.2);
-      }
-      50% {
-        text-shadow: 0 0 30px rgba(78, 115, 223, 0.5);
-      }
-      100% {
-        text-shadow: 0 0 15px rgba(78, 115, 223, 0.2);
-      }
-    }
-
-    /* Banner Secundário */
-    .banner {
-      width: 90%;
-      margin: 60px auto;
-      padding: 50px;
-      background: linear-gradient(135deg, #ffffff 0%, var(--secondary) 100%);
-      border-radius: var(--border-radius);
-      text-align: center;
-      box-shadow: var(--shadow-md);
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--gray-200);
-    }
-    .banner::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        to bottom right,
-        transparent,
-        transparent,
-        transparent,
-        rgba(78, 115, 223, 0.1),
-        transparent,
-        transparent,
-        transparent
-      );
-      transform: rotate(30deg);
-      animation: shimmer 8s linear infinite;
-    }
-    @keyframes shimmer {
-      0% {
-        transform: translateX(-100%) rotate(30deg);
-      }
-      100% {
-        transform: translateX(100%) rotate(30deg);
-      }
-    }
-    .banner h2 {
-      font-size: 2.8rem;
-      margin-bottom: 30px;
-      color: var(--primary);
-      position: relative;
-      z-index: 2;
-    }
-    .banner p {
-      font-size: 1.2rem;
-      margin-bottom: 40px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-      z-index: 2;
-      color: var(--text-dark);
-    }
-    .banner .author {
-      font-weight: 600;
-      color: var(--primary);
-    }
-    .banner .location {
-      color: var(--primary-dark);
-      opacity: 0.8;
-    }
-
-    /* Section Title */
-    .section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin: 80px 20px 50px;
-      position: relative;
-    }
-    .section-title::after {
-      content: "";
-      display: block;
-      width: 100px;
-      height: 4px;
-      background: var(--primary);
-      margin: 15px auto;
-      border-radius: 4px;
-      box-shadow: 0 0 10px rgba(78, 115, 223, 0.3);
-    }
-
-    /* Tópicos / Funcionalidades */
-    .topics {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 40px;
-      margin: 50px auto;
-      width: 90%;
-    }
-    .topic-card {
-      background: var(--white);
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-      border: 1px solid var(--gray-200);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    .topic-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--primary-light);
-    }
-    .topic-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-bottom: 3px solid var(--primary);
-      transition: var(--transition);
-    }
-    .topic-card:hover img {
-      transform: scale(1.05);
-      filter: brightness(1.1);
-    }
-    .topic-card .card-content {
-      padding: 25px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .topic-card h3 {
-      font-size: 1.5rem;
-      color: var(--primary);
-      margin-bottom: 15px;
-      transition: var(--transition);
-    }
-    .topic-card:hover h3 {
-      color: var(--primary-dark);
-      text-shadow: 0 0 10px rgba(78, 115, 223, 0.2);
-    }
-    .topic-card p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: var(--text-light);
-      flex-grow: 1;
-    }
-    .topic-card .card-icon {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 15px;
-      transition: var(--transition);
-    }
-    .topic-card:hover .card-icon {
-      color: var(--primary-dark);
-      transform: scale(1.1);
-      text-shadow: 0 0 10px rgba(78, 115, 223, 0.3);
-    }
-
-    /* Timeline Vertical */
-    .timeline-container {
-      width: 90%;
-      margin: 80px auto;
-      position: relative;
-      padding: 40px 0;
-    }
-    .timeline {
-      position: relative;
-      margin: 40px auto;
-      max-width: 1000px;
-    }
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 0;
-      transform: translateX(-50%);
-      width: 4px;
-      height: 100%;
-      background: var(--primary);
-      box-shadow: 0 0 10px rgba(78, 115, 223, 0.3);
-    }
-    .timeline-item {
-      position: relative;
-      width: 50%;
-      padding: 30px;
-      background: var(--white);
-      border-radius: var(--border-radius);
-      margin-bottom: 40px;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-      border: 1px solid var(--gray-200);
-    }
-    .timeline-item:hover {
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--primary-light);
-      background: linear-gradient(135deg, #ffffff 0%, var(--secondary) 100%);
-    }
-    .timeline-item:nth-child(odd) {
-      left: 0;
-      text-align: right;
-    }
-    .timeline-item:nth-child(even) {
-      left: 50%;
-      text-align: left;
-    }
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      top: 30px;
-      width: 20px;
-      height: 20px;
-      background: var(--primary);
-      border-radius: 50%;
-      box-shadow: 0 0 0 4px var(--white), 0 0 10px rgba(78, 115, 223, 0.5);
-      z-index: 1;
-    }
-    .timeline-item:nth-child(odd)::before { right: -10px; }
-    .timeline-item:nth-child(even)::before { left: -10px; }
-
-    .timeline-item::after {
-      content: "";
-      position: absolute;
-      top: 30px;
-      width: 40px;
-      height: 4px;
-      background: var(--primary);
-      box-shadow: 0 0 10px rgba(78, 115, 223, 0.3);
-    }
-    .timeline-item:nth-child(odd)::after {
-      right: -40px;
-    }
-    .timeline-item:nth-child(even)::after {
-      left: -40px;
-    }
-
-    .timeline-item h4 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-      color: var(--primary);
-      transition: var(--transition);
-    }
-    .timeline-item:hover h4 {
-      color: var(--primary-dark);
-      text-shadow: 0 0 10px rgba(78, 115, 223, 0.2);
-    }
-    .timeline-item span {
-      font-size: 1rem;
-      color: var(--text-light);
-      opacity: 0.9;
-      display: block;
-      margin-bottom: 15px;
-    }
-    .timeline-item p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: var(--text-dark);
-    }
-
-    /* Destaques / Features */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      width: 90%;
-      margin: 50px auto;
-    }
-
-    .feature-box {
-      background: var(--white);
-      border-radius: var(--border-radius);
-      padding: 30px;
-      text-align: center;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-      border: 1px solid var(--gray-200);
-    }
-
-    .feature-box:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--primary-light);
-    }
-
-    .feature-icon {
-      font-size: 3rem;
-      color: var(--primary);
-      margin-bottom: 20px;
-      transition: var(--transition);
-    }
-
-    .feature-box:hover .feature-icon {
-      color: var(--primary-dark);
-      transform: scale(1.1);
-      text-shadow: 0 0 15px rgba(78, 115, 223, 0.3);
-    }
-
-    .feature-box h3 {
-      font-size: 1.5rem;
-      color: var(--text-dark);
-      margin-bottom: 15px;
-      transition: var(--transition);
-    }
-
-    .feature-box:hover h3 {
-      color: var(--primary);
-    }
-
-    .feature-box p {
-      color: var(--text-light);
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    /* Showcase com Imagens */
-    .showcase {
-      width: 90%;
-      margin: 80px auto;
-    }
-
-    .showcase-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
-    }
-
-    .showcase-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .showcase-item:nth-child(even) {
-      flex-direction: column-reverse;
-    }
-
-    .showcase-image {
-      width: 100%;
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      transition: var(--transition);
-    }
-
-    .showcase-image:hover {
-      transform: scale(1.03);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .showcase-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: var(--transition);
-    }
-
-    .showcase-image:hover img {
-      transform: scale(1.05);
-    }
-
-    .showcase-content {
-      padding: 20px;
-    }
-
-    .showcase-content h3 {
-      font-size: 1.8rem;
-      color: var(--primary);
-      margin-bottom: 15px;
-    }
-
-    .showcase-content p {
-      color: var(--text-light);
-      font-size: 1.1rem;
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-
-    .showcase-content ul {
-      list-style-type: none;
-      margin-left: 20px;
-    }
-
-    .showcase-content li {
-      position: relative;
-      padding-left: 25px;
-      margin-bottom: 10px;
-      color: var(--text-dark);
-    }
-
-    .showcase-content li:before {
-      content: "\f00c";
-      font-family: "Font Awesome 6 Free";
-      font-weight: 900;
-      color: var(--success);
-      position: absolute;
-      left: 0;
-    }
-
-    /* Contato */
-    .contact {
-      width: 90%;
-      margin: 80px auto;
-      padding: 50px;
-      text-align: center;
-      background: var(--white);
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--gray-200);
-      position: relative;
-      overflow: hidden;
-    }
-    .contact::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        to bottom right,
-        transparent,
-        transparent,
-        transparent,
-        rgba(78, 115, 223, 0.1),
-        transparent,
-        transparent,
-        transparent
-      );
-      transform: rotate(30deg);
-      animation: shimmer 10s linear infinite;
-    }
-    .contact form {
-      max-width: 600px;
-      margin: 30px auto 0;
-      text-align: left;
-      position: relative;
-      z-index: 1;
-    }
-    .contact p {
-      font-size: 1.1rem;
-      margin-bottom: 30px;
-      position: relative;
-      z-index: 1;
-      color: var(--text-dark);
-    }
-    .contact label {
-      display: block;
-      margin-bottom: 10px;
-      font-weight: 500;
-      color: var(--primary);
-    }
-    .contact input,
-    .contact textarea {
-      width: 100%;
-      padding: 15px;
-      margin-bottom: 20px;
-      border: 1px solid var(--gray-300);
-      border-radius: 10px;
-      background: var(--white);
-      color: var(--text-dark);
-      font-family: 'Poppins', sans-serif;
-      font-size: 1rem;
-      transition: var(--transition);
-    }
-    .contact input:focus,
-    .contact textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 15px rgba(78, 115, 223, 0.2);
-    }
-    .contact button {
-      display: block;
-      width: 100%;
-      background: var(--primary);
-      color: var(--white);
-      padding: 15px;
-      border: none;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      margin-top: 20px;
-    }
-    .contact button:hover {
-      background: var(--primary-dark);
-      box-shadow: 0 0 20px rgba(78, 115, 223, 0.3);
-      transform: translateY(-3px);
-    }
-
-    /* FAQ Section */
-    .faq-section {
-      width: 90%;
-      margin: 80px auto;
-    }
-
-    .faq-container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .faq-item {
-      margin-bottom: 20px;
-      border: 1px solid var(--gray-200);
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      background: var(--white);
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-    }
-
-    .faq-item:hover {
-      box-shadow: var(--shadow-md);
-      border-color: var(--primary-light);
-    }
-
-    .faq-question {
-      padding: 20px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 600;
-      color: var(--text-dark);
-      transition: var(--transition);
-    }
-
-    .faq-question::after {
-      content: "\f078";
-      font-family: "Font Awesome 6 Free";
-      font-weight: 900;
-      color: var(--primary);
-      transition: var(--transition);
-    }
-
-    .faq-item.active .faq-question {
-      background-color: var(--secondary);
-      color: var(--primary);
-    }
-
-    .faq-item.active .faq-question::after {
-      transform: rotate(180deg);
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      padding: 0 20px;
-      color: var(--text-light);
-      line-height: 1.6;
-    }
-
-    .faq-item.active .faq-answer {
-      max-height: 500px;
-      padding: 20px;
-      border-top: 1px solid var(--gray-200);
-    }
-
-    /* Testemunhos */
-    .testimonials {
-      width: 90%;
-      margin: 80px auto;
-      position: relative;
-    }
-
-    .testimonial-container {
-      overflow: hidden;
-      position: relative;
-    }
-
-    .testimonial-wrapper {
-      display: flex;
-      transition: transform 0.5s ease;
-    }
-
-    .testimonial-card {
-      min-width: 100%;
-      padding: 40px 60px;
-      background: var(--white);
-      border-radius: var(--border-radius);
-      text-align: center;
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--gray-200);
-    }
-
-    .testimonial-avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 0 auto 20px;
-      border: 4px solid var(--primary);
-      box-shadow: 0 0 10px rgba(78, 115, 223, 0.3);
-    }
-
-    .testimonial-text {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: var(--text-light);
-      margin-bottom: 20px;
-      position: relative;
-    }
-
-    .testimonial-text::before,
-    .testimonial-text::after {
-      content: '"';
-      font-size: 3rem;
-      color: var(--primary);
-      opacity: 0.3;
-      position: absolute;
-      line-height: 0;
-    }
-
-    .testimonial-text::before {
-      top: 10px;
-      left: -20px;
-    }
-
-    .testimonial-text::after {
-      bottom: -10px;
-      right: -20px;
-      transform: rotate(180deg);
-    }
-
-    .testimonial-author {
-      font-weight: 600;
-      font-size: 1.2rem;
-      color: var(--primary);
-    }
-
-    .testimonial-role {
-      color: var(--text-light);
-      font-size: 0.9rem;
-    }
-
-    .testimonial-nav {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-      gap: 15px;
-    }
-
-    .testimonial-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--gray-300);
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .testimonial-dot.active {
-      background: var(--primary);
-      transform: scale(1.2);
-    }
-
-    .testimonial-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 40px;
-      height: 40px;
-      background: var(--white);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--shadow-md);
-      cursor: pointer;
-      transition: var(--transition);
-      z-index: 2;
-      color: var(--primary);
-    }
-
-    .testimonial-arrow:hover {
-      background: var(--primary);
-      color: var(--white);
-    }
-
-    .testimonial-prev {
-      left: -20px;
-    }
-
-    .testimonial-next {
-      right: -20px;
-    }
-
-    /* Footer */
-    footer {
-      background: var(--white);
-      color: var(--text-dark);
-      text-align: center;
-      padding: 40px 20px;
-      margin-top: 40px;
-      position: relative;
-      border-top: 1px solid var(--gray-200);
-    }
-    .footer-content {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 40px;
-      max-width: 1200px;
-      margin: 0 auto 30px;
-    }
-    .footer-logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--primary);
-      text-shadow: 0 0 10px rgba(78, 115, 223, 0.2);
-    }
-    .footer-links ul {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-    .footer-links ul li a {
-      text-decoration: none;
-      color: var(--text-dark);
-      transition: var(--transition);
-    }
-    .footer-links ul li a:hover {
-      color: var(--primary);
-    }
-    .footer-bottom {
-      border-top: 1px solid var(--gray-200);
-      padding-top: 20px;
-      font-size: 0.9rem;
-      color: var(--text-light);
-    }
-
-    /* Efeitos de animação */
-    @keyframes float {
-      0% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-      100% {
-        transform: translateY(0px);
-      }
-    }
-
-    .float-animation {
-      animation: float 5s ease-in-out infinite;
-    }
-
-    /* Destaque para CTA adicional */
-    .highlight-cta {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 40px;
-      background: var(--white);
-      border: 2px solid var(--primary);
-      color: var(--primary);
-      border-radius: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-    .highlight-cta::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0%;
-      height: 100%;
-      background: var(--primary);
-      transition: var(--transition);
-      z-index: -1;
-    }
-    .highlight-cta:hover {
-      color: var(--white);
-      box-shadow: 0 0 20px rgba(78, 115, 223, 0.3);
-      transform: translateY(-3px);
-    }
-    .highlight-cta:hover::before {
-      width: 100%;
-    }
-
-    /* Seção de Módulos do Projeto */
-    .modules-section {
-      width: 90%;
-      margin: 80px auto;
-    }
-
-    .modules-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
-    }
-
-    .module-card {
-      background: var(--white);
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-      border: 1px solid var(--gray-200);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .module-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--primary-light);
-    }
-
-    .module-header {
-      background: var(--primary);
-      color: var(--white);
-      padding: 20px;
-      text-align: center;
-    }
-
-    .module-header h3 {
-      margin: 0;
-      font-size: 1.5rem;
-    }
-
-    .module-body {
-      padding: 30px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .module-icon {
-      font-size: 3rem;
-      color: var(--primary);
-      margin-bottom: 20px;
-      text-align: center;
-      transition: var(--transition);
-    }
-
-    .module-card:hover .module-icon {
-      transform: scale(1.1);
-      color: var(--primary-dark);
-    }
-
-    .module-features {
-      list-style: none;
-      margin-bottom: 20px;
-      flex-grow: 1;
-    }
-
-    .module-features li {
-      position: relative;
-      padding-left: 30px;
-      margin-bottom: 15px;
-      color: var(--text-dark);
-    }
-
-    .module-features li:before {
-      content: "\f138";
-      font-family: "Font Awesome 6 Free";
-      font-weight: 900;
-      color: var(--primary);
-      position: absolute;
-      left: 0;
-    }
-
-    .module-cta {
-      text-align: center;
-      margin-top: auto;
-    }
-
-    .module-btn {
-      display: inline-block;
-      padding: 12px 30px;
-      border-radius: 50px;
-      background: var(--white);
-      color: var(--primary);
-      border: 2px solid var(--primary);
-      text-decoration: none;
-      font-weight: 600;
-      transition: var(--transition);
-    }
-
-    .module-btn:hover {
-      background: var(--primary);
-      color: var(--white);
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(78, 115, 223, 0.3);
-    }
-
-    /* Segurança / Security */
-    .security-section {
-      width: 90%;
-      margin: 80px auto;
-      background: var(--white);
-      border-radius: var(--border-radius);
-      padding: 50px;
-      box-shadow: var(--shadow-md);
-      border: 1px solid var(--gray-200);
-    }
-
-    .security-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 50px;
-      align-items: center;
-    }
-
-    .security-image {
-      position: relative;
-    }
-
-    .security-image img {
-      width: 100%;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow-md);
-      transition: var(--transition);
-    }
-
-    .security-image:hover img {
-      transform: scale(1.03);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .security-image::before {
-      content: "";
-      position: absolute;
-      top: -20px;
-      left: -20px;
-      width: 100px;
-      height: 100px;
-      background: var(--primary);
-      opacity: 0.1;
-      border-radius: 50%;
-      z-index: -1;
-    }
-
-    .security-image::after {
-      content: "";
-      position: absolute;
-      bottom: -30px;
-      right: -30px;
-      width: 150px;
-      height: 150px;
-      background: var(--primary);
-      opacity: 0.1;
-      border-radius: 50%;
-      z-index: -1;
-    }
-
-    .security-content h2 {
-      color: var(--primary);
-      font-size: 2.2rem;
-      margin-bottom: 30px;
-    }
-
-    .security-content p {
-      color: var(--text-light);
-      margin-bottom: 20px;
-      line-height: 1.8;
-    }
-
-    .security-features {
-      margin-top: 30px;
-    }
-
-    .security-feature {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 20px;
-    }
-
-    .security-feature-icon {
-      background: var(--secondary);
-      color: var(--primary);
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 20px;
-      font-size: 1.3rem;
-      flex-shrink: 0;
-      box-shadow: 0 0 10px rgba(78, 115, 223, 0.2);
-    }
-
-    .security-feature-content h4 {
-      color: var(--text-dark);
-      margin-bottom: 10px;
-    }
-
-    .security-feature-content p {
-      color: var(--text-light);
-      margin-bottom: 0;
-    }
-
-    /* Responsividade */
-    @media (max-width: 1200px) {
-      .hero h1 {
-        font-size: 3.5rem;
-      }
-      .section-title {
-        font-size: 2.2rem;
-      }
-      .banner h2 {
-        font-size: 2.4rem;
-      }
-      .security-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-      .security-image {
-        order: 2;
-      }
-      .security-content {
-        order: 1;
-      }
-    }
-
-    @media (max-width: 992px) {
-      .hero {
-        height: 50vh;
-      }
-      .hero h1 {
-        font-size: 3rem;
-      }
-      .hero p {
-        font-size: 1.1rem;
-      }
-      .banner {
-        padding: 40px 30px;
-      }
-      .banner h2 {
-        font-size: 2.2rem;
-      }
-      .section-title {
-        font-size: 2rem;
-      }
-      .topic-card h3 {
-        font-size: 1.4rem;
-      }
-      .showcase-grid {
-        grid-template-columns: 1fr;
-      }
-      .showcase-item {
-        flex-direction: column !important;
-      }
-      .testimonial-arrow {
-        display: none;
-      }
-    }
-
-    @media (max-width: 768px) {
-      header {
-        padding: 15px 20px;
-      }
-      .logo {
-        font-size: 1.6rem;
-      }
-      nav ul {
-        gap: 15px;
-      }
-      .hero {
-        height: 60vh;
-        margin-top: 80px;
-      }
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
-      .hero .cta-btn {
-        padding: 12px 30px;
-        font-size: 1rem;
-      }
-      .banner h2 {
-        font-size: 2rem;
-      }
-      .banner p {
-        font-size: 1.1rem;
-      }
-      .section-title {
-        font-size: 1.8rem;
-        margin: 60px 20px 40px;
-      }
-      .topics {
-        grid-template-columns: 1fr;
-      }
-      .timeline::before {
-        left: 30px;
-      }
-      .timeline-item {
-        width: 100%;
-        padding-left: 70px;
-        text-align: left !important;
-      }
-      .timeline-item::before {
-        left: 20px !important;
-      }
-      .timeline-item::after {
-        left: 20px !important;
-        width: 30px;
-      }
-      .timeline-item:nth-child(even) {
-        left: 0;
-      }
-      .contact {
-        padding: 40px 20px;
-      }
-      .testimonial-card {
-        padding: 30px 20px;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .logo {
-        font-size: 1.4rem;
-      }
-      nav ul {
-        gap: 10px;
-      }
-      nav ul li a {
-        font-size: 0.9rem;
-      }
-      .hero {
-        height: 70vh;
-      }
-      .hero h1 {
-        font-size: 2rem;
-      }
-      .hero p {
-        font-size: 0.9rem;
-      }
-      .banner {
-        padding: 30px 20px;
-      }
-      .banner h2 {
-        font-size: 1.7rem;
-      }
-      .banner p {
-        font-size: 1rem;
-      }
-      .section-title {
-        font-size: 1.6rem;
-      }
-      .timeline-item h4 {
-        font-size: 1.3rem;
-      }
-      .footer-links ul {
-        flex-direction: column;
-        gap: 10px;
-      }
-      .security-section {
-        padding: 30px 20px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- Header -->
-  <header>
-    <div class="logo">Projeto Lunar</div>
-    <nav>
-      <ul>
-        <li><a href="#hero">Início</a></li>
-        <li><a href="#about">Sobre</a></li>
-        <li><a href="#features">Funcionalidades</a></li>
-        <li><a href="#modules">Módulos</a></li>
-        <li><a href="#security">Segurança</a></li>
-        <li><a href="#timeline">Linha do Tempo</a></li>
-        <li><a href="#contact">Contato</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Hero Section -->
-  <section id="hero" class="hero">
-    <div class="hero-content">
-      <h1>Projeto Lunar</h1>
-      <p>Revolucionando a educação através de inteligência artificial adaptativa e personalizada</p>
-      <a href="#contact" class="cta-btn">Solicite uma Demonstração</a>
-    </div>
-  </section>
-
-  <!-- Funcionalidades / Tópicos -->
-  <section id="features">
-    <h2 class="section-title">Descubra a Revolução no Ensino</h2>
-    <div class="features-grid">
-      <!-- Cartão 1 -->
-      <div class="feature-box">
-        <i class="fas fa-user-graduate feature-icon"></i>
-        <h3>Ensino Personalizado</h3>
-        <p>A IA adapta materiais e prompts específicos para cada aluno, levando em consideração a idade e facilitando o aprendizado mais eficaz e acessível para todos os níveis escolares.</p>
-      </div>
-
-      <!-- Cartão 2 -->
-      <div class="feature-box">
-        <i class="fas fa-microphone-alt feature-icon"></i>
-        <h3>Modo de Voz para Crianças</h3>
-        <p>Projetado especialmente para crianças que ainda não sabem ler, funciona como um assistente interativo por chamadas de voz, permitindo que qualquer criança explore a plataforma.</p>
-      </div>
-
-      <!-- Cartão 3 -->
-      <div class="feature-box">
-        <i class="fas fa-question-circle feature-icon"></i>
-        <h3>Gestão de Dúvidas</h3>
-        <p>Todas as perguntas dos alunos são registradas e categorizadas por disciplina e série. Um resumo é gerado automaticamente com sugestões de aulas para que os professores possam abordar essas dificuldades.</p>
-      </div>
-
-      <!-- Cartão 4 -->
-      <div class="feature-box">
-        <i class="fas fa-redo feature-icon"></i>
-        <h3>Revisões Customizadas</h3>
-        <p>Os professores podem gerar revisões personalizadas para levarem para sala de aula, totalmente adaptadas às necessidades específicas de cada turma e conteúdo.</p>
-      </div>
-
-      <!-- Cartão 5 -->
-      <div class="feature-box">
-        <i class="fas fa-chart-bar feature-icon"></i>
-        <h3>Gráficos Analíticos</h3>
-        <p>A IA cria gráficos reais englobando todas as dúvidas que os alunos já tiveram em determinada matéria, permitindo visualizar tendências e identificar pontos críticos.</p>
-      </div>
-
-      <!-- Cartão 6 -->
-      <div class="feature-box">
-        <i class="fas fa-star feature-icon"></i>
-        <h3>Avaliação dos Professores</h3>
-        <p>Os professores podem gerar avaliações para medir seu desempenho em sala de aula, recebendo uma classificação de 0 a 10 e um resumo com sugestões para melhorar suas métricas.</p>
-      </div>
-
-      <!-- Cartão 7 -->
-      <div class="feature-box">
-        <i class="fas fa-tasks feature-icon"></i>
-        <h3>Sistema de Quiz Sob Demanda</h3>
-        <p>Os quizzes são estruturados conforme os pedidos dos alunos, permitindo uma prática direcionada. Ao final, a IA compila as perguntas incorretas e cria um resumo personalizado para reforçar os pontos que precisam de mais atenção.</p>
-      </div>
-
-      <!-- Cartão 8 -->
-      <div class="feature-box">
-        <i class="fas fa-podcast feature-icon"></i>
-        <h3>Sistema de Podcast Interativo</h3>
-        <p>A IA pode gerar podcasts sob demanda com duas vozes distintas, simulando uma conversa dinâmica e envolvente sobre o tema solicitado, facilitando a compreensão dos conteúdos.</p>
-      </div>
-
-      <!-- Cartão 9 -->
-      <div class="feature-box">
-        <i class="fas fa-project-diagram feature-icon"></i>
-        <h3>Mapa Mental Interativo</h3>
-        <p>Geração de mapas mentais com conteúdo customizado e interface visual única, facilitando a organização e conexão de ideias para melhor absorção dos temas estudados.</p>
-      </div>
-
-      <!-- Cartão 10 -->
-      <div class="feature-box">
-        <i class="fas fa-comments feature-icon"></i>
-        <h3>Chat Multiplayer</h3>
-        <p>Salas customizadas onde os alunos podem interagir entre si e, se necessário, chamar a IA para ajudar na resolução de problemas ou explicação de conteúdos.</p>
-      </div>
-
-      <!-- Cartão 11 -->
-      <div class="feature-box">
-        <i class="fas fa-pen-fancy feature-icon"></i>
-        <h3>Redação para ENEM</h3>
-        <p>Ferramenta específica para treino de redação voltada ao ENEM, permitindo que estudantes do ensino médio aprimorem suas habilidades de escrita para o exame nacional.</p>
-      </div>
-
-      <!-- Cartão 12 - Novo: Planos de Aula Completos -->
-      <div class="feature-box">
-        <i class="fas fa-book-open feature-icon"></i>
-        <h3>Planos de Aula Completos</h3>
-        <p>Geração de planos de aula detalhados e alinhados com a BNCC, incluindo objetivos, metodologias ativas, atividades práticas e avaliações para qualquer disciplina e série escolar.</p>
-      </div>
-
-      <!-- Cartão 13 - Novo: Geração de Slides -->
-      <div class="feature-box">
-        <i class="fas fa-desktop feature-icon"></i>
-        <h3>Geração de Slides</h3>
-        <p>Criação automática de apresentações visuais de alta qualidade com conteúdos didáticos, salvando horas de preparação para os professores e facilitando a apresentação de conteúdos em sala de aula.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Banner Secundário -->
-  <section class="banner">
-    <h2>Transforme a Experiência Educacional</h2>
-    <p>O Projeto Lunar foi criado pensando nas necessidades específicas dos alunos e professores da rede municipal. Nossa missão é democratizar o acesso a ferramentas educacionais de alta qualidade, promovendo um ambiente de aprendizado mais engajador e eficiente.</p>
-    <a href="#contact" class="highlight-cta">Entre em Contato</a>
-  </section>
-
-  <!-- Showcase Section -->
-  <section class="showcase">
-    <h2 class="section-title">Plataforma Integrada para Educadores</h2>
-
-    <div class="showcase-grid">
-      <div class="showcase-item">
-        <div class="showcase-image">
-          <img src="static/lunar3.png" alt="Lunar Flow">
-        </div>
-        <div class="showcase-content">
-          <h3>Lunar Flow: Rede Social Educacional</h3>
-          <p>Uma rede social exclusiva para compartilhamento de conteúdo educacional entre os alunos, promovendo a colaboração e o aprendizado coletivo.</p>
-          <ul>
-            <li>Compartilhamento de exercícios resolvidos</li>
-            <li>Perfis personalizáveis com foto e biografia</li>
-            <li>Sistema de curtidas e comentários</li>
-            <li>Vídeos curtos educacionais</li>
-            <li>Feed personalizado por matérias e interesses</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="showcase-item">
-        <div class="showcase-content">
-          <h3>Ferramenta de Criação de Conteúdo</h3>
-          <p>Um poderoso sistema que permite aos professores criarem materiais didáticos personalizados em diferentes formatos.</p>
-          <ul>
-            <li>Geração de avaliações customizadas com diferentes níveis de dificuldade</li>
-            <li>Planos de aula completos alinhados com a BNCC</li>
-            <li>Apresentações de slides prontas para uso em sala</li>
-            <li>Materiais de apoio para diferentes metodologias de ensino</li>
-            <li>Banco de questões inteligente para provas e exercícios</li>
-          </ul>
-        </div>
-        <div class="showcase-image">
-          <img src="static/lunar4.png" alt="Ferramenta de Criação">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Banner Informativo -->
-  <section id="about" class="banner">
-    <h2>Educação Acessível para Todos</h2>
-    <p>O Projeto Lunar é uma plataforma educacional inteligente disponibilizada <span class="location">gratuitamente para a rede municipal de escolas em Nepomuceno, Minas Gerais</span>. O projeto visa transformar a maneira como o ensino é conduzido, oferecendo ferramentas de inteligência artificial avançadas para orientar os alunos a encontrarem soluções por conta própria, promovendo um aprendizado ativo e contínuo.</p>
-    <a href="#features" class="highlight-cta">Descubra as Funcionalidades</a>
-  </section>
-
-  <!-- Seção de Módulos -->
-  <section id="modules" class="modules-section">
-    <h2 class="section-title">Módulos Inteligentes</h2>
-
-    <div class="modules-grid">
-      <div class="module-card">
-        <div class="module-header">
-          <h3>Módulo Aluno</h3>
-        </div>
-        <div class="module-body">
-          <div class="module-icon">
-            <i class="fas fa-user-graduate"></i>
-          </div>
-          <ul class="module-features">
-            <li>Acesso a conteúdos personalizados por idade e nível</li>
-            <li>Modo de voz interativo para crianças</li>
-            <li>Sistema de quizzes sob demanda</li>
-            <li>Geração de mapas mentais personalizados</li>
-            <li>Ferramenta de treino para redação ENEM</li>
-            <li>Participação no Lunar Flow</li>
-            <li>Geração de imagens com IA para trabalhos</li>
-            <li>Sistema de dúvidas categorizado por disciplina</li>
-          </ul>
-          <div class="module-cta">
-            <a href="#contact" class="module-btn">Saiba Mais</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="module-card">
-        <div class="module-header">
-          <h3>Módulo Professor</h3>
-        </div>
-        <div class="module-body">
-          <div class="module-icon">
-            <i class="fas fa-chalkboard-teacher"></i>
-          </div>
-          <ul class="module-features">
-            <li>Gestão inteligente de dúvidas dos alunos</li>
-            <li>Geração de revisões customizadas</li>
-            <li>Gráficos analíticos de desempenho por turma</li>
-            <li>Sistema de auto-avaliação docente</li>
-            <li>Geração de avaliações personalizadas</li>
-            <li>Planos de aula completos alinhados à BNCC</li>
-            <li>Criação automática de slides didáticos</li>
-            <li>Monitoramento da participação no Lunar Flow</li>
-            <li>Banco de questões para provas e exercícios</li>
-          </ul>
-          <div class="module-cta">
-            <a href="#contact" class="module-btn">Saiba Mais</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Seção de Segurança -->
-  <section id="security" class="security-section">
-    <div class="security-grid">
-      <div class="security-image">
-        <img src="static/lunar1.png" alt="Segurança do Sistema">
-      </div>
-      <div class="security-content">
-        <h2>Sistema de Segurança Robusto</h2>
-        <p>O Projeto Lunar foi desenvolvido com os mais altos padrões de segurança para proteger dados sensíveis de alunos, professores e instituições de ensino.</p>
-
-        <div class="security-features">
-          <div class="security-feature">
-            <div class="security-feature-icon">
-              <i class="fas fa-lock"></i>
-            </div>
-            <div class="security-feature-content">
-              <h4>Controle de Acesso</h4>
-              <p>Verificações rigorosas para impedir alunos de acessarem a página do professor e vice-versa, garantindo a integridade das informações.</p>
-            </div>
-          </div>
-
-          <div class="security-feature">
-            <div class="security-feature-icon">
-              <i class="fas fa-shield-alt"></i>
-            </div>
-            <div class="security-feature-content">
-              <h4>Proteção Cloudflare</h4>
-              <p>Utilizamos o Cloudflare para evitar ataques cibernéticos e garantir a disponibilidade constante da plataforma.</p>
-            </div>
-          </div>
-
-
-          <div class="security-feature">
-            <div class="security-feature-icon">
-              <i class="fas fa-filter"></i>
-            </div>
-            <div class="security-feature-content">
-              <h4>Filtro de Conteúdo</h4>
-              <p>Verificação automática de conteúdos ilícitos nas postagens do Lunar Flow, garantindo um ambiente seguro e apropriado para o contexto educacional.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ Section -->
-  <section class="faq-section">
-    <h2 class="section-title">Perguntas Frequentes</h2>
-
-    <div class="faq-container">
-      <div class="faq-item">
-        <div class="faq-question">Como a IA personaliza o conteúdo para diferentes idades?</div>
-        <div class="faq-answer">
-          <p>O Projeto Lunar analisa o perfil do aluno, incluindo sua idade e nível escolar, para adaptar a linguagem, exemplos e abordagem. Por exemplo, alunos do 5º ano recebem explicações com linguagem mais acessível e exemplos concretos relacionados ao seu universo, enquanto alunos mais velhos recebem conteúdo com maior profundidade conceitual.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">Como funciona o sistema de segurança para professores e alunos?</div>
-        <div class="faq-answer">
-          <p>O sistema utiliza diferentes níveis de autenticação e perfis de acesso. Cada usuário tem permissões específicas baseadas em seu papel (aluno ou professor). Utilizamos verificação em duas etapas para funções críticas e mantemos logs detalhados de todas as atividades, além de usar o Cloudflare para proteção contra ataques externos.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">Como funciona a geração de planos de aula completos?</div>
-        <div class="faq-answer">
-          <p>Os professores podem solicitar planos de aula específicos informando a disciplina, série, tema e duração desejada. O sistema gera automaticamente um plano completo alinhado com a BNCC, incluindo objetivos de aprendizagem, metodologias ativas, atividades práticas, materiais necessários e formas de avaliação. Todos os planos são personalizáveis e podem ser adaptados às necessidades específicas do professor.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">Como o Lunar Flow difere de outras redes sociais?</div>
-        <div class="faq-answer">
-          <p>O Lunar Flow é uma rede social exclusivamente educacional, focada no compartilhamento de exercícios, dúvidas e soluções. Possui moderação ativa de conteúdo, verificação automática de material inadequado e está integrada ao sistema de aprendizado. Diferente de redes sociais tradicionais, o Lunar Flow promove colaboração acadêmica e tem ferramentas específicas para compartilhamento de conteúdo educacional.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">Como funciona a ferramenta de geração de slides?</div>
-        <div class="faq-answer">
-          <p>A ferramenta permite que os professores criem apresentações completas em poucos minutos. O professor fornece o tema, público-alvo e nível de detalhamento, e a IA gera automaticamente slides com conteúdo estruturado, imagens relevantes e formatação visual atrativa. As apresentações podem ser personalizadas e exportadas em formatos compatíveis com os principais softwares de apresentação.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Linha do Tempo -->
-  <section id="timeline" class="timeline-container">
-    <h2 class="section-title">Nossa Trajetória</h2>
-    <div class="timeline">
-      <div class="timeline-item float-animation">
-        <h4>4 de Outubro de 2024</h4>
-        <span>O Início da Jornada</span>
-        <p>A ideia do Projeto Lunar nasceu da observação das necessidades educacionais do mundo atual, com o objetivo de criar uma solução tecnológica acessível e personalizada.</p>
-      </div>
-
-      <div class="timeline-item float-animation">
-        <h4>Dezembro de 2024</h4>
-        <span>Protótipo Finalizado</span>
-        <p>Após meses de desenvolvimento e testes, o protótipo da plataforma ja estava 100% </p>
-      </div>
-
-      <div class="timeline-item float-animation">
-        <h4>Fevereiro de 2025</h4>
-        <span>Lançamento Oficial</span>
-        <p>O sistema foi finalizado e apresentado oficialmente à Secretaria de Educação, marcando o início da implementação nas escolas municipais de Nepomuceno, Minas Gerais.</p>
-      </div>
-
-
-  </section>
-
-  <!-- Contato -->
-  <section id="contact" class="contact">
-    <h2 class="section-title">Solicite uma Demonstração</h2>
-    <p>Quer conhecer mais sobre o Projeto Lunar e como ele pode transformar a experiência educacional em sua escola? Entre em contato para agendar uma demonstração ou obter mais informações.</p>
-    <form id="whatsapp-form">
-      <label for="name">Nome</label>
-      <input type="text" id="name" placeholder="Seu nome" required>
-
-      <label for="email">E-mail</label>
-      <input type="email" id="email" placeholder="Seu e-mail" required>
-
-      <label for="institution">Instituição</label>
-      <input type="text" id="institution" placeholder="Nome da escola ou instituição">
-
-      <label for="message">Mensagem</label>
-      <textarea id="message" placeholder="Sua mensagem ou dúvidas sobre o projeto" rows="5" required></textarea>
-
-      <button type="submit">Enviar Mensagem via WhatsApp</button>
-    </form>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-logo">Projeto Lunar</div>
-      <div class="footer-links">
-        <ul>
-          <li><a href="#hero">Início</a></li>
-          <li><a href="#about">Sobre</a></li>
-          <li><a href="#features">Funcionalidades</a></li>
-          <li><a href="#modules">Módulos</a></li>
-          <li><a href="#security">Segurança</a></li>
-          <li><a href="#timeline">Linha do Tempo</a></li>
-          <li><a href="#contact">Contato</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 Projeto Lunar. Todos os direitos reservados.
-        Criado por Miguel Penha Reis. </p>
-
-        <p>Marketing por: Gabriel oliveira coimbra</p>
-    </div>
-  </footer>
-
-  <script>
-    // Scroll suave para navegação
-    document.querySelectorAll('nav a, .footer-links a, .cta-btn, .highlight-cta, .module-btn').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        window.scrollTo({
-          top: target.offsetTop - 80,
-          behavior: 'smooth'
-        });
-      });
-    });
-
-    // Efeito nos cards ao passar o mouse
-    document.querySelectorAll('.topic-card').forEach(card => {
-      card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-15px)';
-        this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.1)';
-        this.querySelector('h3').style.color = '#3a56b0';
-        this.querySelector('.card-icon').style.transform = 'scale(1.1)';
-        this.querySelector('.card-icon').style.color = '#3a56b0';
-      });
-
-      card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(-10px)';
-        this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.07)';
-        this.querySelector('h3').style.color = '#4e73df';
-        this.querySelector('.card-icon').style.transform = 'scale(1)';
-        this.querySelector('.card-icon').style.color = '#4e73df';
-      });
-    });
-
-    // Efeito nos itens da timeline ao passar o mouse
-    document.querySelectorAll('.timeline-item').forEach(item => {
-      item.addEventListener('mouseenter', function() {
-        this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.1)';
-        this.querySelector('h4').style.color = '#3a56b0';
-      });
-
-      item.addEventListener('mouseleave', function() {
-        this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.07)';
-        this.querySelector('h4').style.color = '#4e73df';
-      });
-    });
-
-    // Efeito de revelação ao rolar a página
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          observer.unobserve(entry.target);
+    <link rel="icon" href="static/image-removebg-preview (2).png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Lunar | IA Educacional Inovadora</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Projeto Lunar",
+  "url": "https://projetolunar.com",
+  "logo": "https://projetolunar.com/logo.png",
+  "description": "O Projeto Lunar é uma plataforma educacional baseada em inteligência artificial, desenvolvida para personalizar o aprendizado, auxiliar professores e engajar alunos com ferramentas como mapas mentais, podcasts, quizzes, simulados, correção de redação para o ENEM e muito mais.",
+  "founder": {
+    "@type": "Person",
+    "name": "Miguel Penha Reis"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Atendimento ao Usuário",
+    "telephone": "+55 35 99893-0953",
+    "availableLanguage": ["Portuguese"]
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "BR"
+  },
+  "areaServed": "BR",
+  "keywords": [
+    "educação personalizada",
+    "inteligência artificial na educação",
+    "plataforma educacional",
+    "projeto lunar",
+    "preparação para o ENEM",
+    "ferramentas para professores",
+    "ensino interativo"
+  ]
+}
+</script>
+
+    <style>
+        /* CSS Reset Básico e Variáveis */
+        :root {
+            --lunar-primary: #8E2DE2;
+            --lunar-secondary: #4A00E0;
+            --lunar-accent: #00c2ff;
+            --lunar-light: #f8f9fa;
+            --lunar-dark: #1e1e2f; /* bg-lunar-dark */
+            --lunar-card-bg: rgba(30, 30, 47, 0.7);
+            --lunar-navbar-bg: rgba(30, 30, 47, 0.8);
+            --lunar-border-light: rgba(255, 255, 255, 0.1);
+            --lunar-text-white: #ffffff;
+            --lunar-text-gray-300: #d1d5db; /* Tailwind gray-300 */
+            --lunar-text-gray-400: #9ca3af; /* Tailwind gray-400 */
+            --lunar-placeholder-gray-500: #6b7280; /* Tailwind gray-500 */
+            --lunar-input-border-gray-700: #374151; /* Tailwind gray-700 */
+            --lunar-footer-border-gray-800: #1f2937; /* Tailwind gray-800 */
+
+            --tw-purple-300: #d8b4fe; /* Aproximação para text-purple-300 */
+            --tw-purple-400: #c084fc; /* Tailwind purple-400 */
+            --tw-purple-500: #a855f7; /* Tailwind purple-500 */
+            --tw-blue-500: #3b82f6;   /* Tailwind blue-500 */
         }
-      });
-    }, {
-      threshold: 0.1
-    });
 
-    document.querySelectorAll('.topic-card, .timeline-item, .banner, .feature-box, .module-card, .showcase-item').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(50px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(el);
-    });
-
-    // Classe para mostrar elementos quando visíveis
-    document.addEventListener('DOMContentLoaded', () => {
-      const style = document.createElement('style');
-      style.textContent = `
-        .show {
-          opacity: 1 !important;
-          transform: translateY(0) !important;
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-      `;
-      document.head.appendChild(style);
 
-      // Inicializar o sistema de FAQ
-      initFAQ();
-    });
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--lunar-dark);
+            color: var(--lunar-text-white);
+            line-height: 1.6;
+        }
 
-    // Envio do formulário via WhatsApp
-    document.getElementById('whatsapp-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const institution = document.getElementById('institution').value;
-
-      const message = document.getElementById('message').value;
-
-      const whatsappMessage = `Olá! Sou ${name}, e-mail: ${email}, da instituição: ${institution}. ${message}`;
-      window.open(`https://wa.me/5535998930953?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
-    });
-
-    // Animação para a logo
-    const logo = document.querySelector('.logo');
-    logo.addEventListener('mouseenter', function() {
-      this.style.textShadow = '0 0 15px rgba(78, 115, 223, 0.5)';
-      this.style.transform = 'scale(1.05)';
-    });
-
-    logo.addEventListener('mouseleave', function() {
-      this.style.textShadow = '0 0 10px rgba(78, 115, 223, 0.2)';
-      this.style.transform = 'scale(1)';
-    });
-
-    // Adicionar efeito parallax à hero section
-    window.addEventListener('scroll', function() {
-      const heroSection = document.querySelector('.hero');
-      const scrollPosition = window.scrollY;
-
-      if (scrollPosition <= heroSection.offsetHeight) {
-        heroSection.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
-      }
-    });
-
-    // Sistema de FAQ
-    function initFAQ() {
-      const faqItems = document.querySelectorAll('.faq-item');
-
-      faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-
-        question.addEventListener('click', () => {
-          // Fecha todos os outros itens
-          faqItems.forEach(otherItem => {
-            if (otherItem !== item && otherItem.classList.contains('active')) {
-              otherItem.classList.remove('active');
+        .container {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        @media (min-width: 768px) {
+            .container {
+                padding-left: 2rem;
+                padding-right: 2rem;
             }
-          });
+        }
+        @media (min-width: 1280px) {
+             .container {
+                max-width: 1280px;
+            }
+        }
 
-          // Alterna o estado do item atual
-          item.classList.toggle('active');
-        });
-      });
-    }
+        /* General Styles */
+        .bg-lunar-gradient {
+            background: linear-gradient(135deg, rgba(142, 45, 226, 0.1), rgba(74, 0, 224, 0.1));
+            border-top: 1px solid rgba(142, 45, 226, 0.2);
+            border-bottom: 1px solid rgba(142, 45, 226, 0.2);
+        }
 
-    // Prevenindo o menu móvel de ocupar toda a tela em dispositivos menores
-    const mediaQuery = window.matchMedia('(max-width: 768px)');
+        .lunar-card {
+            background: var(--lunar-card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--lunar-border-light);
+            transition: all 0.3s ease;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            /* Flexbox para igualar alturas dos cards de funcionalidade */
+            display: flex;
+            flex-direction: column;
+        }
+        .lunar-card.rounded-3xl { border-radius: 1.5rem; }
+        .lunar-card.rounded-2xl { border-radius: 1rem; }
+        .lunar-card.p-8 { padding: 2rem; }
 
-    function handleMobileMenu(e) {
-      if (e.matches) {
-        // Implementação do menu móvel
-        const header = document.querySelector('header');
-        const nav = document.querySelector('nav');
+        .lunar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(142, 45, 226, 0.3);
+        }
 
-        // Criar botão do menu
-        if (!document.querySelector('.mobile-menu-btn')) {
-          const menuBtn = document.createElement('div');
-          menuBtn.className = 'mobile-menu-btn';
-          menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-          menuBtn.style.fontSize = '1.5rem';
-          menuBtn.style.cursor = 'pointer';
-          menuBtn.style.color = '#4e73df';
-          menuBtn.style.display = 'none'; // Inicialmente oculto
+        .feature-icon {
+            background: linear-gradient(135deg, var(--lunar-primary), var(--lunar-secondary));
+            height: 50px;
+            width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            margin-right: 15px;
+            box-shadow: 0 5px 15px rgba(74, 0, 224, 0.3);
+            flex-shrink: 0;
+        }
+        .feature-icon i {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+        }
 
-          header.appendChild(menuBtn);
+        .hero-section {
+            animation: fadeIn 1s ease-in-out;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 5rem;
+            padding-bottom: 2.5rem;
+        }
 
-          // Toggle para o menu
-          menuBtn.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            menuBtn.innerHTML = nav.classList.contains('active')
-              ? '<i class="fas fa-times"></i>'
-              : '<i class="fas fa-bars"></i>';
-          });
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-          // Adicionar estilos necessários
-          const style = document.createElement('style');
-          style.textContent = `
-            @media (max-width: 768px) {
-              header {
-                flex-wrap: wrap;
-              }
+        .bg-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: url("static/multiplayer.png");
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.3);
+            z-index: -1;
+        }
 
-              .mobile-menu-btn {
-                display: block !important;
-              }
+        .glow {
+            text-shadow: 0 0 10px rgba(142, 45, 226, 0.7), 0 0 20px rgba(142, 45, 226, 0.5);
+        }
 
-              nav {
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            z-index: 40;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            backdrop-filter: blur(10px);
+            background-color: var(--lunar-navbar-bg);
+            border-bottom: 1px solid var(--lunar-border-light);
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar-logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .navbar-logo-img {
+            width: 2.5rem;
+            height: 2.5rem;
+            margin-right: 0.75rem;
+        }
+        .navbar-logo-text {
+            font-size: 1.5rem;
+            line-height: 2rem;
+            font-weight: 700;
+            background-image: linear-gradient(to right, var(--tw-purple-400), var(--tw-blue-500));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .navbar-links {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            .navbar-links {
+                display: flex;
+                align-items: center;
+            }
+            .navbar-links > *:not(:last-child) {
+                 margin-right: 2rem;
+            }
+        }
+        .navbar-links a:not(.lunar-button) {
+            color: var(--lunar-text-white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .navbar-links a:hover:not(.lunar-button) {
+            color: var(--tw-purple-400);
+        }
+        .navbar-mobile-button {
+            color: var(--lunar-text-white);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .navbar-mobile-button i { font-size: 1.5rem; }
+
+        @media (min-width: 768px) {
+            .navbar-mobile-button { display: none; }
+        }
+
+        /* Particles animation */
+        .particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            width: 4px; height: 4px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: rgba(30, 30, 47, 0.5); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, var(--lunar-primary), var(--lunar-secondary)); border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: linear-gradient(135deg, var(--lunar-secondary), var(--lunar-primary)); }
+
+        /* Animations for features */
+        .feature-animate { transition: all 0.3s ease; }
+        .feature-animate:hover { transform: translateX(5px); }
+
+        /* Button styles */
+        .lunar-button {
+            background: linear-gradient(135deg, var(--lunar-primary), var(--lunar-secondary));
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        .lunar-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(74, 0, 224, 0.4);
+        }
+        .lunar-button::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, var(--lunar-secondary), var(--lunar-primary));
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+        .lunar-button:hover::before { opacity: 1; }
+        .lunar-button i { margin-right: 0.5rem; }
+
+        /* Secondary button */
+        .secondary-button {
+            border: 1px solid var(--tw-purple-500);
+            color: var(--lunar-text-white);
+            background-color: transparent;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .secondary-button:hover {
+            background-color: rgba(168, 85, 247, 0.2);
+        }
+        .secondary-button i { margin-right: 0.5rem; }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0; right: 0;
+            width: 80%; max-width: 300px;
+            height: 100vh;
+            background-color: rgba(30, 30, 47, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 50;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            padding: 80px 30px 30px;
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+        }
+        .mobile-menu.active {
+            display: block;
+            transform: translateX(0);
+        }
+        .mobile-menu-close-button {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            color: var(--lunar-text-white);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .mobile-menu-close-button i { font-size: 1.5rem; }
+
+        .mobile-menu-nav {
+            display: flex;
+            flex-direction: column;
+        }
+        .mobile-menu-nav > * {
+            margin-bottom: 1.5rem;
+        }
+        .mobile-menu-nav > *:last-child {
+             margin-bottom: 0;
+        }
+        .mobile-menu-nav a:not(.lunar-button) {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            color: var(--lunar-text-white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .mobile-menu-nav a:hover:not(.lunar-button) {
+            color: var(--tw-purple-400);
+        }
+        .mobile-menu-nav .lunar-button {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        /* Hero Section Specifics */
+        .hero-content {
+            max-width: 64rem;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        .hero-title {
+            font-size: 3rem;
+            line-height: 1;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        .hero-title-gradient {
+            background-image: linear-gradient(to right, var(--tw-purple-400), var(--tw-blue-500));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 3.75rem;
+            }
+        }
+        .hero-subtitle {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            margin-bottom: 2rem;
+            color: var(--lunar-text-gray-300);
+            line-height: 1.625;
+        }
+        @media (min-width: 768px) {
+            .hero-subtitle {
+                font-size: 1.5rem;
+                line-height: 2rem;
+            }
+        }
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+        }
+        @media (min-width: 768px) {
+            .hero-buttons {
+                flex-direction: row;
+            }
+        }
+
+        /* Section Defaults */
+        .section {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        .section-heading {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .section-subtitle-tag {
+            color: var(--tw-purple-400);
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        .section-title {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .section-title-gradient {
+             background-image: linear-gradient(to right, var(--tw-purple-400), var(--tw-blue-500));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 2.25rem;
+                line-height: 2.5rem;
+            }
+        }
+        .section-title-underline {
+            width: 6rem;
+            height: 0.25rem;
+            background-image: linear-gradient(to right, var(--tw-purple-400), var(--tw-blue-500));
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section Specifics */
+        .about-card-content {
+             max-width: 48rem;
+             margin-left: auto;
+             margin-right: auto;
+        }
+        .about-card-content p {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+        }
+        .about-card-content p + p {
+            margin-top: 1rem;
+        }
+        .about-tag-container {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+        .about-tag {
+            padding: 0.5rem 1rem;
+            background-color: rgba(168, 85, 247, 0.2);
+            border-radius: 9999px;
+            color: var(--tw-purple-300);
+            font-weight: 500;
+        }
+        .about-tag i { margin-right: 0.5rem; }
+
+        /* Features Section Specifics */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 2rem;
+        }
+        @media (min-width: 768px) {
+            .features-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        /* Equal height for feature cards */
+        .feature-card-item {
+            flex-grow: 1; /* Make this item grow to fill available space within lunar-card */
+            display: flex; /* Keep its internal flex layout */
+            align-items: flex-start;
+        }
+        .feature-card-item-content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1; /* Make content grow */
+        }
+        .feature-card-item-content p {
+            flex-grow: 1; /* Make paragraph grow to push content down */
+            margin-top: auto; /* Pushes the paragraph to the bottom if content above is shorter */
+        }
+
+        .features-ver-mais-container {
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+        @media (min-width: 768px) {
+            .features-ver-mais-container {
+                grid-column: span 2 / span 2;
+            }
+        }
+
+        /* Control initial display of features based on screen size */
+        /* These are the 4 features that are visible on desktop but hidden on mobile until "Ver Mais" */
+        #features-initial-mobile-hidden {
+            display: none; /* Hidden by default on mobile */
+        }
+        @media (min-width: 768px) {
+            #features-initial-mobile-hidden {
+                display: grid; /* Show on desktop */
+                grid-template-columns: repeat(2, minmax(0, 1fr)); /* Adjust grid for desktop */
+                gap: 2rem;
+            }
+        }
+
+        #features-extra {
+            display: none; /* Hidden by default */
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        @media (min-width: 768px) {
+            #features-extra {
+                grid-column: span 2 / span 2;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        /* Aurorafy Section */
+        .aurorafy-section {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem 2rem;
+            background: rgba(142, 45, 226, 0.05);
+            border-radius: 2rem;
+            border: 1px solid rgba(142, 45, 226, 0.15);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .aurorafy-logo {
+            width: 300px;
+            height: auto;
+            margin: 2rem auto;
+            display: block;
+            filter: drop-shadow(0 10px 20px rgba(142, 45, 226, 0.3));
+            transition: transform 0.3s ease;
+        }
+
+        .aurorafy-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .aurorafy-section h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--lunar-primary), var(--lunar-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .aurorafy-section p {
+            font-size: 1.25rem;
+            color: var(--lunar-text-gray-300);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .aurorafy-logo {
+                width: 200px;
+            }
+            .aurorafy-section h3 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2rem;
+            max-width: 56rem; /* Aumentado para melhor espaçamento */
+            margin: 0 auto;
+        }
+        @media (min-width: 1024px) { /* Alterado para lg breakpoint */
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .pricing-card {
+            text-align: center;
+            padding: 2.5rem 2rem; /* Mais padding vertical */
+            border-radius: 1.5rem;
+            background: var(--lunar-card-bg);
+            border: 1px solid var(--lunar-border-light);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(74, 0, 224, 0.3);
+            border-color: var(--tw-purple-500);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background-image: linear-gradient(to right, var(--tw-purple-400), var(--tw-blue-500));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .pricing-price {
+            font-size: 3rem; /* Maior */
+            font-weight: 700;
+            margin-bottom: 1.5rem; /* Mais espaço */
+            color: var(--lunar-text-white);
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--lunar-text-gray-400);
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 2.5rem; /* Mais espaço */
+            flex-grow: 1; /* Faz a lista crescer para alinhar os botões */
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem; /* Mais espaço entre itens */
+            color: var(--lunar-text-gray-300);
+        }
+
+        .pricing-features i {
+            color: var(--tw-purple-400);
+            margin-right: 0.75rem; /* Mais espaço */
+            font-size: 1.2rem; /* Ícone maior */
+        }
+
+        /* Mobile specific pricing card adjustments */
+        @media (max-width: 768px) {
+            .pricing-card {
+                padding: 1.5rem 1rem; /* Reduced padding for mobile */
+            }
+            .pricing-card h3 {
+                font-size: 1.5rem; /* Smaller title on mobile */
+            }
+            .pricing-price {
+                font-size: 2.25rem; /* Smaller price on mobile */
+                margin-bottom: 1rem;
+            }
+            .pricing-features li {
+                font-size: 0.9rem; /* Smaller feature text on mobile */
+                margin-bottom: 0.75rem;
+            }
+            .pricing-features i {
+                font-size: 1rem; /* Smaller icon on mobile */
+            }
+        }
+
+
+        /* TIMELINE DAS ESCOLAS */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(var(--tw-purple-400), var(--tw-blue-500));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: var(--lunar-dark);
+            border: 4px solid var(--tw-purple-500);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+            transition: transform 0.3s ease;
+        }
+        .timeline-item:hover::after {
+            transform: scale(1.2);
+        }
+
+        .left { left: 0; }
+        .right { left: 50%; }
+        .right::after { left: -16px; }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background: var(--lunar-card-bg);
+            position: relative;
+            border-radius: 1rem;
+            border: 1px solid var(--lunar-border-light);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(142, 45, 226, 0.3);
+            border-color: var(--tw-purple-500);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--lunar-text-white);
+        }
+        .left .timeline-content { text-align: right; }
+        .right .timeline-content { text-align: left; }
+
+        /* TIMELINE MOBILE OPTIMIZATION */
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline-item {
                 width: 100%;
-                height: 0;
-                overflow: hidden;
-                transition: height 0.3s ease;
-              }
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .left, .right {
+                left: 0;
+            }
+            .left::after, .right::after {
+                left: 15px;
+            }
+            .left .timeline-content, .right .timeline-content {
+                text-align: left;
+            }
+        }
 
-              nav.active {
-                height: auto;
-                margin-top: 20px;
-              }
+        /* Updates Section Specifics */
+        .updates-content-wrapper {
+            max-width: 56rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .update-card {
+           /* lunar-card e p-8 já aplicados pela classe .lunar-card */
+        }
+        .update-card + .update-card { margin-top: 2rem; }
 
-              nav ul {
+        .update-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .update-icon-wrapper {
+            width: 4rem;
+            height: 4rem;
+            background-image: linear-gradient(to right, var(--tw-purple-500), var(--tw-blue-500));
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.25rem;
+        }
+        .update-icon-wrapper i { font-size: 1.5rem; }
+        .update-tag {
+            background-color: rgba(168, 85, 247, 0.2);
+            color: var(--tw-purple-300);
+            font-size: 0.75rem;
+            line-height: 1rem;
+            font-weight: 500;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+        }
+        .update-title {
+            font-size: 1.5rem;
+            line-height: 2rem;
+            font-weight: 700;
+            margin-top: 0.25rem;
+        }
+        .update-description {
+            color: var(--lunar-text-gray-300);
+            line-height: 1.625;
+        }
+        .update-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--tw-purple-400);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .update-link:hover {
+            color: var(--tw-purple-300);
+        }
+        .update-link i { margin-right: 0.25rem; }
+
+        /* Contact Section Specifics */
+        .contact-card-wrapper {
+            max-width: 56rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 2rem;
+        }
+        @media (min-width: 768px) {
+            .contact-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        .contact-info h3 {
+            font-size: 1.5rem;
+            line-height: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .contact-info p {
+            color: var(--lunar-text-gray-300);
+            margin-bottom: 1.5rem;
+        }
+        .contact-info-items > *:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+        }
+        .contact-info-icon-wrapper {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 9999px;
+            background-color: rgba(168, 85, 247, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+        }
+        .contact-info-icon-wrapper i { color: var(--tw-purple-400); }
+        .contact-info-item span { color: var(--lunar-text-gray-300); }
+
+        .contact-form .form-group {
+            margin-bottom: 1rem;
+        }
+        .contact-form label {
+            display: block;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            font-weight: 500;
+            color: var(--lunar-text-gray-300);
+            margin-bottom: 0.5rem;
+        }
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background-color: var(--lunar-dark);
+            color: var(--lunar-text-white);
+            border: 1px solid var(--lunar-input-border-gray-700);
+            border-radius: 0.5rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .contact-form input[type="text"]:focus,
+        .contact-form input[type="email"]:focus,
+        .contact-form textarea:focus {
+            border-color: var(--tw-purple-500);
+        }
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: var(--lunar-placeholder-gray-500);
+            opacity: 1;
+        }
+        .contact-form .lunar-button {
+             width: 100%;
+        }
+
+        /* Footer */
+        .site-footer {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+            background-color: var(--lunar-dark);
+            border-top: 1px solid var(--lunar-footer-border-gray-800);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+        .footer-logo-section .footer-logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .footer-logo-section .footer-logo-img {
+             width: 2.5rem;
+            height: 2.5rem;
+            margin-right: 0.75rem;
+        }
+        .footer-logo-section .footer-logo-text {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            font-weight: 700;
+            background-image: linear-gradient(to right, var(--tw-purple-400), var(--tw-blue-500));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .footer-logo-section .footer-description {
+            color: var(--lunar-text-gray-400);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links-section h4, .footer-team-section h4 {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .footer-links-list {
+            list-style: none;
+        }
+        .footer-links-list li:not(:last-child) {
+            margin-bottom: 0.5rem;
+        }
+        .footer-links-list a {
+            color: var(--lunar-text-gray-400);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-links-list a:hover {
+            color: var(--tw-purple-400);
+        }
+
+        .footer-team-members > div:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+        .footer-team-member-name {
+            color: var(--lunar-text-white);
+            font-weight: 500;
+        }
+        .footer-team-member-role {
+            color: var(--lunar-text-gray-400);
+        }
+
+        .footer-copyright {
+            padding-top: 2rem;
+            border-top: 1px solid var(--lunar-footer-border-gray-800);
+            text-align: center;
+            color: var(--lunar-text-gray-400);
+        }
+        .footer-copyright i {
+            color: #facc15;
+        }
+
+        /* Mobile Specific Adjustments */
+        @media (max-width: 768px) {
+            .feature-card-item {
                 flex-direction: column;
                 align-items: center;
-                padding: 0;
-              }
-
-              nav ul li {
-                margin: 10px 0;
-              }
+                text-align: center;
             }
-          `;
-          document.head.appendChild(style);
+            .feature-icon {
+                margin-bottom: 15px;
+                margin-right: 0;
+            }
+            .hero-title {
+                font-size: 2.5rem; /* Smaller on mobile */
+            }
+            .hero-subtitle {
+                font-size: 1rem; /* Smaller on mobile */
+            }
+            .section-title {
+                font-size: 1.875rem; /* Smaller on mobile */
+            }
+            .about-card-content p {
+                font-size: 1rem;
+            }
         }
-      } else {
-        // Reverter para menu normal em telas maiores
-        const nav = document.querySelector('nav');
-        if (nav) {
-          nav.classList.remove('active');
+    </style>
+</head>
+<body>
+    <div class="bg-overlay"></div>
+    <div class="particles" id="particles"></div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="navbar-logo-link">
+                <img src="static/image-removebg-preview (2).png" alt="Lunar Logo" class="navbar-logo-img">
+                <span class="navbar-logo-text">Projeto Lunar</span>
+            </a>
+            <div class="navbar-links">
+                <a href="#about">Sobre</a>
+                <a href="#features">Funcionalidades</a>
+                <a href="#pricing">Preços</a>
+                <a href="#parcerias">Parcerias</a>
+                <a href="#updates">Atualizações</a>
+                <a href="#contact" class="lunar-button">Contato</a>
+            </div>
+            <button id="mobile-menu-button" class="navbar-mobile-button">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="mobile-menu">
+        <button id="close-menu" class="mobile-menu-close-button">
+            <i class="fas fa-times"></i>
+        </button>
+        <nav class="mobile-menu-nav">
+            <a href="#about" class="mobile-link">Sobre</a>
+            <a href="#features" class="mobile-link">Funcionalidades</a>
+            <a href="#pricing" class="mobile-link">Preços</a>
+            <a href="#parcerias" class="mobile-link">Parcerias</a>
+            <a href="#updates" class="mobile-link">Atualizações</a>
+            <a href="#contact" class="lunar-button mobile-link">Contato</a>
+        </nav>
+    </div>
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title glow">Projeto <span class="hero-title-gradient">Lunar:</span> O Futuro da Educação, Hoje.</h1>
+                <p class="hero-subtitle">
+                    Sua jornada de aprendizado, reinventada. O Projeto Lunar é a inteligência artificial que personaliza o ensino, inspira a descoberta e capacita alunos e professores para o futuro.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#features" class="lunar-button">
+                        <i class="fas fa-rocket"></i> Explorar Funcionalidades
+                    </a>
+                    <a href="#about" class="secondary-button">
+                        <i class="fas fa-info-circle"></i> Conheça a Visão
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-heading">
+                <h6 class="section-subtitle-tag">Nossa Proposta</h6>
+                <h2 class="section-title">Nossa Visão: <span class="section-title-gradient">Reinventando o Aprendizado.</span></h2>
+                <div class="section-title-underline"></div>
+            </div>
+            <div class="lunar-card rounded-3xl p-8 about-card-content">
+                <p>
+                    No coração do Projeto Lunar está a crença de que aprender é descobrir. Nossa IA não entrega respostas prontas, mas sim guia cada estudante em sua própria jornada de conhecimento, estimulando a curiosidade, o pensamento crítico e a autonomia.
+                </p>
+                <p>
+                    Adaptando-se ao ritmo e estilo de cada um, o Lunar transforma o ensino em uma experiência verdadeiramente personalizada e envolvente, preparando mentes para os desafios de amanhã.
+                </p>
+                <div class="about-tag-container">
+                    <span class="about-tag">
+                        <i class="fas fa-brain"></i> Inteligência Artificial Educacional
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="section">
+        <div class="container">
+            <div class="section-heading">
+                <h6 class="section-subtitle-tag">Ferramentas Poderosas</h6>
+                <h2 class="section-title">Funcionalidades <span class="section-title-gradient">Que Transformam o Ensino</span></h2>
+                <div class="section-title-underline"></div>
+            </div>
+            <div class="features-grid">
+                <!-- 4 funcionalidades visíveis por padrão no mobile e desktop -->
+                <div class="lunar-card rounded-2xl p-6 feature-animate">
+                    <div class="feature-card-item">
+                        <div class="feature-icon"><i class="fas fa-user-graduate"></i></div>
+                        <div class="feature-card-item-content">
+                            <h3>Ensino Personalizado</h3>
+                            <p>Conteúdo e desafios adaptados ao ritmo e estilo de cada aluno, garantindo uma jornada de aprendizado única e altamente eficaz.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lunar-card rounded-2xl p-6 feature-animate">
+                    <div class="feature-card-item">
+                        <div class="feature-icon"><i class="fas fa-microphone-alt"></i></div>
+                        <div class="feature-card-item-content">
+                            <h3>Modo de Voz para Crianças</h3>
+                            <p>Um assistente de voz lúdico e interativo, perfeito para crianças em fase de alfabetização explorarem o conhecimento de forma divertida e intuitiva.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lunar-card rounded-2xl p-6 feature-animate">
+                    <div class="feature-card-item">
+                        <div class="feature-icon"><i class="fas fa-question-circle"></i></div>
+                        <div class="feature-card-item-content">
+                            <h3>Gestão Inteligente de Dúvidas</h3>
+                            <p>Identifique padrões de dificuldade: a IA registra e categoriza as dúvidas dos alunos, fornecendo insights valiosos para otimizar o planejamento das aulas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lunar-card rounded-2xl p-6 feature-animate">
+                    <div class="feature-card-item">
+                        <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
+                        <div class="feature-card-item-content">
+                            <h3>Geração de Avaliações (Prof.)</h3>
+                            <p>Crie avaliações personalizadas em minutos: escolha formatos (múltipla escolha, dissertativas), defina níveis de dificuldade e receba gabaritos automáticos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Funcionalidades que aparecem no desktop, mas são ocultas no mobile até o "Ver Mais" -->
+                <div id="features-initial-mobile-hidden" class="features-grid">
+                    <div class="lunar-card rounded-2xl p-6 feature-animate">
+                        <div class="feature-card-item">
+                            <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                            <div class="feature-card-item-content">
+                                <h3>Gráficos de Desempenho Detalhados</h3>
+                                <p>Visualize o progresso dos alunos com gráficos intuitivos, identificando rapidamente áreas que precisam de reforço pedagógico.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lunar-card rounded-2xl p-6 feature-animate">
+                        <div class="feature-card-item">
+                            <div class="feature-icon"><i class="fas fa-star"></i></div>
+                            <div class="feature-card-item-content">
+                                <h3>Avaliação Docente Construtiva</h3>
+                                <p>Receba feedback e métricas de desempenho para aprimorar continuamente suas práticas de ensino e maximizar o impacto em sala de aula.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lunar-card rounded-2xl p-6 feature-animate">
+                        <div class="feature-card-item">
+                            <div class="feature-icon"><i class="fas fa-tasks"></i></div>
+                            <div class="feature-card-item-content">
+                                <h3>Sistema de Quiz Sob Demanda</h3>
+                                <p>Crie quizzes interativos e personalizados para fixar o conteúdo, com compilação de erros e resumos para um estudo focado e eficiente.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lunar-card rounded-2xl p-6 feature-animate">
+                        <div class="feature-card-item">
+                            <div class="feature-icon"><i class="fas fa-podcast"></i></div>
+                            <div class="feature-card-item-content">
+                                <h3>Podcasts Educacionais Interativos</h3>
+                                <p>Transforme temas complexos em diálogos envolventes: gere podcasts sob demanda para facilitar a compreensão e o aprendizado auditivo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-ver-mais-container">
+                <button id="ver-mais" class="lunar-button">
+                    <i class="fas fa-plus-circle"></i> Ver Mais Funcionalidades
+                </button>
+            </div>
+
+            <!-- FEATURES EXTRAS (mostradas quando clica Ver Mais) -->
+            <div id="features-extra" class="features-grid">
+                <div class="lunar-card rounded-2xl p-6 feature-animate">
+                    <div class="feature-card-item">
+                        <div class="feature-icon"><i class="fas fa-sitemap"></i></div>
+                        <div class="feature-card-item-content">
+                            <h3>Mapas Mentais Dinâmicos</h3>
+                            <p>Organize ideias e conceitos de forma visual e intuitiva com mapas mentais personalizados, gerados com conteúdo customizado.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lunar-card rounded-2xl p-6 feature-animate">
+                    <div class="feature-card-item">
+                        <div class="feature-icon"><i class="fas fa-comments"></i></div>
+                        <div class="feature-card-item-content">
+                            <h3>Chat Colaborativo com Suporte IA</h3>
+                            <p>Fomente a colaboração entre alunos em salas de chat, com a IA oferecendo assistência e esclarecendo dúvidas em tempo real.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lunar-card rounded-2xl p-6 feature-animate">
+                    <div class="feature-card-item">
+                        <div class="feature-icon"><i class="fas fa-pen-fancy"></i></div>
+                        <div class="feature-card-item-content">
+                            <h3>Preparatório de Redação (ENEM)</h3>
+                            <p>Aprimore a escrita com um módulo focado na elaboração textual, ideal para o ENEM e outros vestibulares, com feedback inteligente.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lunar-card rounded-2xl p-6 feature-animate">
+                    <div class="feature-card-item">
+                        <div class="feature-icon"><i class="fas fa-desktop"></i></div>
+                        <div class="feature-card-item-content">
+                            <h3>Geração de Slides (Prof.)</h3>
+                            <p>Crie apresentações visuais e interativas de forma rápida, personalizadas para o conteúdo e nível da sua turma, otimizando o tempo de preparo.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lunar-card rounded-2xl p-6 feature-animate">
+                    <div class="feature-card-item">
+                        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="feature-card-item-content">
+                            <h3>Sistema de Segurança Avançado</h3>
+                            <p>Seus dados protegidos: verificações rigorosas, Cloudflare, backups automáticos e controle de conteúdo garantem a integridade e segurança da plataforma.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lunar-card rounded-2xl p-6 feature-animate">
+                    <div class="feature-card-item">
+                        <div class="feature-icon"><i class="fas fa-share-alt"></i></div>
+                        <div class="feature-card-item-content">
+                            <h3>Lunar Flow: Rede Social Educacional</h3>
+                            <p>Um ambiente dinâmico para compartilhamento de aprendizados, resoluções e interações significativas entre alunos e professores.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lunar-card rounded-2xl p-6 feature-animate">
+                    <div class="feature-card-item">
+                        <div class="feature-icon"><i class="fas fa-edit"></i></div>
+                        <div class="feature-card-item-content">
+                            <h3>Revisões Customizadas (Prof.)</h3>
+                            <p>Gere materiais de revisão personalizados e adaptados às necessidades da turma, com gabaritos inclusos para otimizar o estudo e a fixação.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lunar-card rounded-2xl p-6 feature-animate">
+                    <div class="feature-card-item">
+                        <div class="feature-icon"><i class="fas fa-image"></i></div>
+                        <div class="feature-card-item-content">
+                            <h3>Geração de Imagens com IA</h3>
+                            <p>Liberte a criatividade: alunos podem criar imagens personalizadas para ilustrar trabalhos, posts no Lunar Flow ou outros fins educacionais.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lunar-card rounded-2xl p-6 feature-animate">
+                    <div class="feature-card-item">
+                        <div class="feature-icon"><i class="fas fa-layer-group"></i></div>
+                        <div class="feature-card-item-content">
+                            <h3>Criação de Flashcards Assistida</h3>
+                            <p>Facilite a memorização: gere flashcards com o auxílio da IA, transformando conceitos chave em ferramentas de estudo eficazes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lunar-card rounded-2xl p-6 feature-animate">
+                    <div class="feature-card-item">
+                        <div class="feature-icon"><i class="fas fa-puzzle-piece"></i></div>
+                        <div class="feature-card-item-content">
+                            <h3>Jogo da Memória Educacional</h3>
+                            <p>Aprenda brincando: crie jogos da memória temáticos para associar tópicos e explicações de forma lúdica e eficaz.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lunar-card rounded-2xl p-6 feature-animate">
+                    <div class="feature-card-item">
+                        <div class="feature-icon"><i class="fas fa-pencil-alt"></i></div>
+                        <div class="feature-card-item-content">
+                            <h3>Atividades de Fixação Interativas</h3>
+                            <p>Reforce o aprendizado com exercícios dinâmicos de completar frases e outros formatos, tornando a fixação do conteúdo mais envolvente.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lunar-card rounded-2xl p-6 feature-animate">
+                    <div class="feature-card-item">
+                        <div class="feature-icon"><i class="fas fa-file-signature"></i></div>
+                        <div class="feature-card-item-content">
+                            <h3>Geração de Simulados (Alunos)</h3>
+                            <p>Prepare-se para o sucesso: crie simulados com gabaritos e folhas de respostas, adaptados ao seu nível para prática e preparo eficazes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lunar-card rounded-2xl p-6 feature-animate">
+                    <div class="feature-card-item">
+                        <div class="feature-icon"><i class="fas fa-clipboard-list"></i></div>
+                        <div class="feature-card-item-content">
+                            <h3>Geração de Planos de Aula (Prof.)</h3>
+                            <p>Otimize seu tempo: a IA auxilia professores na criação de planos de aula completos e personalizados, facilitando a organização pedagógica.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lunar-card rounded-2xl p-6 feature-animate">
+                    <div class="feature-card-item">
+                        <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
+                        <div class="feature-card-item-content">
+                            <h3>Criação de Atividades Lúdicas</h3>
+                            <p>Engaje seus alunos com materiais didáticos ilustrados e atividades interativas ("folhinhas") geradas para tornar o aprendizado divertido.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="aurorafy-section">
+                <h3>🎵 Agora você pode estudar escutando música! 🎵</h3>
+                <img src="static/aurorafy.png" alt="Aurorafy" class="aurorafy-logo">
+                <p>Com o <strong>Aurorafy</strong>, transforme suas sessões de estudo em uma playlist educacional épica! Tipo Spotify, mas com vibes de aprendizado total. Música + estudos = combo perfeito!</p>
+                <a href="https://projeto-lunar.com/soundwave/player" class="lunar-button" target="_blank">
+                    <i class="fas fa-music"></i> Experimente o Aurorafy
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="section bg-lunar-gradient">
+        <div class="container">
+            <div class="section-heading">
+                <h6 class="section-subtitle-tag">Investimento em Educação</h6>
+                <h2 class="section-title">Planos de <span class="section-title-gradient">Preços para Escolas</span></h2>
+                <div class="section-title-underline"></div>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Plano Básico</h3>
+                    <p class="pricing-price">R$50 <span>/ aluno / mês</span></p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> Ensino Personalizado</li>
+                        <li><i class="fas fa-check-circle"></i> Gestão Inteligente de Dúvidas</li>
+                        <li><i class="fas fa-check-circle"></i> Geração de Avaliações (Prof.)</li>
+                        <li><i class="fas fa-check-circle"></i> Gráficos de Desempenho</li>
+                        <li><i class="fas fa-check-circle"></i> Mapas Mentais Dinâmicos</li>
+                        <li><i class="fas fa-check-circle"></i> Preparatório de Redação (ENEM)</li>
+                        <li><i class="fas fa-times-circle" style="color: var(--lunar-text-gray-400);"></i> Modo de Voz para Crianças</li>
+                        <li><i class="fas fa-times-circle" style="color: var(--lunar-text-gray-400);"></i> Podcasts Educacionais</li>
+                    </ul>
+                    <a href="#contact" class="lunar-button">
+                        <i class="fas fa-handshake"></i> Solicitar Proposta
+                    </a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Plano Premium</h3>
+                    <p class="pricing-price">R$70 <span>/ aluno / mês</span></p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> Todas as funcionalidades do Plano Básico</li>
+                        <li><i class="fas fa-check-circle"></i> Modo de Voz para Crianças</li>
+                        <li><i class="fas fa-check-circle"></i> Podcasts Educacionais Interativos</li>
+                        <li><i class="fas fa-check-circle"></i> Geração de Imagens com IA</li>
+                        <li><i class="fas fa-check-circle"></i> Lunar Flow: Rede Social Educacional</li>
+                        <li><i class="fas fa-check-circle"></i> Suporte Prioritário</li>
+                        <li><i class="fas fa-check-circle"></i> Atualizações Exclusivas</li>
+                    </ul>
+                    <a href="#contact" class="lunar-button">
+                        <i class="fas fa-star"></i> Solicitar Proposta
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="parcerias" class="section">
+        <div class="container">
+            <div class="section-heading">
+                <h6 class="section-subtitle-tag">Nossas Parcerias</h6>
+                <h2 class="section-title">Escolas em <span class="section-title-gradient">Nepomuceno MG</span></h2>
+                <div class="section-title-underline"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>ESCOLA MUNICIPAL JOSÉ MARQUES DA CRUZ</h3>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>ESCOLA MUNICIPAL IDALINA SANT'ANA MARTINS</h3>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>ESCOLA MUNICIPAL GLÓRIA LUIZA VILELA REIS</h3>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Escola Municipal Prefeito Ribeiro Neto</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="updates" class="section bg-lunar-gradient">
+        <div class="container">
+            <div class="section-heading">
+                <h6 class="section-subtitle-tag">Desenvolvimento Contínuo</h6>
+                <h2 class="section-title">Atualizações <span class="section-title-gradient">Recentes</span></h2>
+                <div class="section-title-underline"></div>
+            </div>
+            <div class="updates-content-wrapper">
+                <div class="lunar-card rounded-2xl p-8 update-card">
+                    <div class="update-header">
+                        <div class="update-icon-wrapper"><i class="fas fa-desktop"></i></div>
+                        <div>
+                            <span class="update-tag">NOVO</span>
+                            <h3 class="update-title">Geração de Slides para Professores</h3>
+                        </div>
+                    </div>
+                    <p class="update-description">
+                        Nova ferramenta permite que professores criem apresentações de slides profissionais e visualmente atraentes, com conteúdo personalizado e recursos interativos.
+                    </p>
+                    <a href="#" class="update-link"><i class="fas fa-arrow-right"></i> Detalhes da funcionalidade</a>
+                </div>
+                <div class="lunar-card rounded-2xl p-8 update-card">
+                    <div class="update-header">
+                        <div class="update-icon-wrapper"><i class="fas fa-file-alt"></i></div>
+                        <div>
+                            <span class="update-tag">NOVO</span>
+                            <h3 class="update-title">Geração de Avaliações Personalizadas</h3>
+                        </div>
+                    </div>
+                    <p class="update-description">
+                        Professores agora podem criar avaliações em diversos formatos, ajustando nível de dificuldade, tópicos e recebendo sugestões baseadas nas necessidades da turma.
+                    </p>
+                    <a href="#" class="update-link"><i class="fas fa-arrow-right"></i> Detalhes da funcionalidade</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-heading">
+                <h6 class="section-subtitle-tag">Fale Conosco</h6>
+                <h2 class="section-title">Entre em Contato com a <span class="section-title-gradient">Equipe Lunar</span></h2>
+                <div class="section-title-underline"></div>
+            </div>
+            <div class="lunar-card rounded-3xl p-8 contact-card-wrapper">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Informações de Contato</h3>
+                        <p>
+                            Possui dúvidas ou interesse em parcerias? Envie-nos uma mensagem e nossa equipe retornará o mais breve possível.
+                        </p>
+                        <div class="contact-info-items">
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon-wrapper"><i class="fab fa-whatsapp"></i></div>
+                                <span>WhatsApp: (35) 99893-0953</span>
+                            </div>
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon-wrapper"><i class="fas fa-map-marker-alt"></i></div>
+                                <span>Brasil</span>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" id="name" name="name" placeholder="Seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Seu E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Sua Mensagem</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Digite sua mensagem aqui..."></textarea>
+                        </div>
+                        <button type="submit" class="lunar-button">
+                            <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-logo-section">
+                    <div class="footer-logo-container">
+                        <img src="static/image-removebg-preview (2).png" alt="Lunar Logo" class="footer-logo-img">
+                        <span class="footer-logo-text">Projeto Lunar</span>
+                    </div>
+                    <p class="footer-description">
+                        Transformando a educação através da inteligência artificial, com foco no aprendizado ativo e personalizado.
+                    </p>
+                </div>
+                <div class="footer-links-section">
+                    <h4>Links Úteis</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#about">Sobre o Projeto</a></li>
+                        <li><a href="#features">Nossas Funcionalidades</a></li>
+                        <li><a href="#pricing">Preços</a></li>
+                        <li><a href="#parcerias">Parcerias</a></li>
+                        <li><a href="#updates">Últimas Atualizações</a></li>
+                        <li><a href="#contact">Fale Conosco</a></li>
+                    </ul>
+                </div>
+                <div class="footer-team-section">
+                    <h4>Equipe Principal</h4>
+                    <div class="footer-team-members">
+                        <div>
+                            <p class="footer-team-member-name">Miguel Penha Reis</p>
+                            <p class="footer-team-member-role">Desenvolvedor &amp; Fundador</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>
+                    © 2025 Projeto Lunar. Todos os direitos reservados. Feito com ☕, <i class="fas fa-pizza-slice"></i> e muito código!
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        if (mobileMenuButton && mobileMenu && closeMenuButton) {
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.add('active');
+            });
+
+            closeMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                });
+            });
         }
-      }
-    }
 
-    // Verificar o tamanho de tela no carregamento
-    handleMobileMenu(mediaQuery);
+        // JAVASCRIPT CORRIGIDO - Ver mais funcionalidades
+        document.addEventListener('DOMContentLoaded', function() {
+            const verMaisButton = document.getElementById('ver-mais');
+            const featuresInitialMobileHidden = document.getElementById('features-initial-mobile-hidden');
+            const featuresExtra = document.getElementById('features-extra');
 
-    // Ouvir por mudanças
-    mediaQuery.addEventListener('change', handleMobileMenu);
+            // Function to check if we are in a mobile view based on CSS display property
+            const isMobileView = () => window.getComputedStyle(featuresInitialMobileHidden).display === 'none';
 
-    // Animação para os feature boxes
-    document.querySelectorAll('.feature-box').forEach(box => {
-      box.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-10px)';
-        this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.1)';
-        this.querySelector('.feature-icon').style.transform = 'scale(1.1)';
-        this.querySelector('.feature-icon').style.color = '#3a56b0';
-        this.querySelector('h3').style.color = '#3a56b0';
-      });
+            if (verMaisButton && featuresInitialMobileHidden && featuresExtra) {
+                // Initial state check on load
+                if (window.innerWidth < 768) { // If it's a mobile screen on load
+                    featuresInitialMobileHidden.style.display = 'none'; // Ensure these are hidden
+                }
 
-      box.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-        this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.07)';
-        this.querySelector('.feature-icon').style.transform = 'scale(1)';
-        this.querySelector('.feature-icon').style.color = '#4e73df';
-        this.querySelector('h3').style.color = '#2c3e50';
-      });
-    });
+                verMaisButton.addEventListener('click', function() {
+                    if (featuresExtra.style.display === 'none' || featuresExtra.style.display === '') {
+                        // Show all hidden features
+                        if (isMobileView()) { // Only show if currently hidden by mobile CSS
+                            featuresInitialMobileHidden.style.display = 'grid';
+                        }
+                        featuresExtra.style.display = 'grid';
+                        verMaisButton.innerHTML = '<i class="fas fa-minus-circle"></i> Ver Menos Funcionalidades';
+                    } else {
+                        // Hide features
+                        if (isMobileView()) { // Only hide if currently visible due to mobile CSS
+                            featuresInitialMobileHidden.style.display = 'none';
+                        }
+                        featuresExtra.style.display = 'none';
+                        verMaisButton.innerHTML = '<i class="fas fa-plus-circle"></i> Ver Mais Funcionalidades';
+                    }
+                });
 
-    // Preload das imagens para evitar carregamento abrupto
-    function preloadImages() {
-      const images = document.querySelectorAll('img');
-      images.forEach(img => {
-        const src = img.getAttribute('src');
-        if (src) {
-          const preloadImg = new Image();
-          preloadImg.src = src;
+                // Adjust visibility on resize
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth >= 768) { // Desktop view
+                        featuresInitialMobileHidden.style.display = 'grid'; // Always show on desktop
+                        featuresExtra.style.display = 'none'; // Hide extra on desktop unless "Ver Mais" was clicked
+                        verMaisButton.innerHTML = '<i class="fas fa-plus-circle"></i> Ver Mais Funcionalidades'; // Reset button text
+                    } else { // Mobile view
+                        if (verMaisButton.innerHTML.includes('Ver Mais')) { // If button says "Ver Mais", hide them
+                            featuresInitialMobileHidden.style.display = 'none';
+                            featuresExtra.style.display = 'none';
+                        } else { // If button says "Ver Menos", keep them visible
+                            featuresInitialMobileHidden.style.display = 'grid';
+                            featuresExtra.style.display = 'grid';
+                        }
+                    }
+                });
+            }
+        });
+
+        // Criar partículas
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            if (!particlesContainer) return;
+
+            while (particlesContainer.firstChild) {
+                particlesContainer.removeChild(particlesContainer.firstChild);
+            }
+
+            const particleCount = 50;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const posX = Math.random() * window.innerWidth;
+                const posY = Math.random() * window.innerHeight;
+                const size = Math.random() * 4 + 1;
+                particle.style.left = `${posX}px`;
+                particle.style.top = `${posY}px`;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.opacity = Math.random() * 0.5 + 0.3;
+                const duration = Math.random() * 15 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                const delay = Math.random() * 5;
+                particle.style.animationDelay = `${delay}s`;
+                particlesContainer.appendChild(particle);
+            }
         }
-      });
-    }
 
-    window.addEventListener('load', preloadImages);
-  </script>
+        let particleTimeout;
+        function initParticlesWithDebounce() {
+            clearTimeout(particleTimeout);
+            particleTimeout = setTimeout(createParticles, 100);
+        }
+
+        document.addEventListener('DOMContentLoaded', initParticlesWithDebounce);
+        window.addEventListener('resize', initParticlesWithDebounce);
+    </script>
 </body>
 </html>
